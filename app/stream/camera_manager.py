@@ -40,6 +40,7 @@ class CameraManager:
 
         # Threading state
         self.cap: Optional[cv2.VideoCapture] = None
+        self.capture_lock = threading.Lock()
         self.raw_frame = None
         self.raw_frame_lock = threading.Lock()
         self.has_new_raw_frame = threading.Event()
@@ -82,46 +83,73 @@ class CameraManager:
         if self.process_thread and self.process_thread.is_alive():
             self.process_thread.join(timeout=1.0)
 
-        if self.cap:
-            try:
-                self.cap.release()
-            except Exception:
-                pass
-            self.cap = None
+        with self.capture_lock:
+            if self.cap:
+                try:
+                    self.cap.release()
+                except Exception:
+                    pass
+                self.cap = None
         print("[CameraManager] Camera stopped successfully.")
 
+    def _create_capture(self, source):
+        """Helper to create and configure a cv2.VideoCapture object."""
+        try:
+            if isinstance(source, int):
+                cap = cv2.VideoCapture(source, cv2.CAP_DSHOW)
+                if not cap.isOpened():
+                    cap = cv2.VideoCapture(source)
+            else:
+                cap = cv2.VideoCapture(source)
+
+            if cap and cap.isOpened():
+                cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+                cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+                cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+                return cap
+        except Exception as e:
+            print(f"[CameraManager] Error creating capture for source '{source}': {e}")
+        return None
+
     def _open_capture(self):
-        """Opens cv2.VideoCapture with optimal buffer settings."""
-        if self.cap:
-            try:
-                self.cap.release()
-            except Exception:
-                pass
-
-        if isinstance(self.source, int):
-            self.cap = cv2.VideoCapture(self.source, cv2.CAP_DSHOW)
-            if not self.cap.isOpened():
-                self.cap = cv2.VideoCapture(self.source)
-        else:
-            self.cap = cv2.VideoCapture(self.source)
-
-        if self.cap and self.cap.isOpened():
-            self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
-            self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
-            self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
-        else:
-            print(f"[CameraManager Warning] Failed to open capture source: {self.source}")
+        """Opens cv2.VideoCapture with thread safety."""
+        with self.capture_lock:
+            old_cap = self.cap
+            new_cap = self._create_capture(self.source)
+            if new_cap:
+                self.cap = new_cap
+                if old_cap:
+                    try:
+                        old_cap.release()
+                    except Exception:
+                        pass
+                print(f"[CameraManager] Active capture open on source '{self.source}'")
+                return True
+            else:
+                print(f"[CameraManager Warning] Failed to open capture source: {self.source}")
+                return False
 
     def _reader_loop(self):
         """Dedicated thread to constantly drain OpenCV frame buffers and eliminate lag."""
         reconnect_attempts = 0
         while self.running:
-            if not self.cap or not self.cap.isOpened():
+            with self.capture_lock:
+                cap = self.cap
+                if not cap or not cap.isOpened():
+                    cap_valid = False
+                else:
+                    cap_valid = True
+                    try:
+                        ret, frame = cap.read()
+                    except Exception as e:
+                        ret, frame = False, None
+                        print(f"[CameraManager] Capture read error: {e}")
+
+            if not cap_valid:
                 time.sleep(0.5)
                 self._open_capture()
                 continue
 
-            ret, frame = self.cap.read()
             if not ret or frame is None:
                 reconnect_attempts += 1
                 time.sleep(0.05)
@@ -304,22 +332,39 @@ class CameraManager:
         print(f"[CameraManager] Updated thresholds: Distance={d}px, Time={t}s")
 
     def switch_source(self, new_source, new_camera_name=None):
-        """Dynamically switches camera source."""
+        """Dynamically switches camera source safely without crashing."""
         if isinstance(new_source, str) and new_source.isdigit():
             new_source = int(new_source)
 
         if self.source == new_source:
             return
 
-        print(f"[CameraManager] Switching source from {self.source} to {new_source}")
-        self.source = new_source
-        if new_camera_name:
-            self.camera_name = new_camera_name
+        print(f"[CameraManager] Attempting to switch source from {self.source} to {new_source}")
 
-        self._open_capture()
+        # 1. Test opening the new camera FIRST before releasing old one!
+        new_cap = self._create_capture(new_source)
+        if not new_cap:
+            print(f"[CameraManager Error] Could not connect to source '{new_source}'. Keeping previous source '{self.source}'.")
+            raise RuntimeError(f"Camera source '{new_source}' could not be opened or is not responding.")
 
+        # 2. Safely swap under lock to avoid race conditions with reader thread
+        with self.capture_lock:
+            old_cap = self.cap
+            self.cap = new_cap
+            self.source = new_source
+            if new_camera_name:
+                self.camera_name = new_camera_name
+
+            if old_cap:
+                try:
+                    old_cap.release()
+                except Exception:
+                    pass
+
+        # 3. Persist to settings
         settings = load_settings()
         settings["camera_source"] = self.source
         if new_camera_name:
             settings["camera_name"] = self.camera_name
         save_settings(settings)
+        print(f"[CameraManager] Successfully switched and saved camera source: {self.source}")

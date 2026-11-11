@@ -113,9 +113,10 @@
                     camera_source: srcVal
                 })
             })
-            .then(res => {
-                if (!res.ok) throw new Error('Server rejected update');
-                return res.json();
+            .then(async res => {
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok) throw new Error(data.message || 'Server rejected update');
+                return data;
             })
             .then(() => {
                 statusEl.style.color = '#98c379';
@@ -125,7 +126,7 @@
             .catch(err => {
                 console.error(err);
                 statusEl.style.color = '#e06c75';
-                statusEl.textContent = 'Failed to save settings. Please try again.';
+                statusEl.textContent = err.message || 'Failed to save settings. Please try again.';
             })
             .finally(() => {
                 saveBtn.disabled = false;
