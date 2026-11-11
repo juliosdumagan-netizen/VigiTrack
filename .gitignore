@@ -1,0 +1,25 @@
+# Python virtual environment
+venv/
+env/
+ENV/
+.venv/
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Database files
+data/vigitrack.db
+data/vigitrack.db-wal
+data/vigitrack.db-shm
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Large PyTorch model weights (automatically downloaded by Ultralytics on first run)
+*.pt

@@ -1,0 +1,8345 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R 13 0 R] /Count 4 >>
+endobj
+6 0 obj
+<< /Length 44307 >>
+stream
+q
+0.180 0.280 0.420 rg
+BT /F2 8.20 Tf 46.00 741.50 Td (CAPSTONE DEFENSE HANDBOOK  \225  COMPREHENSIVE TECHNICAL KNOWLEDGE GUIDE) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 13.80 Tf 46.00 722.70 Td (VigiTrack:) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 13.80 Tf 116.56 722.70 Td (AI-Based) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 13.80 Tf 180.21 722.70 Td (Unattended) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 13.80 Tf 259.94 722.70 Td (Object) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 13.80 Tf 306.72 722.70 Td (Detection) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 13.80 Tf 373.43 722.70 Td (and) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 13.80 Tf 401.81 722.70 Td (Monitoring) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 13.80 Tf 476.93 722.70 Td (System) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 13.80 Tf 46.00 705.70 Td (Using) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 13.80 Tf 88.17 705.70 Td (Computer) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 13.80 Tf 157.17 705.70 Td (Vision) Tj ET
+Q
+q
+0.60 w
+0.973 0.980 0.988 rg
+0.780 0.820 0.880 RG
+46.00 654.00 520.00 46.00 re B
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 8.50 Tf 55.00 688.00 Td (Lead) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 8.50 Tf 77.20 688.00 Td (Developer) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 8.50 Tf 120.66 688.00 Td (/) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 8.50 Tf 125.39 688.00 Td (Author:) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 158.44 688.00 Td (Gary) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 179.22 688.00 Td (Luis) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 197.17 688.00 Td (Alquiza) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 8.50 Tf 346.16 688.00 Td (Academic) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 8.50 Tf 388.68 688.00 Td (Year:) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 412.30 688.00 Td (2025\2262026) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 8.50 Tf 55.00 674.50 Td (Panelist) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 8.50 Tf 89.96 674.50 Td (/) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 8.50 Tf 94.69 674.50 Td (Review) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 8.50 Tf 126.34 674.50 Td (Focus:) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 156.57 674.50 Td (Sir) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 169.32 674.50 Td (Serge) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 194.36 674.50 Td (\(CCTV) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 222.69 674.50 Td (Integration,) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 267.58 674.50 Td (Hardware) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 306.78 674.50 Td (&) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 314.81 674.50 Td (Innovation\)) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 8.50 Tf 376.28 674.50 Td (Last) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 8.50 Tf 396.12 674.50 Td (Updated:) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 435.31 674.50 Td (November) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 476.88 674.50 Td (11,) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 491.06 674.50 Td (2026) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 8.50 Tf 55.00 661.00 Td (Scope:) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 85.70 661.00 Td (Core) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 106.48 661.00 Td (Innovation,) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 150.43 661.00 Td (CCTV/RTSP) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 200.96 661.00 Td (Ingestion,) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 240.18 661.00 Td (AI) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 250.58 661.00 Td (vs) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 261.44 661.00 Td (Rules,) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 287.89 661.00 Td (Database,) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 329.00 661.00 Td (MJPEG) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 360.64 661.00 Td (Stream,) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 392.76 661.00 Td (and) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 409.31 661.00 Td (Defense) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F1 8.50 Tf 443.32 661.00 Td (Q&A) Tj ET
+Q
+q
+1.20 w
+0.120 0.160 0.230 RG
+46.00 646.50 m 566.00 646.50 l S
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 12.50 Tf 46.00 623.50 Td (1. System Executive Summary \(The 10-Second Pitch\)) Tj ET
+Q
+q
+1.20 w
+0.150 0.220 0.320 RG
+46.00 621.00 m 566.00 621.00 l S
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 46.00 605.25 Td (What) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 72.09 605.25 Td (VigiTrack) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 117.21 605.25 Td (Does) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 143.31 605.25 Td (in) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 155.01 605.25 Td (Plain) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 180.60 605.25 Td (English:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 220.57 605.25 Td (VigiTrack) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 262.60 605.25 Td (is) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 272.76 605.25 Td (an) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 286.52 605.25 Td (automated) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 333.71 605.25 Td (AI) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 345.93 605.25 Td (surveillance) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 398.24 605.25 Td (decision-support) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 469.58 605.25 Td (prototype) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 511.63 605.25 Td (that) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 530.54 605.25 Td (monitors) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 592.45 Td (institutional) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 97.37 592.45 Td (CCTV) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 127.65 592.45 Td (video) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 154.86 592.45 Td (feeds) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 182.59 592.45 Td (to) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 195.41 592.45 Td (identify) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 229.82 592.45 Td (abandoned) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 281.21 592.45 Td (bags) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 306.36 592.45 Td (\() Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+309.44 590.45 42.96 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 310.94 592.45 Td (backpack) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 352.40 592.45 Td (,) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+360.08 590.45 37.97 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 361.58 592.45 Td (handbag) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 398.04 592.45 Td (,) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+405.72 590.45 42.96 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 407.22 592.45 Td (suitcase) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 448.68 592.45 Td (\).) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 459.43 592.45 Td (Rather) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 492.29 592.45 Td (than) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 515.40 592.45 Td (only) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 537.46 592.45 Td (detecting) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 579.65 Td (stationary) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 89.50 579.65 Td (pixels) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 116.55 579.65 Td (like) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 133.83 579.65 Td (basic) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 158.83 579.65 Td (CCTV) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 187.41 579.65 Td (cameras) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 226.28 579.65 Td (do,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 242.54 579.65 Td (VigiTrack) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 284.49 579.65 Td (monitors) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 323.36 579.65 Td (human) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 357.09 579.65 Td (presence) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 401.11 579.65 Td (alongside) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 447.70 579.65 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 464.98 579.65 Td (item) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 483.99 579.65 Td (.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 489.97 579.65 Td (It) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 498.52 579.65 Td (finds) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 521.46 579.65 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 537.72 579.65 Td (person) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 566.85 Td (closest) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 78.17 566.85 Td (to) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 89.26 566.85 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 105.50 566.85 Td (bag,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 126.88 566.85 Td (connects) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 167.27 566.85 Td (them) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 191.21 566.85 Td (with) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 211.04 566.85 Td (an) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 224.71 566.85 Td (invisible) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 260.98 566.85 Td (proximity) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 301.36 566.85 Td (leash,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 329.41 566.85 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 348.22 566.85 Td (keeps) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 376.28 566.85 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 392.52 566.85 Td (line) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 410.29 566.85 Td (GREEN) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 446.56 566.85 Td (while) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 471.01 566.85 Td (attended.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 512.96 566.85 Td (If) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 521.49 566.85 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 537.72 566.85 Td (person) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 554.05 Td (walks) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 71.83 554.05 Td (away) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 96.12 554.05 Td (beyond) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 129.17 554.05 Td (150) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 147.30 554.05 Td (pixels) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 173.65 554.05 Td (or) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 184.57 554.05 Td (exits) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 206.30 554.05 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 221.86 554.05 Td (room,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 248.21 554.05 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 263.77 554.05 Td (leash) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 288.58 554.05 Td (turns) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 311.85 554.05 Td (RED) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 334.08 554.05 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 352.21 554.05 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 360.06 554.05 Td (10-second) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 405.95 554.05 Td (stopwatch) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 450.30 554.05 Td (begins.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 482.82 554.05 Td (If) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 490.67 554.05 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 506.23 554.05 Td (person) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 537.21 554.05 Td (returns) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 541.25 Td (within) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 72.21 541.25 Td (10) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 85.07 541.25 Td (seconds,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 124.66 541.25 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 140.09 541.25 Td (timer) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 163.22 541.25 Td (cancels;) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 199.72 541.25 Td (if) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 206.91 541.25 Td (they) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 226.97 541.25 Td (stay) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 246.50 541.25 Td (away,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 273.24 541.25 Td (an) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 286.09 541.25 Td (alarm) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 311.79 541.25 Td (sounds) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 344.18 541.25 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 362.18 541.25 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 377.61 541.25 Td (incident) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 412.06 541.25 Td (is) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 421.31 541.25 Td (recorded.) Tj ET
+Q
+q
+0.60 w
+0.965 0.976 0.988 rg
+0.780 0.830 0.900 RG
+46.00 489.30 520.00 43.80 re B
+Q
+q
+0.60 w
+0.140 0.330 0.540 rg
+46.00 489.30 3.50 43.80 re f
+Q
+q
+0.150 0.220 0.320 rg
+BT /F2 8.60 Tf 58.50 520.00 Td (ELEVATOR) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F2 8.60 Tf 107.72 520.00 Td (PITCH) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F2 8.60 Tf 135.91 520.00 Td (FOR) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F2 8.60 Tf 156.45 520.00 Td (DEFENSE:) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 202.33 520.00 Td (In) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 211.89 520.00 Td (2) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 219.06 520.00 Td (sentences:) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 263.04 520.00 Td ("VigiTrack) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 304.32 520.00 Td (measures) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 344.47 520.00 Td (the) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 358.81 520.00 Td (distance) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 393.23 520.00 Td (between) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 428.13 520.00 Td (a) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 435.30 520.00 Td (bag) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 452.04 520.00 Td (and) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 468.77 520.00 Td (its) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 479.76 520.00 Td (nearest) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 510.83 520.00 Td (custodian.) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 58.50 508.40 Td (If) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 65.67 508.40 Td (they) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 84.32 508.40 Td (stay) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 102.48 508.40 Td (close,) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 127.33 508.40 Td (it) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 134.03 508.40 Td (links) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 153.62 508.40 Td (them) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 175.12 508.40 Td (safely;) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 202.37 508.40 Td (if) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 209.06 508.40 Td (the) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 223.41 508.40 Td (person) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 252.09 508.40 Td (walks) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 275.98 508.40 Td (away) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 298.44 508.40 Td (for) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 310.87 508.40 Td (more) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 332.85 508.40 Td (than) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 351.98 508.40 Td (10) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 363.93 508.40 Td (seconds,) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 400.74 508.40 Td (the) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 415.08 508.40 Td (stopwatch) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 456.19 508.40 Td (runs) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 475.31 508.40 Td (out) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 489.65 508.40 Td (and) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 506.39 508.40 Td (alerts) Tj ET
+Q
+q
+0.150 0.220 0.320 rg
+BT /F1 8.60 Tf 58.50 496.80 Td (security.") Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 12.50 Tf 46.00 465.30 Td (2. System Innovation: The Person-Object Association Pipeline) Tj ET
+Q
+q
+1.20 w
+0.150 0.220 0.320 RG
+46.00 462.80 m 566.00 462.80 l S
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 46.00 447.05 Td (Why) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 70.58 447.05 Td (Existing) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 111.62 447.05 Td (Systems) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 154.72 447.05 Td (Fail) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 175.71 447.05 Td (\(Alarm) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 210.06 447.05 Td (Fatigue\):) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 254.17 447.05 Td (Conventional) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 313.21 447.05 Td (CCTV) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 343.44 447.05 Td (systems) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 382.42 447.05 Td (\(such) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 410.09 447.05 Td (as) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 424.91 447.05 Td (built-in) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 457.21 447.05 Td (tripwire) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 492.07 447.05 Td (or) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 505.35 447.05 Td (stationary-item) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 434.25 Td (detectors) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 86.73 434.25 Td (in) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 96.61 434.25 Td (Hikvision) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 136.29 434.25 Td (or) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 147.19 434.25 Td (Dahua) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 177.13 434.25 Td (NVRs\)) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 207.04 434.25 Td (rely) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 224.62 434.25 Td (exclusively) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 272.02 434.25 Td (on) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 284.99 434.25 Td (stationary) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 327.77 434.25 Td (object) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 355.13 434.25 Td (timers.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 385.56 434.25 Td (If) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 393.39 434.25 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 401.21 434.25 Td (student) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 434.24 434.25 Td (sits) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 450.79 434.25 Td (on) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 463.76 434.25 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 471.59 434.25 Td (library) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 499.45 434.25 Td (bench) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 527.33 434.25 Td (reading) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 560.86 434.25 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 421.45 Td (textbook) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 84.66 421.45 Td (with) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 104.80 421.45 Td (their) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 126.48 421.45 Td (backpack) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 169.24 421.45 Td (on) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 183.22 421.45 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 199.77 421.45 Td (floor) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 221.46 421.45 Td (beside) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 252.40 421.45 Td (them,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 279.23 421.45 Td (conventional) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 334.85 421.45 Td (systems) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 372.46 421.45 Td (ring) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 391.57 421.45 Td (an) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 405.55 421.45 Td (alarm) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 432.37 421.45 Td (because) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 471.02 421.45 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 487.57 421.45 Td (bag) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 506.70 421.45 Td (is) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 517.07 421.45 Td (not) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 533.62 421.45 Td (moving.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 408.65 Td (Because) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 84.56 408.65 Td (these) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 109.76 408.65 Td (systems) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 146.25 408.65 Td (ring) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 164.24 408.65 Td (non-stop) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 202.81 408.65 Td (for) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 216.17 408.65 Td (seated) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 246.51 408.65 Td (students,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 286.62 408.65 Td (security) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 321.06 408.65 Td (operators) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 362.70 408.65 Td (turn) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 381.21 408.65 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 396.64 408.65 Td (feature) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 428.01 408.65 Td (off) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 440.86 408.65 Td (completely.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 46.00 391.25 Td (Our) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 65.68 391.25 Td (Single) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 96.67 391.25 Td (Primary) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 134.34 391.25 Td (Contribution:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 196.14 391.25 Td (VigiTrack) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 237.92 391.25 Td (solves) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 267.36 391.25 Td (this) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 284.98 391.25 Td (fatal) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 305.70 391.25 Td (false-alarm) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 354.67 391.25 Td (problem) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 391.31 391.25 Td (through) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 425.91 391.25 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 434.28 391.25 Td (Context-Aware) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 502.78 391.25 Td (Person-Object) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 46.00 378.45 Td (Association) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 101.11 378.45 Td (Pipeline) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 136.58 378.45 Td (.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 141.83 378.45 Td (It) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 149.65 378.45 Td (distinguishes) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 205.79 378.45 Td (between) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 243.43 378.45 Td (an) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 256.39 378.45 Td (item) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 276.54 378.45 Td (that) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 294.65 378.45 Td (is) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 304.00 378.45 Td (physically) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 351.41 378.45 Td (attended) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 392.63 378.45 Td (\(person) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 426.67 378.45 Td (sitting) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 453.51 378.45 Td (nearby\)) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 487.54 378.45 Td (versus) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 517.46 378.45 Td (an) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 530.42 378.45 Td (item) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 550.57 378.45 Td (that) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 365.65 Td (is) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 55.25 365.65 Td (abandoned) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 107.16 365.65 Td (\(person) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 141.09 365.65 Td (walked) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 172.45 365.65 Td (away\).) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 9.15 Tf 49.00 348.35 Td (\225) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 59.00 348.35 Td (Why) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 81.56 348.35 Td (We) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 98.53 348.35 Td (Call) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 118.55 348.35 Td (It) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 127.38 348.35 Td ("Person) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 165.98 348.35 Td (Association") Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 225.42 348.35 Td (\(Not) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 246.96 348.35 Td ("Owner) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 283.01 348.35 Td (Association"\):) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 348.55 348.35 Td (From) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 373.13 348.35 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 381.46 348.35 Td (scientific) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 419.79 348.35 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 438.29 348.35 Td (legal) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 460.86 348.35 Td (standpoint,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 508.86 348.35 Td (camera) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 542.61 348.35 Td (pixels) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 335.85 Td (cannot) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 92.23 335.85 Td (verify) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 119.86 335.85 Td (property) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 159.18 335.85 Td (ownership) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 206.64 335.85 Td (or) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 220.54 335.85 Td (receipt) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 253.76 335.85 Td (of) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 267.16 335.85 Td (purchase) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 310.56 335.85 Td (without) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 345.31 335.85 Td (invasive) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 384.12 335.85 Td (biometric) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 427.00 335.85 Td (profiling.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 467.34 335.85 Td (By) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 483.78 335.85 Td (designating) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 536.34 335.85 Td (this) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 556.34 335.85 Td (as) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 59.00 323.35 Td (Person-Object) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 126.26 323.35 Td (Association) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 178.12 323.35 Td (,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 185.38 323.35 Td (VigiTrack) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 228.23 323.35 Td (objectively) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 275.66 323.35 Td (evaluates) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 319.54 323.35 Td (human) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 352.23 323.35 Td (custodial) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 393.06 323.35 Td (proximity) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 434.38 323.35 Td (without) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 468.08 323.35 Td (making) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 502.29 323.35 Td (unverified) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 546.68 323.35 Td (legal) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 310.85 Td (assumptions.) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 9.15 Tf 49.00 294.75 Td (\225) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 59.00 294.75 Td (Bystander) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 108.80 294.75 Td (Rejection) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 155.03 294.75 Td (via) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 172.80 294.75 Td (Temporal) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 219.04 294.75 Td (Debouncing:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 280.01 294.75 Td (In) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 292.69 294.75 Td (naive) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 319.61 294.75 Td (proximity) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 361.27 294.75 Td (algorithms,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 411.06 294.75 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 421.20 294.75 Td (stranger) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 459.82 294.75 Td (casually) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 497.92 294.75 Td (walking) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 533.48 294.75 Td (past) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 555.83 294.75 Td (an) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 282.25 Td (abandoned) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 112.99 282.25 Td (bag) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 136.46 282.25 Td (steals) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 168.57 282.25 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 189.50 282.25 Td (association) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 243.48 282.25 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 266.95 282.25 Td (resets) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 300.07 282.25 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 321.00 282.25 Td (timer.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 352.08 282.25 Td (VigiTrack) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 398.42 282.25 Td (enforces) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 441.71 282.25 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 455.01 282.25 Td (5-frame) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 496.27 282.25 Td (debounce) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 547.69 282.25 Td (lock) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 269.75 Td (\() Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+62.05 267.75 111.70 10.55 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.24 Tf 63.55 269.75 Td (DEBOUNCE_COMMIT_FRAMES) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+176.83 267.75 7.94 10.55 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.24 Tf 178.33 269.75 Td (=) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+187.85 267.75 7.94 10.55 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.24 Tf 189.35 269.75 Td (5) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 195.79 269.75 Td (\),) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 204.45 269.75 Td (requiring) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 243.13 269.75 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 251.29 269.75 Td (person) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 282.34 269.75 Td (to) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 293.05 269.75 Td (stay) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 312.91 269.75 Td (within) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 339.37 269.75 Td (150) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 357.71 269.75 Td (pixels) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 384.18 269.75 Td (for) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 397.93 269.75 Td (multiple) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 432.53 269.75 Td (consecutive) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 483.92 269.75 Td (frames) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 514.96 269.75 Td (before) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 543.98 269.75 Td (locking,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 257.25 Td (while) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 82.39 257.25 Td (ignoring) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 117.48 257.25 Td (transient) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 155.11 257.25 Td (passersby.) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 9.15 Tf 49.00 241.15 Td (\225) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 59.00 241.15 Td (Frame-Exit) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 111.26 241.15 Td (Countdown) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 166.56 241.15 Td (Persistence:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 225.95 241.15 Td (When) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 254.83 241.15 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 264.89 241.15 Td (person) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 297.84 241.15 Td (leaves) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 329.26 241.15 Td (an) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 344.42 241.15 Td (item) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 366.68 241.15 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 386.92 241.15 Td (exits) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 410.71 241.15 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 428.40 241.15 Td (camera's) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 470.21 241.15 Td (field) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 491.97 241.15 Td (of) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 504.58 241.15 Td (view,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 530.40 241.15 Td (standard) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 228.65 Td (detectors) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 100.36 228.65 Td (drop) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 122.40 228.65 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 138.84 228.65 Td (tracking) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 174.61 228.65 Td (pair.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 196.13 228.65 Td (VigiTrack's) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 244.31 228.65 Td (state) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 267.87 228.65 Td (machine) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 306.18 228.65 Td (enters) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 335.34 228.65 Td (an) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+349.24 226.65 52.41 10.55 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.24 Tf 350.74 228.65 Td (Associated) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+405.38 226.65 32.65 10.55 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.24 Tf 406.88 228.65 Td (Person) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+441.75 226.65 17.82 10.55 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.24 Tf 443.25 228.65 Td (Out) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+463.30 226.65 12.88 10.55 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.24 Tf 464.80 228.65 Td (of) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+479.91 226.65 22.76 10.55 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.24 Tf 481.41 228.65 Td (View) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 506.40 228.65 Td (state,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 532.51 228.65 Td (keeping) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 568.28 228.65 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 216.15 Td (countdown) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 105.79 216.15 Td (active) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 132.24 216.15 Td (until) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 151.56 216.15 Td (security) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 185.63 216.15 Td (is) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 194.78 216.15 Td (notified.) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 12.50 Tf 46.00 191.70 Td (3. Mathematical & Algorithmic Implementation) Tj ET
+Q
+q
+1.20 w
+0.150 0.220 0.320 RG
+46.00 189.20 m 566.00 189.20 l S
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 173.45 Td (The) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 64.51 173.45 Td (association) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 113.35 173.45 Td (engine) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 143.69 173.45 Td (operates) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 182.25 173.45 Td (inside) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+208.98 171.45 142.86 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 210.48 173.45 Td (app/detection/fsm_tracker.py) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 354.42 173.45 Td (across) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 384.23 173.45 Td (four) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 402.74 173.45 Td (deterministic) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 457.22 173.45 Td (mathematical) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 514.79 173.45 Td (stages:) Tj ET
+Q
+q
+0.60 w
+0.118 0.161 0.231 rg
+0.118 0.161 0.231 RG
+46.00 146.80 520.00 18.50 re B
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 51.50 153.50 Td (Pipeline) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 85.64 153.50 Td (Stage) Tj ET
+Q
+q
+0.50 w
+0.250 0.310 0.400 RG
+170.80 146.80 m 170.80 165.30 l S
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 176.30 153.50 Td (Mathematical) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 231.19 153.50 Td (/) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 235.80 153.50 Td (Code) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 258.86 153.50 Td (Logic) Tj ET
+Q
+q
+0.50 w
+0.250 0.310 0.400 RG
+399.60 146.80 m 399.60 165.30 l S
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 405.10 153.50 Td (Operational) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 453.53 153.50 Td (Purpose) Tj ET
+Q
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.790 0.830 0.880 RG
+46.00 106.30 520.00 40.50 re B
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 135.00 Td (1.) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 60.73 135.00 Td (Centroid) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 97.16 135.00 Td (Calculation) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+170.80 106.30 m 170.80 146.80 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 176.30 135.00 Td (Centroid:) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+212.28 133.00 11.96 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 213.78 135.00 Td (cx) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+226.55 133.00 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 228.05 135.00 Td (=) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+236.34 133.00 16.45 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 237.84 135.00 Td (\(x1) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+255.09 133.00 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 256.59 135.00 Td (+) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+264.88 133.00 16.45 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 266.38 135.00 Td (x2\)) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+283.64 133.00 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 285.14 135.00 Td (/) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+293.43 133.00 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 294.93 135.00 Td (2) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 300.91 135.00 Td (,) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+305.52 133.00 11.96 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 307.02 135.00 Td (cy) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+319.80 133.00 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 321.30 135.00 Td (=) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+329.58 133.00 16.45 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 331.08 135.00 Td (\(y1) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+348.34 133.00 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 349.84 135.00 Td (+) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+358.13 133.00 16.45 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 359.63 135.00 Td (y2\)) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+376.88 133.00 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 378.38 135.00 Td (/) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+386.67 133.00 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 388.17 135.00 Td (2) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 396.46 135.00 Td (for) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 408.45 135.00 Td (every) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 176.30 124.00 Td (bag) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 192.45 124.00 Td (and) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 208.60 124.00 Td (person) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 236.28 124.00 Td (bounding) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 272.74 124.00 Td (box.) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+399.60 106.30 m 399.60 146.80 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 405.10 135.00 Td (Reduces) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 440.16 135.00 Td (multi-dimensional) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 507.03 135.00 Td (bounding) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 405.10 124.00 Td (boxes) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 429.55 124.00 Td (into) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 445.24 124.00 Td (single) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 469.23 124.00 Td (spatial) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 495.52 124.00 Td (coordinate) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 536.58 124.00 Td (points) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 405.10 113.00 Td (in) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 413.86 113.00 Td (the) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 427.71 113.00 Td (image) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 452.62 113.00 Td (plane.) Tj ET
+Q
+q
+0.50 w
+0.973 0.980 0.988 rg
+0.790 0.830 0.880 RG
+46.00 65.80 520.00 40.50 re B
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 94.50 Td (2.) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 60.73 94.50 Td (Euclidean) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 102.25 94.50 Td (Distance) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+170.80 65.80 m 170.80 106.30 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 176.30 94.50 Td (Distance) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+210.89 92.50 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 212.39 94.50 Td (d) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+220.68 92.50 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 222.18 94.50 Td (=) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+230.47 92.50 65.75 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 231.97 94.50 Td (sqrt\(\(x_person) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+298.53 92.50 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 300.03 94.50 Td (-) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+308.32 92.50 38.86 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 309.82 94.50 Td (x_bag\)^2) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+349.48 92.50 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 350.98 94.50 Td (+) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+359.27 92.50 43.34 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 360.77 94.50 Td (\(y_person) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+404.92 92.50 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 406.42 94.50 Td (-) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+176.30 81.50 43.34 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 177.80 83.50 Td (y_bag\)^2\)) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 219.64 83.50 Td (.) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 224.25 83.50 Td (Evaluated) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 263.47 83.50 Td (against) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+292.54 81.50 65.75 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 294.04 83.50 Td (dist_threshold) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+360.59 81.50 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 362.09 83.50 Td (=) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+370.38 81.50 25.41 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 371.88 83.50 Td (150px) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 395.79 83.50 Td (.) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+399.60 65.80 m 399.60 106.30 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 405.10 94.50 Td (Identifies) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 440.62 94.50 Td (the) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 454.47 94.50 Td (closest) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 482.61 94.50 Td (human) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 510.29 94.50 Td (custodian.) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 550.42 94.50 Td (If) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+405.10 81.50 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 406.60 83.50 Td (d) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+414.89 81.50 11.96 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 416.39 83.50 Td (<=) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+429.16 81.50 25.41 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 430.66 83.50 Td (150px) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 454.57 83.50 Td (,) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 459.19 83.50 Td (the) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 473.03 83.50 Td (person) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 500.71 83.50 Td (is) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 509.01 83.50 Td (tagged) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 536.70 83.50 Td (as) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 405.10 72.50 Td (candidate) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 443.40 72.50 Td (handler.) Tj ET
+Q
+q
+0.50 w
+0.80 0.84 0.89 RG
+46.00 35.00 m 566.00 35.00 l S
+0.40 0.45 0.53 rg
+BT /F1 8.00 Tf 46.00 25.00 Td (VigiTrack Capstone Defense Handbook & Technical Guide) Tj ET
+BT /F1 8.00 Tf 525.08 25.00 Td (Page 1 of 4) Tj ET
+Q
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R /F4 4 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 41841 >>
+stream
+q
+0.60 w
+0.118 0.161 0.231 rg
+0.118 0.161 0.231 RG
+46.00 731.50 520.00 18.50 re B
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 51.50 738.20 Td (Pipeline) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 85.64 738.20 Td (Stage) Tj ET
+Q
+q
+0.50 w
+0.250 0.310 0.400 RG
+170.80 731.50 m 170.80 750.00 l S
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 176.30 738.20 Td (Mathematical) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 231.19 738.20 Td (/) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 235.80 738.20 Td (Code) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 258.86 738.20 Td (Logic) Tj ET
+Q
+q
+0.50 w
+0.250 0.310 0.400 RG
+399.60 731.50 m 399.60 750.00 l S
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 405.10 738.20 Td (Operational) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 453.53 738.20 Td (Purpose) Tj ET
+Q
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.790 0.830 0.880 RG
+46.00 691.00 520.00 40.50 re B
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 719.70 Td (3.) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 60.73 719.70 Td (5-Frame) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 95.32 719.70 Td (Debounce) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 137.75 719.70 Td (Lock) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+170.80 691.00 m 170.80 731.50 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 176.30 719.70 Td (Candidate) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 216.44 719.70 Td (handler) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 246.43 719.70 Td (must) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 266.72 719.70 Td (maintain) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+300.39 717.70 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 301.89 719.70 Td (d) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+310.18 717.70 11.96 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 311.68 719.70 Td (<=) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+324.45 717.70 25.41 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 325.95 719.70 Td (150px) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 352.17 719.70 Td (for) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 364.16 719.70 Td (5) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 176.30 708.70 Td (consecutive) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 222.43 708.70 Td (frames) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 250.10 708.70 Td (before) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 275.94 708.70 Td (setting) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+302.70 706.70 61.27 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 304.20 708.70 Td (self.owner_id) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+366.27 706.70 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 367.77 708.70 Td (=) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+176.30 695.70 43.34 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 177.80 697.70 Td (person_id) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 219.64 697.70 Td (.) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+399.60 691.00 m 399.60 731.50 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 405.10 719.70 Td (Bystander) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 444.77 719.70 Td (protection:) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 485.83 719.70 Td (prevents) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 519.97 719.70 Td (random) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 405.10 708.70 Td (pedestrians) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 450.31 708.70 Td (walking) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 480.29 708.70 Td (past) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 498.28 708.70 Td (from) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 517.19 708.70 Td (resetting) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 551.33 708.70 Td (or) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 405.10 697.70 Td (stealing) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 436.01 697.70 Td (association.) Tj ET
+Q
+q
+0.50 w
+0.973 0.980 0.988 rg
+0.790 0.830 0.880 RG
+46.00 650.50 520.00 40.50 re B
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 679.20 Td (4.) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 60.73 679.20 Td (6-State) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 90.71 679.20 Td (FSM) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 110.54 679.20 Td (Monitoring) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+170.80 650.50 m 170.80 691.00 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 176.30 679.20 Td (States:) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+204.45 677.20 47.82 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 205.95 679.20 Td (UNASSIGNED) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 254.57 679.20 Td (->) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+264.49 677.20 34.37 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 265.99 679.20 Td (CARRIED) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 301.17 679.20 Td (->) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+311.09 677.20 70.23 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 312.59 679.20 Td (STATIC_ATTENDED) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 383.63 679.20 Td (->) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+176.30 666.20 43.34 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 177.80 668.20 Td (SEPARATED) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 221.95 668.20 Td (->) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+231.86 666.20 52.30 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 233.36 668.20 Td (OUT_OF_VIEW) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 286.47 668.20 Td (->) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+296.39 666.20 74.71 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 297.89 668.20 Td (UNATTENDED_ALERT) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 371.10 668.20 Td (.) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+399.60 650.50 m 399.60 691.00 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 405.10 679.20 Td (Controls) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 438.31 679.20 Td (timer) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 459.06 679.20 Td (lifecycle:) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 493.19 679.20 Td (resets) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 518.10 679.20 Td (stopwatch) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 405.10 668.20 Td (if) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 411.56 668.20 Td (person) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 439.24 668.20 Td (returns) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 467.37 668.20 Td (within) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 490.90 668.20 Td (10s;) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 508.89 668.20 Td (sounds) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 537.96 668.20 Td (alarm) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 405.10 657.20 Td (if) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 411.56 657.20 Td (separation) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 452.62 657.20 Td (exceeds) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 485.83 657.20 Td (10s.) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 12.50 Tf 46.00 626.50 Td (4. Dissecting the Architecture: What is AI vs. What is Rules?) Tj ET
+Q
+q
+1.20 w
+0.150 0.220 0.320 RG
+46.00 624.00 m 566.00 624.00 l S
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 608.25 Td (A) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 54.93 608.25 Td (frequent) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 91.63 608.25 Td (trap) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 110.33 608.25 Td (in) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 120.29 608.25 Td (capstone) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 160.58 608.25 Td (defenses) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 200.88 608.25 Td (is) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 210.32 608.25 Td (claiming) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 247.00 608.25 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 262.62 608.25 Td (entire) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 288.52 608.25 Td (system) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 320.57 608.25 Td (is) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 330.01 608.25 Td ("AI.") Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 350.65 608.25 Td (Knowing) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 388.89 608.25 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 404.51 608.25 Td (exact) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 429.38 608.25 Td (technical) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 468.64 608.25 Td (boundary) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 509.96 608.25 Td (demonstrates) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 595.45 Td (high) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 66.05 595.45 Td (engineering) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 116.96 595.45 Td (maturity:) Tj ET
+Q
+q
+0.60 w
+0.118 0.161 0.231 rg
+0.118 0.161 0.231 RG
+46.00 568.80 520.00 18.50 re B
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 51.50 575.50 Td (Subsystem) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 98.09 575.50 Td (Component) Tj ET
+Q
+q
+0.50 w
+0.250 0.310 0.400 RG
+150.00 568.80 m 150.00 587.30 l S
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 155.50 575.50 Td (Is) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 164.73 575.50 Td (it) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 172.11 575.50 Td (AI?) Tj ET
+Q
+q
+0.50 w
+0.250 0.310 0.400 RG
+212.40 568.80 m 212.40 587.30 l S
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 217.90 575.50 Td (Underlying) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 263.56 575.50 Td (Technology) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 312.45 575.50 Td (&) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 320.75 575.50 Td (Mechanism) Tj ET
+Q
+q
+0.50 w
+0.250 0.310 0.400 RG
+441.20 568.80 m 441.20 587.30 l S
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 446.70 575.50 Td (Where) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 474.37 575.50 Td (in) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 484.06 575.50 Td (Code?) Tj ET
+Q
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.790 0.830 0.880 RG
+46.00 539.30 520.00 29.50 re B
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 557.00 Td (Object) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 79.64 557.00 Td (Detection) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+150.00 539.30 m 150.00 568.80 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 155.50 557.00 Td (YES) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 174.42 557.00 Td (\(AI\)) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+212.40 539.30 m 212.40 568.80 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 557.00 Td (Convolutional) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 270.49 557.00 Td (Neural) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 297.24 557.00 Td (Network) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 329.98 557.00 Td (\(CNN\)) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 355.80 557.00 Td (trained) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 383.48 557.00 Td (on) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 395.01 557.00 Td (MS) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 409.77 557.00 Td (COCO) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 546.00 Td (dataset) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 247.43 546.00 Td (to) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 256.66 546.00 Td (extract) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 283.88 546.00 Td (visual) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 307.40 546.00 Td (features) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 339.69 546.00 Td (and) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 355.85 546.00 Td (classify) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 385.36 546.00 Td (items.) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+441.20 539.30 m 441.20 568.80 l S
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+446.70 555.00 115.05 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 448.20 557.00 Td (app/detection/detector.py) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 446.70 546.00 Td (\() Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+449.46 544.00 34.37 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 450.96 546.00 Td (YOLOv8m) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 486.15 546.00 Td (/) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+490.76 544.00 34.37 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 492.26 546.00 Td (YOLOv8n) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 525.13 546.00 Td (\)) Tj ET
+Q
+q
+0.50 w
+0.973 0.980 0.988 rg
+0.790 0.830 0.880 RG
+46.00 509.80 520.00 29.50 re B
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 527.50 Td (Multi-Object) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 101.76 527.50 Td (Tracking) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+150.00 509.80 m 150.00 539.30 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 155.50 527.50 Td (YES) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 174.42 527.50 Td (\(AI\)) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+212.40 509.80 m 212.40 539.30 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 527.50 Td (ByteTrack:) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 259.87 527.50 Td (Kalman) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 290.32 527.50 Td (Filter) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 311.07 527.50 Td (motion) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 338.28 527.50 Td (forecasting) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 381.19 527.50 Td (combined) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 419.47 527.50 Td (with) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 516.50 Td (Hungarian) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 258.50 516.50 Td (Algorithm) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 295.85 516.50 Td (IoU) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 311.08 516.50 Td (association) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 354.90 516.50 Td (across) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 381.65 516.50 Td (video) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 403.80 516.50 Td (frames.) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+441.20 509.80 m 441.20 539.30 l S
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+446.70 525.50 115.05 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 448.20 527.50 Td (app/detection/detector.py) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 446.70 516.50 Td (\() Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+449.46 514.50 110.57 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 450.96 516.50 Td (tracker="bytetrack.yaml") Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 560.03 516.50 Td (\)) Tj ET
+Q
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.790 0.830 0.880 RG
+46.00 480.30 520.00 29.50 re B
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 498.00 Td (Distance) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 88.40 498.00 Td (Calculation) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+150.00 480.30 m 150.00 509.80 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 155.50 498.00 Td (NO) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 170.26 498.00 Td (\(Math\)) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+212.40 480.30 m 212.40 509.80 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 498.00 Td (Standard) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 253.89 498.00 Td (Pythagorean) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 303.26 498.00 Td (/) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 307.87 498.00 Td (Euclidean) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 346.62 498.00 Td (distance) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 379.84 498.00 Td (formula) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 487.00 Td (measuring) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 258.95 487.00 Td (straight-line) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 304.15 487.00 Td (pixel) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 323.53 487.00 Td (gaps.) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+441.20 480.30 m 441.20 509.80 l S
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+446.70 496.00 128.50 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 448.20 498.00 Td (app/detection/fsm_tracker.py) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 446.70 487.00 Td (\() Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+449.46 485.00 52.30 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 450.96 487.00 Td (math.sqrt\(\)) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 501.77 487.00 Td (\)) Tj ET
+Q
+q
+0.50 w
+0.973 0.980 0.988 rg
+0.790 0.830 0.880 RG
+46.00 450.80 520.00 29.50 re B
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 468.50 Td (Abandonment) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 109.60 468.50 Td (Timer) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+150.00 450.80 m 150.00 480.30 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 155.50 468.50 Td (NO) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 170.26 468.50 Td (\(Rules\)) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+212.40 450.80 m 212.40 480.30 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 468.50 Td (Deterministic) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 268.16 468.50 Td (Finite) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 290.77 468.50 Td (State) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 312.45 468.50 Td (Machine) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 346.13 468.50 Td (checking) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 381.19 468.50 Td (elapsed) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 412.56 468.50 Td (clock) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 457.50 Td (delta) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 238.20 457.50 Td (\() Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+240.97 455.50 52.30 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 242.47 457.50 Td (time.time\(\)) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+295.58 455.50 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 297.08 457.50 Td (-) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+305.36 455.50 47.82 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 306.86 457.50 Td (start_time) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+355.49 455.50 7.48 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 356.99 457.50 Td (>) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+365.28 455.50 25.41 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 366.78 457.50 Td (10.0s) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 390.69 457.50 Td (\).) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+441.20 450.80 m 441.20 480.30 l S
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+446.70 466.50 128.50 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 448.20 468.50 Td (app/detection/fsm_tracker.py) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 446.70 457.50 Td (\() Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+449.46 455.50 70.23 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 450.96 457.50 Td (BaggageTracklet) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 519.69 457.50 Td (\)) Tj ET
+Q
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.790 0.830 0.880 RG
+46.00 421.30 520.00 29.50 re B
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 439.00 Td (Overlay) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 84.26 439.00 Td (Drawing) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 119.31 439.00 Td (&) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 428.00 Td (Stream) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+150.00 421.30 m 150.00 450.80 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 155.50 439.00 Td (NO) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 155.50 428.00 Td (\(Graphics\)) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+212.40 421.30 m 212.40 450.80 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 439.00 Td (OpenCV) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 252.04 439.00 Td (matrix) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 276.94 439.00 Td (manipulation) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 326.30 439.00 Td (drawing) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 357.66 439.00 Td (green/red) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 395.50 439.00 Td (lines) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 414.87 439.00 Td (and) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 428.00 Td (encoding) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 253.89 428.00 Td (MJPEG) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 284.79 428.00 Td (byte) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 302.78 428.00 Td (buffers.) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+441.20 421.30 m 441.20 450.80 l S
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+446.70 437.00 128.50 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 448.20 439.00 Td (app/stream/camera_manager.py) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 446.70 428.00 Td (\() Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+449.46 426.00 38.86 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 450.96 428.00 Td (cv2.line) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 488.32 428.00 Td (,) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+492.93 426.00 56.78 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 494.43 428.00 Td (cv2.imencode) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 549.72 428.00 Td (\)) Tj ET
+Q
+q
+0.50 w
+0.973 0.980 0.988 rg
+0.790 0.830 0.880 RG
+46.00 391.80 520.00 29.50 re B
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 409.50 Td (Web) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 71.33 409.50 Td (UI) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 81.94 409.50 Td (&) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 90.24 409.50 Td (Database) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+150.00 391.80 m 150.00 421.30 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 155.50 409.50 Td (NO) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 155.50 398.50 Td (\(Web/DB\)) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+212.40 391.80 m 212.40 421.30 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 409.50 Td (Flask) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 240.04 409.50 Td (HTTP) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 264.01 409.50 Td (routing,) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 294.00 409.50 Td (Jinja2) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 317.99 409.50 Td (templates,) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 358.58 409.50 Td (and) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 374.74 409.50 Td (SQLite) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 398.50 Td (relational) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 253.88 398.50 Td (ACID) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 276.02 398.50 Td (storage.) Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+441.20 391.80 m 441.20 421.30 l S
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+446.70 407.50 92.64 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 448.20 409.50 Td (app/stream/routes.py) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+446.70 396.50 101.60 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 448.20 398.50 Td (app/database/models.py) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 12.50 Tf 46.00 367.80 Td (5. Integrating with Live CCTV Infrastructure \(Sir Serge\222s Questions\)) Tj ET
+Q
+q
+1.20 w
+0.150 0.220 0.320 RG
+46.00 365.30 m 566.00 365.30 l S
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 46.00 349.55 Td (1.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 56.93 349.55 Td (Plugin) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 88.41 349.55 Td (vs.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 104.48 349.55 Td (Standalone) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 157.56 349.55 Td (Application:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 214.22 349.55 Td (VigiTrack) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 255.98 349.55 Td (operates) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 295.18 349.55 Td (as) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 308.16 349.55 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 316.52 349.55 Td (standalone) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 368.57 349.55 Td (Edge) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 394.40 349.55 Td (Analytics) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 438.74 349.55 Td (Server) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 467.53 349.55 Td (.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 473.32 349.55 Td (It) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 481.68 349.55 Td (does) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 504.95 349.55 Td (not) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 521.02 349.55 Td (install) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 547.87 349.55 Td (as) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 560.86 349.55 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 336.75 Td (proprietary) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 94.14 336.75 Td (plugin) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 122.74 336.75 Td (inside) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 150.84 336.75 Td (NVR) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 174.29 336.75 Td (firmware) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 213.68 336.75 Td (\(such) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 240.22 336.75 Td (as) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 253.92 336.75 Td (Hikvision) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 294.85 336.75 Td (iVMS) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 320.88 336.75 Td (or) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 333.03 336.75 Td (Dahua) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 364.21 336.75 Td (SmartPSS\),) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 416.97 336.75 Td (nor) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 434.27 336.75 Td (does) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 458.25 336.75 Td (it) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 466.81 336.75 Td (flash) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 490.27 336.75 Td (custom) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 524.02 336.75 Td (code) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 548.00 336.75 Td (onto) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 323.95 Td (camera) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 79.41 323.95 Td (chips.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 106.14 323.95 Td (It) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 113.86 323.95 Td (runs) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 134.42 323.95 Td (independently) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 194.58 323.95 Td (on) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 207.44 323.95 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 215.15 323.95 Td (local) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 236.74 323.95 Td (workstation) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 286.09 323.95 Td (connected) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 331.34 323.95 Td (to) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 341.63 323.95 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 357.06 323.95 Td (security) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 391.50 323.95 Td (network.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 46.00 306.55 Td (2.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 58.33 306.55 Td (How) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 82.47 306.55 Td (Live) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 105.60 306.55 Td (Video) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 135.40 306.55 Td (Streams) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 176.52 306.55 Td (into) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 198.09 306.55 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 216.58 306.55 Td (Application) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 271.56 306.55 Td (\(RTSP) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 303.93 306.55 Td (Protocol\):) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 352.22 306.55 Td (Institutional) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 403.62 306.55 Td (CCTV) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 433.42 306.55 Td (cameras) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 473.50 306.55 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 493.54 306.55 Td (NVRs) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 522.31 306.55 Td (universally) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 293.75 Td (broadcast) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 90.78 293.75 Td (video) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 117.05 293.75 Td (over) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 139.20 293.75 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 156.22 293.75 Td (Local) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 182.49 293.75 Td (Area) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 206.19 293.75 Td (Network) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 244.27 293.75 Td (\(LAN\)) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 272.59 293.75 Td (using) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 298.86 293.75 Td (RTSP) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 327.69 293.75 Td (\(Real-Time) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 379.14 293.75 Td (Streaming) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 428.54 293.75 Td (Protocol\)) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 473.30 293.75 Td (on) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 487.74 293.75 Td (standard) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 527.90 293.75 Td (port) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 548.00 293.75 Td (554) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 563.43 293.75 Td (.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 280.95 Td (VigiTrack) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 87.12 280.95 Td (connects) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 126.71 280.95 Td (to) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 136.99 280.95 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 152.42 280.95 Td (NVR's) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 180.91 280.95 Td (video) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 205.59 280.95 Td (feed) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 226.16 280.95 Td (using) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 250.84 280.95 Td (OpenCV's) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 295.28 280.95 Td (FFmpeg) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 332.29 280.95 Td (backend:) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+46.00 262.30 16.77 9.90 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.65 Tf 47.50 264.30 Td (cap) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+65.13 262.30 7.59 9.90 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.65 Tf 66.63 264.30 Td (=) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+75.09 262.30 397.74 9.90 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.65 Tf 76.59 264.30 Td (cv2.VideoCapture\("rtsp://admin:SecurityPass@192.168.1.100:554/Streaming/Channels/102"\)) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 46.00 247.45 Td (3.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 56.45 247.45 Td (Dual-Stream) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 113.68 247.45 Td (Strategy) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 153.42 247.45 Td (\(Main-Stream) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 214.75 247.45 Td (vs.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 230.35 247.45 Td (Sub-Stream\):) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 291.16 247.45 Td (The) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 309.84 247.45 Td (NVR) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 332.10 247.45 Td (records) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 365.68 247.45 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 381.28 247.45 Td (high-bitrate) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 430.29 247.45 Td (Main-Stream) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 488.54 247.45 Td (\(1080p/4K\)) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 537.04 247.45 Td (to) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 547.49 247.45 Td (hard) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 234.65 Td (drives) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 74.54 234.65 Td (for) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 89.21 234.65 Td (legal) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 112.62 234.65 Td (evidence.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 156.08 234.65 Td (VigiTrack) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 198.50 234.65 Td (pulls) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 221.39 234.65 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 238.12 234.65 Td (lightweight) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 285.70 234.65 Td (Sub-Stream) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 341.48 234.65 Td (\(720p/D1) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 383.40 234.65 Td (at) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 394.99 234.65 Td (~15\22630) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 429.98 234.65 Td (FPS\).) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 457.49 234.65 Td (Because) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 497.36 234.65 Td (YOLOv8) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 536.71 234.65 Td (resizes) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 221.85 Td (incoming) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 86.32 221.85 Td (frames) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 117.90 221.85 Td (to) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+128.92 219.85 37.97 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 130.42 221.85 Td (640x640) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 170.20 221.85 Td (anyway,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 207.44 221.85 Td (using) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 232.86 221.85 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 249.02 221.85 Td (sub-stream) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 298.59 221.85 Td (cuts) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 318.87 221.85 Td (network) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 354.56 221.85 Td (decoding) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 395.41 221.85 Td (load) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 416.20 221.85 Td (by) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 429.28 221.85 Td (60%) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 451.10 221.85 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 469.84 221.85 Td (guarantees) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 519.43 221.85 Td (real-time) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 558.71 221.85 Td (30) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 209.05 Td (FPS) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 66.56 209.05 Td (processing) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 113.86 209.05 Td (without) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 145.73 209.05 Td (saturating) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 188.92 209.05 Td (campus) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 223.88 209.05 Td (bandwidth.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 46.00 191.65 Td (4.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 56.29 191.65 Td (Physical) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 96.39 191.65 Td (Deployment) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 151.90 191.65 Td (Architecture) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 208.96 191.65 Td (\(The) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 231.06 191.65 Td (3) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 238.77 191.65 Td (Real-World) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 290.16 191.65 Td (Rooms\):) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 9.15 Tf 49.00 174.35 Td (\225) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 59.00 174.35 Td (Room) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 87.47 174.35 Td (1:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 98.14 174.35 Td (The) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 116.96 174.35 Td (Hallway) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 153.57 174.35 Td (/) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 158.66 174.35 Td (Ceiling:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 194.76 174.35 Td (The) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 213.07 174.35 Td (school's) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 248.38 174.35 Td (existing) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 281.94 174.35 Td (IP) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 293.13 174.35 Td (cameras) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 330.76 174.35 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 348.56 174.35 Td (PoE) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 368.40 174.35 Td (switches,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 408.57 174.35 Td (untouched) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 453.84 174.35 Td (by) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 466.05 174.35 Td (VigiTrack.) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 9.15 Tf 49.00 158.25 Td (\225) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 59.00 158.25 Td (Room) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 89.35 158.25 Td (2:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 101.91 158.25 Td (The) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 122.61 158.25 Td (Server) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 155.53 158.25 Td (Room) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 185.88 158.25 Td (/) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 192.85 158.25 Td (Tech) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 218.63 158.25 Td (Desk:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 247.98 158.25 Td (The) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 268.17 158.25 Td (standalone) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 317.36 158.25 Td (PC) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 334.50 158.25 Td (running) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 369.45 158.25 Td (VigiTrack,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 414.55 158.25 Td (pulling) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 445.42 158.25 Td (RTSP) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 474.25 158.25 Td (streams,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 513.76 158.25 Td (executing) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 557.35 158.25 Td (AI) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 145.75 Td (inference,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 101.72 145.75 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 119.53 145.75 Td (updating) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 157.17 145.75 Td (SQLite.) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 9.15 Tf 49.00 129.65 Td (\225) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 59.00 129.65 Td (Room) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 94.04 129.65 Td (3:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 111.30 129.65 Td (The) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 136.69 129.65 Td (Security) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 181.92 129.65 Td (Guard) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 217.98 129.65 Td (Booth:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 256.58 129.65 Td (A) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 271.80 129.65 Td (standard) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 316.53 129.65 Td (guard) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 349.04 129.65 Td (monitor) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 388.67 129.65 Td (opening) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 430.35 129.65 Td (Google) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 468.97 129.65 Td (Chrome) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 510.63 129.65 Td (or) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 527.88 129.65 Td (Edge) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 558.37 129.65 Td (to) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+59.00 115.15 106.76 10.55 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.24 Tf 60.50 117.15 Td (http://127.0.0.1:5000) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 168.30 117.15 Td (with) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 187.12 117.15 Td (audio) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 212.04 117.15 Td (speakers) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 251.71 117.15 Td (for) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 264.93 117.15 Td (alarms.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 297.47 117.15 Td (The) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 315.78 117.15 Td (guard) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 341.72 117.15 Td (requires) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 377.31 117.15 Td (zero) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 397.65 117.15 Td (technical) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 436.30 117.15 Td (setup.) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 12.50 Tf 46.00 92.70 Td (6. Hardware Requirements: Two-Tier Architecture) Tj ET
+Q
+q
+1.20 w
+0.150 0.220 0.320 RG
+46.00 90.20 m 566.00 90.20 l S
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 46.00 74.45 Td (Does) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 73.06 74.45 Td (VigiTrack) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 119.15 74.45 Td (Require) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 158.03 74.45 Td (an) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 173.27 74.45 Td (NVIDIA) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 209.06 74.45 Td (RTX) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 232.00 74.45 Td (GPU?) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 262.14 74.45 Td (No.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 281.48 74.45 Td (VigiTrack) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 324.47 74.45 Td (features) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 362.34 74.45 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 371.92 74.45 Td (Two-Tier) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 414.91 74.45 Td (Hardware) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 461.51 74.45 Td (Architecture) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 520.43 74.45 Td (that) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 540.30 74.45 Td (allows) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 61.65 Td (institutions) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 92.27 61.65 Td (to) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 102.55 61.65 Td (deploy) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 132.38 61.65 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 147.81 61.65 Td (system) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 179.67 61.65 Td (without) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 211.55 61.65 Td (purchasing) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 259.36 61.65 Td (expensive) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 303.58 61.65 Td (gaming) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 336.48 61.65 Td (or) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 347.27 61.65 Td (workstation) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 396.62 61.65 Td (graphics) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 434.15 61.65 Td (cards:) Tj ET
+Q
+q
+0.50 w
+0.80 0.84 0.89 RG
+46.00 35.00 m 566.00 35.00 l S
+0.40 0.45 0.53 rg
+BT /F1 8.00 Tf 46.00 25.00 Td (VigiTrack Capstone Defense Handbook & Technical Guide) Tj ET
+BT /F1 8.00 Tf 525.08 25.00 Td (Page 2 of 4) Tj ET
+Q
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R /F4 4 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 48259 >>
+stream
+q
+0.120 0.160 0.230 rg
+BT /F2 9.15 Tf 49.00 740.85 Td (\225) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 59.00 740.85 Td (Tier) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 78.48 740.85 Td (1:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 89.31 740.85 Td (High-Compute) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 155.03 740.85 Td (Dedicated) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 201.46 740.85 Td (GPU) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 223.98 740.85 Td (Tier) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 243.46 740.85 Td (\(NVIDIA) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 280.21 740.85 Td (CUDA\):) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 315.43 740.85 Td (When) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 342.03 740.85 Td (deployed) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 381.85 740.85 Td (on) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 394.73 740.85 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 402.51 740.85 Td (dedicated) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 444.88 740.85 Td (security) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 479.10 740.85 Td (server) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 507.22 740.85 Td (with) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 526.18 740.85 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 533.97 740.85 Td (discrete) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 728.35 Td (graphics) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 97.28 728.35 Td (card,) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+121.33 726.35 126.53 10.55 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.24 Tf 122.83 728.35 Td (app/detection/detector.py) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 251.56 728.35 Td (automatically) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 308.66 728.35 Td (detects) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 341.87 728.35 Td (CUDA) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 371.49 728.35 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 390.46 728.35 Td (loads) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 416.04 728.35 Td (YOLOv8) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 455.85 728.35 Td (Medium) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 494.12 728.35 Td (\(`yolov8m.pt`\)) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 558.32 728.35 Td (for) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 715.85 Td (maximum) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 101.19 715.85 Td (detection) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 140.87 715.85 Td (precision) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 180.02 715.85 Td (on) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 192.74 715.85 Td (small) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 216.63 715.85 Td (bags) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 239.01 715.85 Td (across) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 268.50 715.85 Td (wide-angle) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 315.28 715.85 Td (lenses.) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 9.15 Tf 49.00 699.75 Td (\225) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 59.00 699.75 Td (Tier) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 78.95 699.75 Td (2:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 90.25 699.75 Td (Standard) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 133.07 699.75 Td (Office) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 162.17 699.75 Td (Commodity) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 215.66 699.75 Td (Tier) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 235.61 699.75 Td (\(Intel) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 260.64 699.75 Td (Core) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 284.65 699.75 Td (i5) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 295.44 699.75 Td (/) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 301.15 699.75 Td (CPU\):) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 329.73 699.75 Td (When) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 356.80 699.75 Td (deployed) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 397.10 699.75 Td (on) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 410.44 699.75 Td (standard) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 449.21 699.75 Td (school) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 478.82 699.75 Td (office) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 503.85 699.75 Td (computers) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 549.73 699.75 Td (with) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 687.25 Td (integrated) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 102.74 687.25 Td (graphics,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 142.92 687.25 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 158.69 687.25 Td (system) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 190.73 687.25 Td (automatically) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 247.17 687.25 Td (switches) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 285.31 687.25 Td (to) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 295.99 687.25 Td (YOLOv8) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 335.15 687.25 Td (Nano) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 361.08 687.25 Td (\(`yolov8n`\)) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 410.90 687.25 Td (compiled) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 454.13 687.25 Td (with) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 475.48 687.25 Td (Intel) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 497.35 687.25 Td (OpenVINO) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 543.11 687.25 Td (.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 548.71 687.25 Td (Intel) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 674.75 Td (OpenVINO) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 107.96 674.75 Td (accelerates) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 158.94 674.75 Td (inference) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 200.78 674.75 Td (across) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 231.93 674.75 Td (both) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 253.94 674.75 Td (CPU) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 277.46 674.75 Td (cores) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 304.03 674.75 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 323.50 674.75 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 340.42 674.75 Td (on-board) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 381.24 674.75 Td (Intel) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 402.73 674.75 Td (Integrated) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 448.14 674.75 Td (Graphics) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 488.95 674.75 Td (\(iGPU\),) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 523.65 674.75 Td (running) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 558.37 674.75 Td (at) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 59.00 662.25 Td (25\22630) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 86.98 662.25 Td (FPS) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 107.32 662.25 Td (with) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 126.13 662.25 Td (low) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 142.40 662.25 Td (CPU) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 164.26 662.25 Td (utilization.) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 12.50 Tf 46.00 637.80 Td (7. Deployment Justification: Why an Edge / Local Server is Best) Tj ET
+Q
+q
+1.20 w
+0.150 0.220 0.320 RG
+46.00 635.30 m 566.00 635.30 l S
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 619.55 Td (When) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 74.35 619.55 Td (panelists) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 115.04 619.55 Td (ask:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F3 9.25 Tf 136.20 619.55 Td ("Why) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F3 9.25 Tf 162.18 619.55 Td (not) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F3 9.25 Tf 179.22 619.55 Td (host) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F3 9.25 Tf 200.90 619.55 Td (VigiTrack) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F3 9.25 Tf 243.63 619.55 Td (on) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F3 9.25 Tf 258.11 619.55 Td (cloud) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F3 9.25 Tf 284.41 619.55 Td (servers) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F3 9.25 Tf 318.92 619.55 Td (like) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F3 9.25 Tf 336.99 619.55 Td (AWS) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F3 9.25 Tf 362.25 619.55 Td (or) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F3 9.25 Tf 374.67 619.55 Td (Google) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F3 9.25 Tf 408.68 619.55 Td (Cloud?") Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 441.27 619.55 Td (,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 448.03 619.55 Td (provide) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 482.55 619.55 Td (these) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 509.37 619.55 Td (four) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 529.50 619.55 Td (technical) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 606.75 Td (justifications:) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 9.15 Tf 49.00 589.45 Td (\225) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 59.00 589.45 Td (1.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 69.35 589.45 Td (Internet) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 105.62 589.45 Td (Bandwidth) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 155.11 589.45 Td (Saturation:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 206.12 589.45 Td (A) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 214.94 589.45 Td (single) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 241.56 589.45 Td (24/7) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 262.08 589.45 Td (CCTV) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 289.71 589.45 Td (camera) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 322.93 589.45 Td (consumes) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 367.35 589.45 Td (2\2264) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 385.33 589.45 Td (Mbps) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 410.42 589.45 Td (of) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 420.77 589.45 Td (continuous) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 467.74 589.45 Td (upload) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 497.92 589.45 Td (bandwidth) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 542.35 589.45 Td (\(~600) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 576.95 Td (GB) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 74.77 576.95 Td (to) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 84.94 576.95 Td (1) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 92.57 576.95 Td (TB) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 106.81 576.95 Td (per) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 122.57 576.95 Td (month) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 150.55 576.95 Td (per) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 166.31 576.95 Td (camera\).) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 204.95 576.95 Td (Uploading) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 248.69 576.95 Td (multiple) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 282.75 576.95 Td (video) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 307.17 576.95 Td (feeds) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 332.09 576.95 Td (will) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 347.33 576.95 Td (choke) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 374.29 576.95 Td (campus) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 408.87 576.95 Td (internet.) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 9.15 Tf 49.00 560.85 Td (\225) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 59.00 560.85 Td (2.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 69.69 560.85 Td (Recurring) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 115.96 560.85 Td (Cloud) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 144.94 560.85 Td (GPU) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 167.82 560.85 Td (Costs:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 199.34 560.85 Td (Running) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 236.48 560.85 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 244.62 560.85 Td (continuous) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 291.93 560.85 Td (cloud) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 316.85 560.85 Td (GPU) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 339.74 560.85 Td (instance) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 376.87 560.85 Td (\(e.g.,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 400.78 560.85 Td (AWS) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 424.68 560.85 Td (EC2) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+445.53 558.85 57.35 10.55 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.24 Tf 447.03 560.85 Td (g4dn.xlarge) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 505.94 560.85 Td (with) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 525.26 560.85 Td (an) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 538.49 560.85 Td (NVIDIA) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 548.35 Td (T4\)) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 75.27 548.35 Td (costs) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 99.17 548.35 Td ($150) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 122.06 548.35 Td (to) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 133.24 548.35 Td ($350+) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 161.48 548.35 Td (USD) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 183.34 548.35 Td (every) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 209.79 548.35 Td (single) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 238.78 548.35 Td (month) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 266.73 548.35 Td (,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 271.82 548.35 Td (whereas) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 308.94 548.35 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 316.57 548.35 Td (local) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 337.93 548.35 Td (PC) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 353.18 548.35 Td (is) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 362.33 548.35 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 369.96 548.35 Td (one-time) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 408.10 548.35 Td (purchase.) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 9.15 Tf 49.00 532.25 Td (\225) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 59.00 532.25 Td (3.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 70.67 532.25 Td (Operational) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 125.55 532.25 Td (Reliability) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 172.81 532.25 Td (During) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 206.33 532.25 Td (Outages:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 250.03 532.25 Td (If) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 259.15 532.25 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 275.91 532.25 Td (school) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 306.39 532.25 Td (loses) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 331.78 532.25 Td (internet) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 366.33 532.25 Td (connection) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 414.62 532.25 Td (during) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 444.09 532.25 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 453.21 532.25 Td (storm,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 482.67 532.25 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 491.79 532.25 Td (cloud) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 517.70 532.25 Td (surveillance) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 519.75 Td (system) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 90.52 519.75 Td (completely) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 136.79 519.75 Td (dies.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 158.66 519.75 Td (An) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 172.40 519.75 Td (on-premise) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 220.70 519.75 Td (edge) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 243.59 519.75 Td (server) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 271.55 519.75 Td (on) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 284.27 519.75 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 299.54 519.75 Td (local) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 320.89 519.75 Td (LAN) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 341.23 519.75 Td (continues) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 382.94 519.75 Td (monitoring) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 428.19 519.75 Td (24/7.) Tj ET
+Q
+q
+0.120 0.160 0.230 rg
+BT /F2 9.15 Tf 49.00 503.65 Td (\225) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 59.00 503.65 Td (4.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 71.18 503.65 Td (Data) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 95.55 503.65 Td (Privacy) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 132.66 503.65 Td (Compliance) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 189.07 503.65 Td (\(RA) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.15 Tf 209.87 503.65 Td (10173\):) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 245.95 503.65 Td (Under) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 275.42 503.65 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 292.68 503.65 Td (Philippine) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 336.89 503.65 Td (Data) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 360.77 503.65 Td (Privacy) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 395.31 503.65 Td (Act) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 413.08 503.65 Td (of) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 425.26 503.65 Td (2012) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 450.15 503.65 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 469.96 503.65 Td (NPC) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 493.82 503.65 Td (Circular) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 529.88 503.65 Td (2024-02,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 491.15 Td (streaming) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 103.24 491.15 Td (recognizable) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 159.18 491.15 Td (video) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 185.12 491.15 Td (of) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 196.82 491.15 Td (students) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 235.47 491.15 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 254.81 491.15 Td (minors) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 286.33 491.15 Td (across) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 317.34 491.15 Td (public) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 345.31 491.15 Td (cloud) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 371.25 491.15 Td (infrastructure) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 428.71 491.15 Td (creates) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 462.78 491.15 Td (severe) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 494.31 491.15 Td (compliance) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 544.65 491.15 Td (risks.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 59.00 478.65 Td (Processing) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 106.80 478.65 Td (video) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 131.21 478.65 Td (locally) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 159.17 478.65 Td (on) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 171.89 478.65 Td (an) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 184.61 478.65 Td (air-gapped) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 230.89 478.65 Td (security) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 264.96 478.65 Td (network) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 299.54 478.65 Td (preserves) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.15 Tf 342.25 478.65 Td (privacy.) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 12.50 Tf 46.00 454.20 Td (8. Deep-Dive: Database, Streaming, Audio & Settings) Tj ET
+Q
+q
+1.20 w
+0.150 0.220 0.320 RG
+46.00 451.70 m 566.00 451.70 l S
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 46.00 435.95 Td (1.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 62.02 435.95 Td (SQLite) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 100.13 435.95 Td (Database) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 149.56 435.95 Td (&) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 164.53 435.95 Td (Incident) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 208.30 435.95 Td (Deduplication) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 277.76 435.95 Td (\(`app/database/models.py`\):) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 408.90 435.95 Td (Stores) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 443.94 435.95 Td (structured) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 493.36 435.95 Td (incident) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 533.54 435.95 Td (logs) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 558.80 435.95 Td (in) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+46.00 421.15 87.92 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 47.50 423.15 Td (data/vigitrack.db) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 140.07 423.15 Td (\() Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+143.15 421.15 62.94 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 144.65 423.15 Td (object_class) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 206.09 423.15 Td (,) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+214.81 421.15 77.93 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 216.31 423.15 Td (object_track_id) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 292.73 423.15 Td (,) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+301.46 421.15 77.93 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 302.96 423.15 Td (person_track_id) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 379.38 423.15 Td (,) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+388.11 421.15 42.96 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 389.61 423.15 Td (distance) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 431.07 423.15 Td (,) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+439.79 421.15 57.95 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 441.29 423.15 Td (camera_name) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 497.73 423.15 Td (,) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+506.46 421.15 57.95 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 507.96 423.15 Td (detected_at) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 564.40 423.15 Td (\).) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 576.21 423.15 Td (To) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 410.35 Td (prevent) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 79.73 410.35 Td (flooding) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 115.00 410.35 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 130.74 410.35 Td (database) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 171.67 410.35 Td (with) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 191.00 410.35 Td (30) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 204.16 410.35 Td (duplicate) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 244.06 410.35 Td (records) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 277.78 410.35 Td (per) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 294.03 410.35 Td (second) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 326.73 410.35 Td (while) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 350.68 410.35 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 358.70 410.35 Td (bag) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 377.01 410.35 Td (sits) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 393.77 410.35 Td (unattended,) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+445.50 408.35 87.92 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 447.00 410.35 Td (camera_manager.py) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 536.30 410.35 Td (uses) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 558.71 410.35 Td (an) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 397.55 Td (in-memory) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 92.25 397.55 Td (set) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 107.16 397.55 Td (\() Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+110.24 395.55 77.93 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 111.74 397.55 Td (self.logged_ids) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 188.17 397.55 Td (\)) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 193.82 397.55 Td (ensuring) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 231.86 397.55 Td (each) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 254.49 397.55 Td (incident) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 288.94 397.55 Td (is) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 298.19 397.55 Td (recorded) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 337.26 397.55 Td (exactly) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 371.20 397.55 Td (once) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 395.36 397.55 Td (per) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 411.29 397.55 Td (abandonment) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 470.43 397.55 Td (event.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 46.00 380.15 Td (2.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 57.73 380.15 Td (HTTP) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 85.89 380.15 Td (Motion-JPEG) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 147.98 380.15 Td (Video) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 177.18 380.15 Td (Streaming) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 226.42 380.15 Td (Engine) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 261.28 380.15 Td (\(`app/stream/routes.py`\):) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 374.25 380.15 Td (Instead) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 408.60 380.15 Td (of) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 420.33 380.15 Td (requiring) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 460.32 380.15 Td (complex) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 498.77 380.15 Td (WebRTC) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 540.81 380.15 Td (media) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 367.35 Td (servers) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 79.82 367.35 Td (or) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 91.55 367.35 Td (browser) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 127.95 367.35 Td (plugins,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 163.32 367.35 Td (VigiTrack) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 205.37 367.35 Td (uses) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 228.41 367.35 Td (MJPEG) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 264.30 367.35 Td (over) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 287.33 367.35 Td (HTTP) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 314.99 367.35 Td (\() Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+318.07 365.35 132.87 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 319.57 367.35 Td (multipart/x-mixed-replace;) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+454.44 365.35 72.93 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 455.94 367.35 Td (boundary=frame) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 527.37 367.35 Td (\).) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 536.53 367.35 Td (OpenCV) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 354.55 Td (compresses) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 101.19 354.55 Td (each) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 126.58 354.55 Td (annotated) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 173.06 354.55 Td (frame) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 202.04 354.55 Td (into) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 222.29 354.55 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 232.77 354.55 Td (960p) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 258.67 354.55 Td (JPEG) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 288.17 354.55 Td (\() Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+291.25 352.55 52.95 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 292.75 354.55 Td (quality=75) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 344.20 354.55 Td (\),) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 355.19 354.55 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 375.95 354.55 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 394.15 354.55 Td (browser) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 432.38 354.55 Td (renders) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 469.07 354.55 Td (it) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 479.03 354.55 Td (inside) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 508.53 354.55 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 519.01 354.55 Td (native) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+549.02 352.55 22.98 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 550.52 354.55 Td (<img) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+46.00 339.75 92.91 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 47.50 341.75 Td (src="/video_feed">) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 141.48 341.75 Td (tag) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 156.91 341.75 Td (like) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 173.36 341.75 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 181.07 341.75 Td (continuous,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 230.95 341.75 Td (zero-latency) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 283.89 341.75 Td (flipbook.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 46.00 324.35 Td (3.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 59.05 324.35 Td (Threaded) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 106.02 324.35 Td (Audio) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 137.56 324.35 Td (Alarm) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 169.10 324.35 Td (&) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 181.12 324.35 Td (Visual) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 213.70 324.35 Td (HUD) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 239.07 324.35 Td (\(`app/alerts/notifier.py`\):) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 350.79 324.35 Td (Playing) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 386.45 324.35 Td (audio) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 414.41 324.35 Td (tones) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 442.37 324.35 Td (via) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+459.53 322.35 77.93 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 461.03 324.35 Td (winsound.Beep\(\)) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 542.79 324.35 Td (blocks) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 311.55 Td (execution) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 90.10 311.55 Td (for) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 105.41 311.55 Td (400ms.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 140.26 311.55 Td (VigiTrack) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 183.32 311.55 Td (dispatches) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 232.05 311.55 Td (sound) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 261.76 311.55 Td (playback) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 302.78 311.55 Td (in) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 314.49 311.55 Td (a) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 324.14 311.55 Td (dedicated) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 371.84 311.55 Td (background) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 429.29 311.55 Td (thread) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 462.07 311.55 Td (so) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 476.36 311.55 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 493.73 311.55 Td (video) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 520.35 311.55 Td (feed) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 542.87 311.55 Td (never) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 298.75 Td (stutters) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 78.90 298.75 Td (while) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 102.55 298.75 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 117.97 298.75 Td (siren) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 140.59 298.75 Td (sounds.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 175.56 298.75 Td (A) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 184.30 298.75 Td (semi-transparent) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 256.26 298.75 Td (red) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 272.20 298.75 Td (HUD) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 294.81 298.75 Td (banner) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 326.17 298.75 Td (\() Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+329.25 296.75 77.93 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 330.75 298.75 Td (cv2.addWeighted) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 407.18 298.75 Td (\)) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 412.83 298.75 Td (provides) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 450.36 298.75 Td (instant) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 480.18 298.75 Td (visual) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 506.39 298.75 Td (confirmation.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 46.00 281.35 Td (4.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 62.24 281.35 Td (Persistent) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 115.50 281.35 Td (Settings) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 160.52 281.35 Td (Store) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 192.69 281.35 Td (\(`config/settings_store.py`\):) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 323.53 281.35 Td (Operator) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 368.56 281.35 Td (threshold) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 415.13 281.35 Td (calibrations) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 470.44 281.35 Td (\() Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+473.52 279.35 92.91 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 475.02 281.35 Td (distance_threshold) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 566.43 281.35 Td (,) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+46.00 266.55 72.93 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 47.50 268.55 Td (time_threshold) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 118.93 268.55 Td (,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 124.46 268.55 Td (class) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 148.49 268.55 Td (filters\)) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 176.63 268.55 Td (are) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 192.96 268.55 Td (saved) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 220.59 268.55 Td (to) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+231.27 266.55 92.91 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 232.77 268.55 Td (data/settings.json) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 324.18 268.55 Td (.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 329.71 268.55 Td (They) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 353.23 268.55 Td (hot-reload) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 397.83 268.55 Td (into) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 415.70 268.55 Td (memory) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 452.07 268.55 Td (instantly) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 488.95 268.55 Td (without) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 521.22 268.55 Td (stopping) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 559.14 268.55 Td (the) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 255.75 Td (camera) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 79.41 255.75 Td (feed) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 99.98 255.75 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 117.98 255.75 Td (persist) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 147.80 255.75 Td (across) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 177.61 255.75 Td (PC) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 193.03 255.75 Td (reboots,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 229.02 255.75 Td (with) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 248.04 255.75 Td (automatic) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 290.71 255.75 Td (fallback) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 324.64 255.75 Td (to) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 334.92 255.75 Td (safe) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 354.98 255.75 Td (defaults) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 389.94 255.75 Td (if) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 397.14 255.75 Td (corrupted.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 46.00 238.35 Td (5.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 57.78 238.35 Td (Thread) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 92.68 238.35 Td (Synchronization) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F2 9.25 Tf 168.70 238.35 Td (\(`threading.Lock`\):) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 254.46 238.35 Td (A) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 264.70 238.35 Td (camera) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 299.60 238.35 Td (reader) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 330.39 238.35 Td (thread) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 360.68 238.35 Td (ingests) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 394.04 238.35 Td (frames) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 426.37 238.35 Td (while) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 451.51 238.35 Td (Flask) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 477.67 238.35 Td (request) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 512.58 238.35 Td (threads) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 547.49 238.35 Td (read) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 46.00 225.55 Td (frames) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 76.84 225.55 Td (for) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 90.21 225.55 Td (streaming.) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 135.96 225.55 Td (Thread) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 167.83 225.55 Td (locks) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 191.47 225.55 Td (\() Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+194.55 223.55 22.98 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 196.05 225.55 Td (with) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+220.11 223.55 52.95 10.65 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 8.33 Tf 221.61 225.55 Td (self.lock:) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 273.06 225.55 Td (\)) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 278.71 225.55 Td (prevent) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 312.13 225.55 Td (race) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 332.69 225.55 Td (conditions,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 379.48 225.55 Td (memory) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 415.45 225.55 Td (corruption,) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 461.72 225.55 Td (and) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 479.72 225.55 Td (partial) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 507.48 225.55 Td (image) Tj ET
+Q
+q
+0.110 0.130 0.170 rg
+BT /F1 9.25 Tf 535.24 225.55 Td (tearing.) Tj ET
+Q
+q
+0.060 0.090 0.160 rg
+BT /F2 12.50 Tf 46.00 199.90 Td (9. Master Defense Script & FAQ Quick Reference) Tj ET
+Q
+q
+1.20 w
+0.150 0.220 0.320 RG
+46.00 197.40 m 566.00 197.40 l S
+Q
+q
+0.60 w
+0.118 0.161 0.231 rg
+0.118 0.161 0.231 RG
+46.00 172.40 520.00 18.50 re B
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 51.50 179.10 Td (Panelist) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 85.64 179.10 Td (Question) Tj ET
+Q
+q
+0.50 w
+0.250 0.310 0.400 RG
+212.40 172.40 m 212.40 190.90 l S
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 217.90 179.10 Td (Recommended) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 279.70 179.10 Td (Response) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 321.67 179.10 Td (/) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 326.29 179.10 Td (Defense) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 360.88 179.10 Td (Script) Tj ET
+Q
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.790 0.830 0.880 RG
+46.00 131.90 520.00 40.50 re B
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 160.60 Td ("Why) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 75.26 160.60 Td (use) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 91.87 160.60 Td (your) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 112.16 160.60 Td (system) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 143.07 160.60 Td (instead) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 174.44 160.60 Td (of) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 149.60 Td (existing) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 85.17 149.60 Td (CCTV) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 110.07 149.60 Td (features?") Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+212.40 131.90 m 212.40 172.40 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 160.60 Td (Existing) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 249.27 160.60 Td (systems) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 282.01 160.60 Td (only) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 299.54 160.60 Td (monitor) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 329.52 160.60 Td (stationary) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 367.81 160.60 Td (pixels) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 391.33 160.60 Td (and) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 407.48 160.60 Td (trigger) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 433.31 160.60 Td (false) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 453.15 160.60 Td (alarms) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 480.35 160.60 Td (whenever) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 518.64 160.60 Td (students) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 149.60 Td (sit) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 228.51 149.60 Td (beside) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 255.27 149.60 Td (their) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 273.72 149.60 Td (bags.) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 296.33 149.60 Td (VigiTrack) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 333.22 149.60 Td (introduces) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 373.82 149.60 Td (Person-Object) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 432.85 149.60 Td (Association) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 479.90 149.60 Td (,) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 484.51 149.60 Td (alerting) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 514.04 149.60 Td (only) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 531.57 149.60 Td (when) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 138.60 Td (the) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 231.74 138.60 Td (human) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 259.42 138.60 Td (custodian) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 297.26 138.60 Td (actually) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 327.70 138.60 Td (separates) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 366.45 138.60 Td (and) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 382.61 138.60 Td (walks) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 405.66 138.60 Td (away.) Tj ET
+Q
+q
+0.50 w
+0.973 0.980 0.988 rg
+0.790 0.830 0.880 RG
+46.00 91.40 520.00 40.50 re B
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 120.10 Td ("How) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 75.26 120.10 Td (do) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 87.71 120.10 Td (you) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 104.78 120.10 Td (know) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 128.30 120.10 Td (that) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 145.82 120.10 Td (person) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 175.80 120.10 Td (actually) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 109.10 Td (owns) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 75.02 109.10 Td (the) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 89.78 109.10 Td (bag?") Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+212.40 91.40 m 212.40 131.90 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 120.10 Td (We) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 232.66 120.10 Td (specifically) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 275.09 120.10 Td (term) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 293.99 120.10 Td (this) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 309.22 120.10 Td (Person-Object) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 368.25 120.10 Td (Association) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 417.61 120.10 Td (rather) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 441.59 120.10 Td (than) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 460.05 120.10 Td (legal) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 479.89 120.10 Td (ownership.) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 522.33 120.10 Td (In) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 531.56 120.10 Td (CCTV) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 109.10 Td (surveillance,) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 266.33 109.10 Td (camera) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 296.31 109.10 Td (pixels) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 319.83 109.10 Td (cannot) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 347.06 109.10 Td (verify) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 369.19 109.10 Td (legal) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 389.03 109.10 Td (ownership;) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 431.47 109.10 Td (our) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 445.77 109.10 Td (system) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 474.36 109.10 Td (tracks) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 498.81 109.10 Td (custodial) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 217.90 98.10 Td (human) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 247.41 98.10 Td (proximity) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 287.08 98.10 Td (as) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 298.15 98.10 Td (an) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 309.69 98.10 Td (objective) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 344.75 98.10 Td (decision-support) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 407.95 98.10 Td (metric.) Tj ET
+Q
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.790 0.830 0.880 RG
+46.00 50.90 520.00 40.50 re B
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 79.60 Td ("What) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 78.03 79.60 Td (happens) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 114.46 79.60 Td (if) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 121.84 79.60 Td (a) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 128.76 79.60 Td (bystander) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 170.74 79.60 Td (walks) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 68.60 Td (past) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 70.87 68.60 Td (the) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 85.63 68.60 Td (abandoned) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 132.21 68.60 Td (bag?") Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+212.40 50.90 m 212.40 91.40 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 79.60 Td (Our) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 234.04 79.60 Td (5-frame) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 266.33 79.60 Td (debounce) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 307.84 79.60 Td (lock) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 326.75 79.60 Td (requires) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 359.04 79.60 Td (5) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 365.96 79.60 Td (consecutive) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 412.10 79.60 Td (frames) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 439.77 79.60 Td (of) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 449.00 79.60 Td (proximity) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 484.50 79.60 Td (before) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 510.34 79.60 Td (binding.) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 68.60 Td (Random) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 251.57 68.60 Td (passersby) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 291.70 68.60 Td (walking) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 321.68 68.60 Td (in) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 330.45 68.60 Td (front) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 349.36 68.60 Td (of) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 358.59 68.60 Td (the) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 372.44 68.60 Td (bag) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 388.59 68.60 Td (are) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 402.89 68.60 Td (rejected) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 434.72 68.60 Td (and) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 450.87 68.60 Td (cannot) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 478.10 68.60 Td (steal) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 497.93 68.60 Td (association) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 541.76 68.60 Td (or) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 57.60 Td (reset) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 238.66 57.60 Td (the) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 252.50 57.60 Td (countdown.) Tj ET
+Q
+q
+0.50 w
+0.80 0.84 0.89 RG
+46.00 35.00 m 566.00 35.00 l S
+0.40 0.45 0.53 rg
+BT /F1 8.00 Tf 46.00 25.00 Td (VigiTrack Capstone Defense Handbook & Technical Guide) Tj ET
+BT /F1 8.00 Tf 525.08 25.00 Td (Page 3 of 4) Tj ET
+Q
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R /F4 4 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 10202 >>
+stream
+q
+0.60 w
+0.118 0.161 0.231 rg
+0.118 0.161 0.231 RG
+46.00 731.50 520.00 18.50 re B
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 51.50 738.20 Td (Panelist) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 85.64 738.20 Td (Question) Tj ET
+Q
+q
+0.50 w
+0.250 0.310 0.400 RG
+212.40 731.50 m 212.40 750.00 l S
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 217.90 738.20 Td (Recommended) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 279.70 738.20 Td (Response) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 321.67 738.20 Td (/) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 326.29 738.20 Td (Defense) Tj ET
+Q
+q
+1.000 1.000 1.000 rg
+BT /F2 8.30 Tf 360.88 738.20 Td (Script) Tj ET
+Q
+q
+0.50 w
+0.973 0.980 0.988 rg
+0.790 0.830 0.880 RG
+46.00 702.00 520.00 29.50 re B
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 719.70 Td ("What) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 78.03 719.70 Td (happens) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 114.46 719.70 Td (if) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 121.84 719.70 Td (the) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 136.60 719.70 Td (person) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 166.58 719.70 Td (walks) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 191.50 719.70 Td (out) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 708.70 Td (of) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 61.64 708.70 Td (the) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 76.40 708.70 Td (camera) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 107.77 708.70 Td (view?") Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+212.40 702.00 m 212.40 731.50 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 719.70 Td (The) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 234.51 719.70 Td (system) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 263.10 719.70 Td (enters) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+288.47 717.70 47.82 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 289.97 719.70 Td (Associated) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+338.60 717.70 29.89 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 340.10 719.70 Td (Person) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+370.80 717.70 16.45 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 372.30 719.70 Td (Out) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+389.56 717.70 11.96 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 391.06 719.70 Td (of) Tj ET
+Q
+q
+0.60 w
+0.940 0.955 0.970 rg
+403.83 717.70 20.93 9.70 re f
+Q
+q
+0.060 0.090 0.160 rg
+BT /F4 7.47 Tf 405.33 719.70 Td (View) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 424.75 719.70 Td (.) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 429.37 719.70 Td (The) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 445.98 719.70 Td (bounding) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 482.43 719.70 Td (line) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 497.65 719.70 Td (disappears,) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 542.86 719.70 Td (but) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 556.71 719.70 Td (the) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 708.70 Td (10-second) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 258.96 708.70 Td (countdown) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 301.41 708.70 Td (continues) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 339.24 708.70 Td (uninterrupted) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 390.45 708.70 Td (until) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 407.98 708.70 Td (the) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 421.82 708.70 Td (security) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 452.72 708.70 Td (alert) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 471.17 708.70 Td (is) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 479.47 708.70 Td (dispatched.) Tj ET
+Q
+q
+0.50 w
+1.000 1.000 1.000 rg
+0.790 0.830 0.880 RG
+46.00 661.50 520.00 40.50 re B
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 690.20 Td ("Does) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 78.04 690.20 Td (the) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 92.79 690.20 Td (school) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 121.85 690.20 Td (need) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 143.53 690.20 Td (to) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 153.67 690.20 Td (buy) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 170.74 690.20 Td (an) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 679.20 Td (expensive) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 93.95 679.20 Td (graphics) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 130.85 679.20 Td (card?") Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+212.40 661.50 m 212.40 702.00 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 690.20 Td (No.) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 233.12 690.20 Td (While) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 256.18 690.20 Td (developed) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 296.78 690.20 Td (on) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 308.32 690.20 Td (a) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 315.24 690.20 Td (dedicated) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 353.54 690.20 Td (GPU) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 373.83 690.20 Td (tier,) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 389.98 690.20 Td (VigiTrack) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 426.87 690.20 Td (includes) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 459.62 690.20 Td (an) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 471.16 690.20 Td (Intel) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 217.90 679.20 Td (OpenVINO-optimized) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 303.22 679.20 Td (YOLOv8) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 338.27 679.20 Td (Nano) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 361.33 679.20 Td (mode) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 384.40 679.20 Td (that) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 400.55 679.20 Td (runs) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 419.00 679.20 Td (at) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 428.23 679.20 Td (real-time) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 462.82 679.20 Td (25\22630) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 488.20 679.20 Td (FPS) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 506.65 679.20 Td (on) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 518.19 679.20 Td (standard) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 668.20 Td (Core) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 238.19 668.20 Td (i5) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 246.96 668.20 Td (school) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 273.25 668.20 Td (office) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 295.40 668.20 Td (desktop) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 326.77 668.20 Td (computers.) Tj ET
+Q
+q
+0.50 w
+0.973 0.980 0.988 rg
+0.790 0.830 0.880 RG
+46.00 621.00 520.00 40.50 re B
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 51.50 649.70 Td ("Why) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 75.26 649.70 Td (not) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 90.48 649.70 Td (run) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 106.16 649.70 Td (this) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 123.22 649.70 Td (in) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 132.91 649.70 Td (the) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F2 8.30 Tf 147.66 649.70 Td (cloud?") Tj ET
+Q
+q
+0.50 w
+0.790 0.830 0.880 RG
+212.40 621.00 m 212.40 661.50 l S
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 649.70 Td (Streaming) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 258.03 649.70 Td (24/7) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 276.49 649.70 Td (CCTV) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 301.39 649.70 Td (video) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 323.53 649.70 Td (over) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 341.98 649.70 Td (the) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 355.83 649.70 Td (internet) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 385.82 649.70 Td (chokes) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 414.42 649.70 Td (school) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 440.71 649.70 Td (bandwidth,) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 483.16 649.70 Td (costs) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 504.84 649.70 Td (hundreds) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 541.75 649.70 Td (of) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 638.70 Td (dollars) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 244.65 638.70 Td (monthly) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 276.02 638.70 Td (in) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 284.78 638.70 Td (cloud) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 306.93 638.70 Td (GPU) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 327.22 638.70 Td (fees,) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 347.52 638.70 Td (fails) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 364.59 638.70 Td (during) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 389.96 638.70 Td (internet) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 419.95 638.70 Td (outages,) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 454.09 638.70 Td (and) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 470.24 638.70 Td (violates) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 500.69 638.70 Td (student) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 530.22 638.70 Td (data) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 217.90 627.70 Td (privacy) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 246.49 627.70 Td (\(RA) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 263.09 627.70 Td (10173\).) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 293.55 627.70 Td (Edge) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 315.23 627.70 Td (processing) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 357.67 627.70 Td (is) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 365.97 627.70 Td (the) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 379.82 627.70 Td (surveillance) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 425.94 627.70 Td (industry) Tj ET
+Q
+q
+0.110 0.140 0.190 rg
+BT /F1 8.30 Tf 457.31 627.70 Td (standard.) Tj ET
+Q
+q
+0.50 w
+0.80 0.84 0.89 RG
+46.00 35.00 m 566.00 35.00 l S
+0.40 0.45 0.53 rg
+BT /F1 8.00 Tf 46.00 25.00 Td (VigiTrack Capstone Defense Handbook & Technical Guide) Tj ET
+BT /F1 8.00 Tf 525.08 25.00 Td (Page 4 of 4) Tj ET
+Q
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R /F4 4 0 R >> >> /Contents 12 0 R >>
+endobj
+14 0 obj
+<< /Type /Catalog /Pages 5 0 R >>
+endobj
+15 0 obj
+<< /Title (VigiTrack Capstone Defense Handbook and Technical Guide) /Author (Gary Luis Alquiza) /Creator (Antigravity PDF Engine) >>
+endobj
+xref
+0 16
+0000000000 65535 f 
+0000000015 00000 n 
+0000000112 00000 n 
+0000000214 00000 n 
+0000000319 00000 n 
+0000000414 00000 n 
+0000000491 00000 n 
+0000044851 00000 n 
+0000045007 00000 n 
+0000086901 00000 n 
+0000087057 00000 n 
+0000135370 00000 n 
+0000135528 00000 n 
+0000145784 00000 n 
+0000145942 00000 n 
+0000145992 00000 n 
+trailer
+<< /Size 16 /Root 14 0 R /Info 15 0 R >>
+startxref
+146141
+%%EOF

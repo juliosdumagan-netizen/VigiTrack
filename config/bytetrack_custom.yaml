@@ -1,0 +1,13 @@
+# Ultralytics ByteTrack Configuration - Calibrated for VigiTrack Surveillance
+# Balanced thresholds to eliminate ID switching and fragmentation:
+# - new_track_thresh: 0.40 prevents noisy single-frame jitter from spawning new IDs.
+# - track_buffer: 60 frames (2.0s) keeps tracks alive through brief occlusions.
+# - match_thresh: 0.80 ensures stable Hungarian association across frames.
+
+tracker_type: bytetrack
+track_high_thresh: 0.30    # High-confidence association threshold
+track_low_thresh: 0.10     # Low-confidence second stage association
+new_track_thresh: 0.40     # Threshold to spawn a new track (prevents ID churn)
+track_buffer: 60           # Retain track state for 60 frames during occlusion
+match_thresh: 0.80         # Cost threshold for Hungarian matching
+fuse_score: True           # Fuse detection confidence score with spatial motion
