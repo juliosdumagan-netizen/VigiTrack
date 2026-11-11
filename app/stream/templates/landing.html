@@ -978,10 +978,6 @@
                     <span>Authenticate & Launch</span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
-
-                <div class="demo-credentials-pill" onclick="quickFillCredentials()" title="Click to auto-fill default admin credentials">
-                    Default Credentials: <strong>admin</strong> / <strong>admin123</strong> (Click to auto-fill)
-                </div>
             </form>
         </div>
     </div>
@@ -1017,12 +1013,6 @@
         function hideError() {
             const errEl = document.getElementById('loginError');
             errEl.style.display = 'none';
-        }
-
-        function quickFillCredentials() {
-            document.getElementById('adminUsername').value = 'admin';
-            document.getElementById('adminPassword').value = 'admin123';
-            hideError();
         }
 
         async function handleLoginSubmit(e) {
