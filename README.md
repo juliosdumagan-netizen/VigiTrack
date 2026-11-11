@@ -305,19 +305,22 @@ Camera resolution requested: 1280×720. JPEG quality: 75.
 - If the JSON file is missing or corrupt → **factory defaults are restored automatically**.
 - `camera_source` can be a webcam index (`0`, `1`) **or an RTSP URL string**. Switching it in Settings re-opens the camera live.
 
-### 8.6 REST API — `routes.py`
-| Method & route | Purpose |
-|---|---|
-| `GET /` | Dashboard page |
-| `GET /incidents` | Incident history page |
-| `GET /settings` | Settings page |
-| `GET /video_feed` | Live MJPEG feed |
-| `GET /api/alerts` | Recent alerts (JSON) |
-| `GET /api/incidents` | Incident list (newest 100) |
-| `DELETE /api/incidents/<id>` | Delete one incident |
-| `POST /api/incidents/clear` | Clear all incidents |
-| `GET /api/settings` | Current thresholds/camera/audio |
-| `POST /api/settings` | Update thresholds, audio, camera source |
+### 8.6 REST API & Authentication Routes — `routes.py`
+| Method & route | Access | Purpose |
+|---|---|---|
+| `GET /` | Public | Futuristic Landing Page with system overview & Admin Access Portal |
+| `POST /api/login` | Public | Validates admin credentials (`admin` / `admin123`) & creates session |
+| `GET /logout` | Admin | Clears session and redirects back to Landing Page |
+| `GET /dashboard` | Admin Only | Protected live surveillance dashboard |
+| `GET /incidents` | Admin Only | Incident history page |
+| `GET /settings` | Admin Only | Settings page (thresholds, camera source, and Admin credentials) |
+| `GET /video_feed` | Admin Only | Protected live MJPEG video stream |
+| `GET /api/alerts` | Admin Only | Recent alerts (JSON) |
+| `GET /api/incidents` | Admin Only | Incident list (newest 100) |
+| `DELETE /api/incidents/<id>` | Admin Only | Delete one incident |
+| `POST /api/incidents/clear` | Admin Only | Clear all incidents |
+| `GET /api/settings` | Admin Only | Current thresholds, camera source, audio, admin username |
+| `POST /api/settings` | Admin Only | Update thresholds, camera source, audio, and admin credentials |
 
 Server: `app.run(host="0.0.0.0", port=5000, threaded=True, debug=False)`. `debug=False` prevents the reloader from opening the camera twice.
 
@@ -514,7 +517,7 @@ Some earlier chat answers and the generated **`VigiTrack_Capstone_Defense_Handbo
 3. **Theft isn't detected as theft.** If someone else picks up the bag after the person leaves, it's treated as `CARRIED`.
 4. **Occlusion.** Heavily hidden bags may be missed. ByteTrack's 60-frame buffer and the stabilizer's 45-frame memory help with short occlusions.
 5. **One camera per running instance** (multi-camera would need several `CameraManager` instances).
-6. **No authentication yet** on the dashboard/API (planned in the Secure Design paper).
+6. **Single-Admin Authentication Model** (Single-role admin session implemented with customizable credentials).
 7. **COCO limitations.** Only backpack, handbag and suitcase. Overhead angles reduce confidence (fine-tuning = future work).
 8. **Tested on webcam/OBS, not yet a real RTSP camera.**
 
@@ -523,13 +526,13 @@ Some earlier chat answers and the generated **`VigiTrack_Capstone_Defense_Handbo
 ## 18. Pending Work / Next Steps
 | Priority | Task | Status |
 |---|---|---|
-| 🔴 High | Fix **`requirements.txt`**: add `torch` and `openvino` (currently only ultralytics, opencv-python, flask, numpy) | ⏳ |
+| 🟢 Done | **Landing Page & Admin Authentication**: Sleek public hero page matching reference design + protected `/dashboard`, `/incidents`, `/settings`, `/video_feed` routes | ✅ Completed |
+| 🟢 Done | **Fix `requirements.txt`**: Added `torch` and `openvino` | ✅ Completed |
 | 🔴 High | Test with a **real RTSP** camera/NVR (`python test_cctv.py "rtsp://..."`) | ⏳ |
 | 🔴 High | **Measure FPS** on the school's Core i5 for Chapter 4 | ⏳ |
 | 🟠 Med | Create **`Start_VigiTrack.bat`** one-click launcher (Edge/Chrome `--app` mode) | ⏳ Offered, not created |
 | 🟠 Med | Regenerate the **Defense Handbook PDF** with §16 corrections + "Local Video Feed Pipeline" wording | ⏳ |
 | 🟡 Low | Rename `owner_*` variables/labels to `person_*` in code/UI for consistency (e.g., the "No Owner" label) | Optional |
-| 🟡 Low | Implement planned security (login, roles, CSRF, input range checks) | Optional / future |
 | 🟡 Low | Fine-tune YOLOv8 / add custom class | Optional / future |
 | ⚪ Other | Lab 6 — Phase 1 Server Requirement Specification (separate conversation `c0f792f1…`) | Waiting for team names & VM choice |
 

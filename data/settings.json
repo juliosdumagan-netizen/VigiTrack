@@ -10,6 +10,6 @@
     "suitcase"
   ],
   "audio_alert_enabled": true,
-  "camera_source": 1,
+  "camera_source": 0,
   "camera_name": "BUILT-IN WEBCAM"
 }

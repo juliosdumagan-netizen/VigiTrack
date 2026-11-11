@@ -13,7 +13,9 @@ DEFAULTS = {
     "monitored_classes": ["person", "backpack", "handbag", "suitcase"],
     "audio_alert_enabled": True,
     "camera_source": 0,
-    "camera_name": "BUILT-IN WEBCAM"
+    "camera_name": "BUILT-IN WEBCAM",
+    "admin_username": "admin",
+    "admin_password": "admin123"
 }
 
 

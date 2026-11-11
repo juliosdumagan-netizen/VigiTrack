@@ -91,6 +91,19 @@ nav a.active {
     background-color: #3b4252;
 }
 
+nav a.nav-logout {
+    color: #f87171;
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    margin-left: 8px;
+}
+
+nav a.nav-logout:hover {
+    color: #ffffff;
+    background: rgba(239, 68, 68, 0.85);
+    border-color: #ef4444;
+}
+
 /* Main Layout */
 .page {
     flex: 1;
