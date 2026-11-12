@@ -11,9 +11,9 @@ __pycache__/
 *.so
 
 # Database files
-data/vigitrack.db
-data/vigitrack.db-wal
-data/vigitrack.db-shm
+**/data/vigitrack.db
+**/data/vigitrack.db-wal
+**/data/vigitrack.db-shm
 
 # IDE & OS files
 .vscode/
@@ -23,3 +23,8 @@ Thumbs.db
 
 # Large PyTorch model weights (automatically downloaded by Ultralytics on first run)
 *.pt
+
+# Local runtime data (never commit)
+**/data/settings.json
+**/data/*.bak
+**/data/incidents/

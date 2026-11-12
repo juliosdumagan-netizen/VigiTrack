@@ -309,7 +309,8 @@ Camera resolution requested: 1280×720. JPEG quality: 75.
 | Method & route | Access | Purpose |
 |---|---|---|
 | `GET /` | Public | Futuristic Landing Page with system overview & Admin Access Portal |
-| `POST /api/login` | Public | Validates admin credentials (`admin` / `admin123`) & creates session |
+| `POST /api/login` | Public | Validates username and password, applies lockout after 5 failed attempts, and creates a session |
+| `GET /api/setup/status`, `POST /api/setup` | Public, only before the first account exists | First-run setup: creates the administrator with the one-time setup code printed in the backend terminal |
 | `GET /logout` | Admin | Clears session and redirects back to Landing Page |
 | `GET /dashboard` | Admin Only | Protected live surveillance dashboard |
 | `GET /incidents` | Admin Only | Incident history page |
@@ -377,9 +378,10 @@ The switch is **automatic** at startup (`detector.py`). The pipeline after detec
 
 > **Performance numbers:** the figures from our discussion (Medium on i5 ≈ 3–7 FPS; Nano ≈ 15–22 FPS; Nano + OpenVINO ≈ 25–30 FPS) are **typical estimates, not your measurements**. Measure the real FPS on the school's PC and use those numbers in Chapter 4.
 
-### 10.3 Packaging for the school (decided direction, not yet built)
+### 10.3 Packaging for the school (decided direction, partly built)
 - The goal: the school installs VigiTrack on **their** PC, and your laptop stays with you.
-- Plan: (1) Nano + OpenVINO ✅ done → (2) one-click `Start_VigiTrack.bat` launcher that starts the server and opens Edge/Chrome in **`--app` mode** (no address bar, looks like a desktop app) ⏳ → (3) optional PyInstaller/Inno Setup installer ⏳.
+- Plan: (1) Nano + OpenVINO ✅ done → (2) a native desktop window using `pywebview` that runs the backend on `127.0.0.1` only and opens the hub without a browser or terminal ✅ done (`backend/desktop.py`) → (3) PyInstaller/Inno Setup installer ⏳ next.
+- In desktop mode the setup code is not required, because the server only accepts connections from the same PC.
 
 ---
 
@@ -545,6 +547,16 @@ cd C:\Users\garya\Desktop\VigiTrack
 python run.py
 # Open http://127.0.0.1:5000   (other LAN PCs: http://<this-PC-IP>:5000)
 ```
+
+**Desktop window (no browser, no terminal):**
+```powershell
+cd backend
+.\venv\Scripts\activate
+python -m pip install pywebview waitress     # one time only
+cd ..\frontend ; npm run build ; cd ..\backend
+python desktop.py                            # backend on 127.0.0.1, hub in its own window
+```
+The window uses `backend/assets/vigitrack.ico` as its icon. Close the window to stop the app. Only one instance can use the camera at a time, so don't run `run.py` and `desktop.py` together.
 Useful tools:
 ```powershell
 python scan_cctv.py                      # which camera indices work

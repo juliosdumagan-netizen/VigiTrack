@@ -1,0 +1,9 @@
+ultralytics>=8.0.0
+opencv-python>=4.8.0
+flask>=3.0.0
+werkzeug>=3.0.0
+numpy>=1.24.0
+torch>=2.0.0
+openvino>=2024.0.0
+pywebview>=5.0
+waitress>=3.0.0
