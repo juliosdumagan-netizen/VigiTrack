@@ -83,6 +83,39 @@ def log_incident(object_class, object_track_id, person_track_id, distance, camer
         conn.close()
 
 
+REVIEW_ACTIONS = ("acknowledged", "verified", "dismissed")
+REVIEW_NOTE_MAX = 500
+
+
+def review_incident(incident_id: int, action: str, actor: str, note=None):
+    """
+    Records an operator's review of an incident.
+    Returns (incident, None) on success, or (None, error message) on failure.
+    'dismissed' (false alarm) must include a reason, so the false-alarm record is useful later.
+    """
+    if action not in REVIEW_ACTIONS:
+        return None, "Action must be acknowledged, verified or dismissed."
+    note = (str(note).strip() if note is not None else "") or None
+    if note and len(note) > REVIEW_NOTE_MAX:
+        return None, f"Note must be {REVIEW_NOTE_MAX} characters or fewer."
+    if action == "dismissed" and not note:
+        return None, "Give a reason when dismissing an alert as a false alarm."
+
+    conn = get_connection()
+    try:
+        exists = conn.execute("SELECT 1 FROM incidents WHERE id = ?", (incident_id,)).fetchone()
+        if exists is None:
+            return None, "Incident not found."
+        conn.execute(
+            "UPDATE incidents SET review_status = ?, review_note = ?, reviewed_by = ?, reviewed_at = ? WHERE id = ?",
+            (action, note, actor, datetime.now().isoformat(timespec="seconds"), incident_id),
+        )
+        conn.commit()
+    finally:
+        conn.close()
+    return get_incident(incident_id), None
+
+
 def get_all_incidents(limit=100):
     """
     Returns the most recent incidents, newest first.

@@ -18,6 +18,14 @@ export type Settings = {
   camera_source: number | string
   camera_name: string
   audio_alert_enabled: boolean
+  monitored_classes: string[]
+}
+
+export type CameraStatus = {
+  status: 'online' | 'reconnecting' | 'offline'
+  last_frame_age: number | null
+  camera_name: string
+  source: number | string
 }
 
 export type Alert = {
@@ -25,6 +33,9 @@ export type Alert = {
   time: string
   camera: string
 }
+
+export type ReviewStatus = 'open' | 'acknowledged' | 'verified' | 'dismissed'
+export type ReviewAction = Exclude<ReviewStatus, 'open'>
 
 export type IncidentState = {
   time: string
@@ -44,6 +55,10 @@ export type Incident = {
   state_history: IncidentState[]
   distance_threshold: number | null
   time_threshold: number | null
+  review_status: ReviewStatus
+  review_note: string | null
+  reviewed_by: string | null
+  reviewed_at: string | null
 }
 
 export type AuditEntry = {
@@ -104,9 +119,14 @@ export const api = {
 
   getAlerts: () => request<Alert[]>('/api/alerts'),
 
+  getCameraStatus: () => request<CameraStatus>('/api/camera/status'),
+
   getIncidents: () => request<Incident[]>('/api/incidents'),
 
   getIncident: (id: number) => request<Incident>(`/api/incidents/${id}`),
+
+  reviewIncident: (id: number, action: ReviewAction, note?: string) =>
+    request<{ status: string; incident: Incident }>(`/api/incidents/${id}/review`, json({ action, note })),
 
   deleteIncident: (id: number) => request<{ success: boolean }>(`/api/incidents/${id}`, { method: 'DELETE' }),
 

@@ -36,6 +36,10 @@ def init_db():
             "state_history": "TEXT",
             "distance_threshold": "REAL",
             "time_threshold": "REAL",
+            "review_status": "TEXT NOT NULL DEFAULT 'open'",
+            "review_note": "TEXT",
+            "reviewed_by": "TEXT",
+            "reviewed_at": "TEXT",
         }
         for name, column_type in new_columns.items():
             if name not in existing:

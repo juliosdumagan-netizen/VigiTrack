@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 import { ImageOff, Trash2 } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet'
-import { api, type Incident } from '@/lib/api'
+import { api, type Incident, type ReviewAction, type ReviewStatus } from '@/lib/api'
 
 const STATE_LABELS: Record<string, string> = {
   UNASSIGNED: 'Unassigned',
@@ -21,13 +23,31 @@ type Props = {
   canDelete: boolean
   onClose: () => void
   onDeleted: () => void
+  onReviewed: () => void
 }
 
-export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted }: Props) {
+const REVIEW_LABELS: Record<ReviewStatus, string> = {
+  open: 'Needs review',
+  acknowledged: 'Acknowledged',
+  verified: 'Verified',
+  dismissed: 'False alarm',
+}
+
+export function ReviewBadge({ status }: { status: ReviewStatus }) {
+  if (status === 'verified') return <Badge>{REVIEW_LABELS.verified}</Badge>
+  if (status === 'acknowledged') return <Badge variant="secondary">{REVIEW_LABELS.acknowledged}</Badge>
+  if (status === 'dismissed') return <Badge variant="outline">{REVIEW_LABELS.dismissed}</Badge>
+  return <Badge variant="destructive">{REVIEW_LABELS.open}</Badge>
+}
+
+export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted, onReviewed }: Props) {
   const [incident, setIncident] = useState<Incident | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [imageFailed, setImageFailed] = useState(false)
+  const [note, setNote] = useState('')
+  const [reviewing, setReviewing] = useState(false)
+  const [reviewError, setReviewError] = useState<string | null>(null)
 
   useEffect(() => {
     if (incidentId === null) return
@@ -35,6 +55,8 @@ export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted 
     setLoading(true)
     setError(null)
     setImageFailed(false)
+    setNote('')
+    setReviewError(null)
     setIncident(null)
     api
       .getIncident(incidentId)
@@ -52,6 +74,22 @@ export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted 
     await api.deleteIncident(incident.id).catch(() => undefined)
     onDeleted()
     onClose()
+  }
+
+  async function submitReview(action: ReviewAction) {
+    if (!incident) return
+    setReviewing(true)
+    setReviewError(null)
+    try {
+      const res = await api.reviewIncident(incident.id, action, note.trim() || undefined)
+      setIncident(res.incident)
+      setNote('')
+      onReviewed()
+    } catch (err) {
+      setReviewError(err instanceof Error ? err.message : 'Review failed')
+    } finally {
+      setReviewing(false)
+    }
   }
 
   const firstTime = incident?.state_history[0]?.time ? new Date(incident.state_history[0].time).getTime() : null
@@ -136,6 +174,46 @@ export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted 
                     </ol>
                   </ScrollArea>
                 )}
+              </section>
+
+              <Separator />
+
+              <section className="grid gap-3 text-sm">
+                <h3 className="font-medium">Review</h3>
+                <div className="grid gap-1 text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <ReviewBadge status={incident.review_status} />
+                    {incident.reviewed_by && (
+                      <span>
+                        by {incident.reviewed_by}
+                        {incident.reviewed_at && ` · ${new Date(incident.reviewed_at).toLocaleString()}`}
+                      </span>
+                    )}
+                  </div>
+                  {incident.review_note && <p className="text-foreground">“{incident.review_note}”</p>}
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="review-note">Note (required to dismiss as a false alarm)</Label>
+                  <Input
+                    id="review-note"
+                    value={note}
+                    maxLength={500}
+                    placeholder="e.g. student seated with bag"
+                    onChange={(e) => setNote(e.target.value)}
+                  />
+                </div>
+                {reviewError && <p className="text-destructive">{reviewError}</p>}
+                <div className="flex flex-wrap gap-2">
+                  <Button variant="outline" size="sm" disabled={reviewing} onClick={() => submitReview('acknowledged')}>
+                    Acknowledge
+                  </Button>
+                  <Button variant="outline" size="sm" disabled={reviewing} onClick={() => submitReview('verified')}>
+                    Verify as real
+                  </Button>
+                  <Button variant="secondary" size="sm" disabled={reviewing} onClick={() => submitReview('dismissed')}>
+                    Dismiss as false alarm
+                  </Button>
+                </div>
               </section>
 
               <Separator />

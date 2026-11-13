@@ -3,12 +3,29 @@ import { useNavigate } from 'react-router-dom'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardAction } from '@/components/ui/card'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { api, UnauthorizedError, type Alert, type Settings } from '@/lib/api'
+import { api, UnauthorizedError, type Alert, type CameraStatus, type Settings } from '@/lib/api'
 
 export function DashboardPage() {
   const navigate = useNavigate()
   const [settings, setSettings] = useState<Settings | null>(null)
   const [alerts, setAlerts] = useState<Alert[]>([])
+  const [camera, setCamera] = useState<CameraStatus | null>(null)
+
+  useEffect(() => {
+    let active = true
+    const pollStatus = () =>
+      api
+        .getCameraStatus()
+        .then((s) => active && setCamera(s))
+        .catch(() => undefined)
+
+    pollStatus()
+    const timer = setInterval(pollStatus, 3000)
+    return () => {
+      active = false
+      clearInterval(timer)
+    }
+  }, [])
 
   useEffect(() => {
     let active = true
@@ -57,6 +74,10 @@ export function DashboardPage() {
           </CardHeader>
           <CardContent className="grid gap-2 text-sm">
             <StatusRow label="Camera" value={settings?.camera_name ?? '—'} />
+            <div className="flex items-center justify-between gap-4">
+              <span className="text-muted-foreground">Camera status</span>
+              <CameraStatusBadge camera={camera} />
+            </div>
             <StatusRow label="Source" value={String(settings?.camera_source ?? '—')} />
             <StatusRow label="Distance threshold" value={`${settings?.distance_threshold ?? '—'} px`} />
             <StatusRow label="Time threshold" value={`${settings?.time_threshold ?? '—'} s`} />
@@ -91,6 +112,17 @@ export function DashboardPage() {
       </div>
     </div>
   )
+}
+
+function CameraStatusBadge({ camera }: { camera: CameraStatus | null }) {
+  if (!camera) return <Badge variant="outline">Checking…</Badge>
+  if (camera.status === 'online') {
+    return <Badge className="border-transparent bg-emerald-600 text-white">Online</Badge>
+  }
+  if (camera.status === 'reconnecting') {
+    return <Badge className="border-transparent bg-amber-500 text-white">Reconnecting…</Badge>
+  }
+  return <Badge variant="destructive">Offline</Badge>
 }
 
 function StatusRow({ label, value }: { label: string; value: string }) {

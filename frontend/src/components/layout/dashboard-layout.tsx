@@ -1,8 +1,10 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import { AppSidebar } from '@/components/layout/app-sidebar'
+import { IncidentNotifier } from '@/components/incidents/incident-notifier'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+import { Toaster } from '@/components/ui/sonner'
 import { useAuth } from '@/lib/auth'
 
 const titles: Record<string, string> = {
@@ -67,6 +69,8 @@ export function DashboardLayout() {
           <Outlet />
         </main>
       </SidebarInset>
+      <IncidentNotifier />
+      <Toaster />
     </SidebarProvider>
   )
 }

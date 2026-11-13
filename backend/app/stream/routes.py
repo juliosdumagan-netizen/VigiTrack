@@ -1,8 +1,10 @@
+import os
 import threading
 import time
 from functools import wraps
 from flask import Blueprint, Response, jsonify, request, session, redirect, send_from_directory
 from werkzeug.security import check_password_hash
+from app.detection.classes import SUPPORTED_CLASSES
 from app.stream.camera_manager import CameraManager
 from app.database.models import (
     INCIDENT_IMAGE_DIR,
@@ -11,6 +13,7 @@ from app.database.models import (
     get_all_incidents,
     get_incident,
     get_incident_image_filename,
+    review_incident,
 )
 from app.database import users as accounts
 from config.settings_store import load_settings, save_settings
@@ -48,8 +51,22 @@ def generate_frames():
         time.sleep(0.03)  # ~30 FPS throttle for streaming
 
 
+IDLE_TIMEOUT_SECONDS = int(os.getenv("VIGITRACK_IDLE_MINUTES", "30")) * 60
+
+# Polling endpoints the hub calls in the background. They do not count as user activity,
+# so a dashboard left open on its own still times out.
+BACKGROUND_ENDPOINTS = {
+    "stream_bp.video_feed",
+    "stream_bp.api_alerts",
+    "stream_bp.api_camera_status",
+}
+
+
 def _current_user():
-    """Returns the logged-in user from the database, or None. Ends the session if the account is gone or disabled."""
+    """
+    Returns the logged-in user from the database, or None.
+    Ends the session if the account is gone or disabled, or after the idle timeout.
+    """
     user_id = session.get("user_id")
     if not user_id:
         return None
@@ -57,6 +74,15 @@ def _current_user():
     if user is None or not user["is_active"]:
         session.clear()
         return None
+
+    now = time.time()
+    last_seen = session.get("last_seen")
+    if last_seen is not None and now - last_seen > IDLE_TIMEOUT_SECONDS:
+        accounts.log_audit(user["username"], "session_expired", "idle timeout")
+        session.clear()
+        return None
+    if last_seen is None or request.endpoint not in BACKGROUND_ENDPOINTS:
+        session["last_seen"] = now
     return user
 
 
@@ -126,6 +152,7 @@ def api_login():
         session.clear()
         session.permanent = True
         session["user_id"] = user["id"]
+        session["last_seen"] = time.time()
         return jsonify({
             "status": "success",
             "message": "Authentication successful",
@@ -168,6 +195,7 @@ def api_setup():
     session.clear()
     session.permanent = True
     session["user_id"] = user["id"]
+    session["last_seen"] = time.time()
     return jsonify({"status": "success", "user": user}), 201
 
 
@@ -331,11 +359,40 @@ def api_alerts():
     return jsonify(cam.get_recent_alerts())
 
 
+@stream_bp.route("/api/camera/status")
+@login_required
+def api_camera_status():
+    cam = get_camera_manager()
+    return jsonify(cam.get_camera_status())
+
+
 @stream_bp.route("/api/incidents", methods=["GET"])
 @login_required
 def api_get_incidents():
     incidents = get_all_incidents()
     return jsonify(incidents)
+
+
+@stream_bp.route("/api/incidents/<int:incident_id>/review", methods=["POST"])
+@login_required
+def api_review_incident(incident_id):
+    """Operators and admins acknowledge, verify or dismiss (as a false alarm) an incident."""
+    if not request.is_json:
+        return jsonify({"status": "error", "message": "Expected a JSON request."}), 415
+    data = request.get_json(silent=True) or {}
+    user = _current_user()
+    action = str(data.get("action") or "")
+
+    incident, error = review_incident(incident_id, action, user["username"], data.get("note"))
+    if error:
+        status = 404 if error == "Incident not found." else 400
+        return jsonify({"status": "error", "message": error}), status
+
+    detail = f"#{incident_id} → {action}"
+    if incident["review_note"]:
+        detail += f": {incident['review_note']}"
+    accounts.log_audit(user["username"], "incident_reviewed", detail)
+    return jsonify({"status": "success", "incident": incident})
 
 
 @stream_bp.route("/api/incidents/<int:incident_id>", methods=["GET"])
@@ -380,6 +437,17 @@ def api_get_settings():
     return jsonify(cam.get_thresholds())
 
 
+def _parse_monitored_classes(value):
+    """Checks a list of class names. 'person' is always included, so it is not required in the list."""
+    if not isinstance(value, list) or not all(isinstance(c, str) for c in value):
+        raise ValueError("monitored_classes must be a list of class names.")
+    known = set(SUPPORTED_CLASSES.values())
+    unknown = sorted(set(value) - known)
+    if unknown:
+        raise ValueError(f"Unknown class: {', '.join(unknown)}. Choose from {', '.join(sorted(known))}.")
+    return sorted(set(value) | {"person"})
+
+
 @stream_bp.route("/api/settings", methods=["POST"])
 @admin_required
 def api_update_settings():
@@ -397,6 +465,8 @@ def api_update_settings():
             dist = float(data["distance_threshold"])
             time_thresh = float(data["time_threshold"])
 
+        classes = _parse_monitored_classes(data["monitored_classes"]) if "monitored_classes" in data else None
+
         # Camera switch first: if it fails, nothing else is saved
         if "camera_source" in data:
             cam.switch_source(data["camera_source"], data.get("camera_name"))
@@ -413,6 +483,10 @@ def api_update_settings():
             audio_val = bool(data["audio_alert_enabled"])
             cam.notifier.set_audio_enabled(audio_val)
             s["audio_alert_enabled"] = audio_val
+
+        if classes is not None:
+            cam.set_monitored_classes(classes)
+            s["monitored_classes"] = classes
 
         save_settings(s)
         accounts.log_audit(actor, "settings_changed", ", ".join(sorted(data.keys())))

@@ -8,6 +8,7 @@ from app.detection.detector import ObjectDetector
 from app.detection.fsm_tracker import AdvancedBaggageMonitor
 from app.alerts.notifier import Notifier
 from app.database.models import log_incident
+from app.stream.camera_health import classify
 from config.settings_store import load_settings, save_settings
 
 
@@ -45,6 +46,7 @@ class CameraManager:
         self.raw_frame = None
         self.raw_frame_lock = threading.Lock()
         self.has_new_raw_frame = threading.Event()
+        self.last_frame_at: Optional[float] = None
 
         self.latest_jpeg = None
         self.jpeg_lock = threading.Lock()
@@ -54,7 +56,7 @@ class CameraManager:
         self.process_thread: Optional[threading.Thread] = None
 
         # Alert debouncing & tracking
-        self.logged_bag_ids = set()
+        self.logged_episodes: Dict[int, int] = {}
         self.recent_alerts: List[Dict] = []
         self.alerts_lock = threading.Lock()
         self.max_recent_alerts = 25
@@ -167,6 +169,7 @@ class CameraManager:
             reconnect_attempts = 0
             with self.raw_frame_lock:
                 self.raw_frame = frame
+            self.last_frame_at = time.time()
             self.has_new_raw_frame.set()
 
     def _process_loop(self):
@@ -253,9 +256,9 @@ class CameraManager:
                                     cv2.FONT_HERSHEY_DUPLEX, 0.6, (0, 0, 255), 2, cv2.LINE_AA)
 
                         self.notifier.play_alert_sound(bid)
-                        if bid not in self.logged_bag_ids:
+                        if self.logged_episodes.get(bid) != item["episode"]:
                             pending_logs.append(item)
-                            self.logged_bag_ids.add(bid)
+                            self.logged_episodes[bid] = item["episode"]
 
                     elif state in ("SEPARATED", "OWNER_OUT_OF_VIEW"):
                         label = f"{cls_name.capitalize()} #{bid} | Timer: {countdown:.1f}s"
@@ -339,8 +342,23 @@ class CameraManager:
             "time_threshold": self.monitor.time_threshold,
             "camera_source": self.source,
             "camera_name": self.camera_name,
-            "audio_alert_enabled": self.notifier.audio_enabled
+            "audio_alert_enabled": self.notifier.audio_enabled,
+            "monitored_classes": sorted(self.detector.monitored_classes),
         }
+
+    def get_camera_status(self) -> Dict:
+        """Returns whether frames are still arriving from the camera."""
+        status, age = classify(self.last_frame_at, time.time())
+        return {
+            "status": status,
+            "last_frame_age": None if age is None else round(age, 1),
+            "camera_name": self.camera_name,
+            "source": self.source,
+        }
+
+    def set_monitored_classes(self, class_names) -> None:
+        """Changes which object classes are detected, without restarting the camera."""
+        self.detector.set_monitored_classes(class_names)
 
     def update_thresholds(self, distance_threshold: float, time_threshold: float):
         """Updates distance and time thresholds dynamically without restarting."""
@@ -378,6 +396,7 @@ class CameraManager:
             old_cap = self.cap
             self.cap = new_cap
             self.source = new_source
+            self.last_frame_at = None
             if new_camera_name:
                 self.camera_name = new_camera_name
 

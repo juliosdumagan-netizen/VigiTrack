@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardAction } from '@/components/ui/card'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Badge } from '@/components/ui/badge'
-import { IncidentDetailSheet } from '@/components/incidents/incident-detail-sheet'
+import { IncidentDetailSheet, ReviewBadge } from '@/components/incidents/incident-detail-sheet'
 import { api, UnauthorizedError, type Incident } from '@/lib/api'
 import { useAuth } from '@/lib/auth'
 
@@ -96,6 +96,7 @@ export function IncidentsPage() {
                 <TableHead>Distance</TableHead>
                 <TableHead>Camera</TableHead>
                 <TableHead>Status</TableHead>
+                <TableHead>Review</TableHead>
                 <TableHead>Detected at</TableHead>
                 <TableHead className="w-12" />
               </TableRow>
@@ -103,7 +104,7 @@ export function IncidentsPage() {
             <TableBody>
               {incidents.length === 0 && (
                 <TableRow>
-                  <TableCell colSpan={9} className="text-center text-muted-foreground">
+                  <TableCell colSpan={10} className="text-center text-muted-foreground">
                     {loading ? 'Loading…' : 'No incidents recorded.'}
                   </TableCell>
                 </TableRow>
@@ -126,6 +127,9 @@ export function IncidentsPage() {
                   <TableCell>
                     <Badge variant="destructive" className="capitalize">{row.status}</Badge>
                   </TableCell>
+                  <TableCell>
+                    <ReviewBadge status={row.review_status} />
+                  </TableCell>
                   <TableCell>{new Date(row.detected_at).toLocaleString()}</TableCell>
                   <TableCell>
                     {isAdmin && (
@@ -146,7 +150,13 @@ export function IncidentsPage() {
         </CardContent>
       </Card>
 
-      <IncidentDetailSheet incidentId={selectedId} canDelete={isAdmin} onClose={closeIncident} onDeleted={load} />
+      <IncidentDetailSheet
+        incidentId={selectedId}
+        canDelete={isAdmin}
+        onClose={closeIncident}
+        onDeleted={load}
+        onReviewed={load}
+      />
     </>
   )
 }
