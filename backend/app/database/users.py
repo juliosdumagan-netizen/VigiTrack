@@ -1,4 +1,6 @@
+import hashlib
 import hmac
+import json
 import os
 import re
 import secrets
@@ -59,18 +61,66 @@ def validate_password(password: str) -> Optional[str]:
     return None
 
 
+AUDIT_GENESIS = "0" * 64
+_audit_lock = threading.Lock()
+
+
+def _audit_hash(prev_hash: str, created_at: str, actor, action: str, detail) -> str:
+    payload = json.dumps([prev_hash, created_at, actor, action, detail], ensure_ascii=False)
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
 def log_audit(actor: Optional[str], action: str, detail: Optional[str] = None) -> None:
+    """Appends an audit entry. Each entry's hash covers the previous entry, so edits or deletions can be detected."""
     conn = get_connection()
     try:
-        conn.execute(
-            "INSERT INTO audit_log (created_at, actor, action, detail) VALUES (?, ?, ?, ?)",
-            (_now(), actor, action, detail),
-        )
-        conn.commit()
+        with _audit_lock:
+            created = _now()
+            last = conn.execute(
+                "SELECT entry_hash FROM audit_log WHERE entry_hash IS NOT NULL ORDER BY id DESC LIMIT 1"
+            ).fetchone()
+            prev = last["entry_hash"] if last else AUDIT_GENESIS
+            entry = _audit_hash(prev, created, actor, action, detail)
+            conn.execute(
+                "INSERT INTO audit_log (created_at, actor, action, detail, prev_hash, entry_hash) VALUES (?, ?, ?, ?, ?, ?)",
+                (created, actor, action, detail, prev, entry),
+            )
+            conn.commit()
     except Exception as e:
         print(f"[Audit Error] Could not record '{action}': {e}")
     finally:
         conn.close()
+
+
+def verify_audit_chain():
+    """
+    Checks every hashed audit entry against the one before it.
+    Returns (ok, first_bad_id, unhashed_count). Entries from before hashing was added are counted, not checked.
+    """
+    conn = get_connection()
+    try:
+        rows = conn.execute(
+            "SELECT id, created_at, actor, action, detail, prev_hash, entry_hash FROM audit_log ORDER BY id"
+        ).fetchall()
+    finally:
+        conn.close()
+
+    prev = AUDIT_GENESIS
+    chain_started = False
+    unhashed = 0
+    for row in rows:
+        if row["entry_hash"] is None:
+            if chain_started:
+                return False, row["id"], unhashed
+            unhashed += 1
+            continue
+        chain_started = True
+        if row["prev_hash"] != prev:
+            return False, row["id"], unhashed
+        if _audit_hash(prev, row["created_at"], row["actor"], row["action"], row["detail"]) != row["entry_hash"]:
+            return False, row["id"], unhashed
+        prev = row["entry_hash"]
+    return True, None, unhashed
 
 
 def list_audit(limit: int = 200) -> list:

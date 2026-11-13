@@ -11,6 +11,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SUITES = [
     "test_fsm.py",
     "test_phase1.py",
+    "test_phase2.py",
     "test_legacy_migration.py",
     "test_accounts.py",
     "test_setup.py",

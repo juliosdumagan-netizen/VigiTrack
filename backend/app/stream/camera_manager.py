@@ -1,4 +1,4 @@
-import cv2
+﻿import cv2
 import threading
 import time
 from collections import deque
@@ -9,6 +9,7 @@ from app.detection.fsm_tracker import AdvancedBaggageMonitor
 from app.alerts.notifier import Notifier
 from app.database.models import log_incident
 from app.stream.camera_health import classify
+from config.secret_store import redact, stored_camera_source, store_camera_source
 from config.settings_store import load_settings, save_settings
 
 
@@ -24,7 +25,7 @@ class CameraManager:
                  distance_threshold=None, time_threshold=None):
         settings = load_settings()
 
-        self.source = settings.get("camera_source", 0) if source is None else source
+        self.source = stored_camera_source(settings) if source is None else source
         if isinstance(self.source, str) and self.source.isdigit():
             self.source = int(self.source)
 
@@ -78,7 +79,7 @@ class CameraManager:
 
         self.capture_thread.start()
         self.process_thread.start()
-        print(f"[CameraManager] Streaming initialized on source '{self.source}' ({self.camera_name})")
+        print(f"[CameraManager] Streaming initialized on source '{redact(self.source)}' ({self.camera_name})")
 
     def stop(self):
         """Cleanly stops processing and releases the camera."""
@@ -115,7 +116,7 @@ class CameraManager:
                 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
                 return cap
         except Exception as e:
-            print(f"[CameraManager] Error creating capture for source '{source}': {e}")
+            print(f"[CameraManager] Error creating capture for source '{redact(source)}': {e}")
         return None
 
     def _open_capture(self):
@@ -130,10 +131,10 @@ class CameraManager:
                         old_cap.release()
                     except Exception:
                         pass
-                print(f"[CameraManager] Active capture open on source '{self.source}'")
+                print(f"[CameraManager] Active capture open on source '{redact(self.source)}'")
                 return True
             else:
-                print(f"[CameraManager Warning] Failed to open capture source: {self.source}")
+                print(f"[CameraManager Warning] Failed to open capture source: {redact(self.source)}")
                 return False
 
     def _reader_loop(self):
@@ -161,7 +162,7 @@ class CameraManager:
                 reconnect_attempts += 1
                 time.sleep(0.05)
                 if reconnect_attempts > 40:
-                    print(f"[CameraManager] Reconnecting to camera source '{self.source}'...")
+                    print(f"[CameraManager] Reconnecting to camera source '{redact(self.source)}'...")
                     self._open_capture()
                     reconnect_attempts = 0
                 continue
@@ -340,7 +341,7 @@ class CameraManager:
         return {
             "distance_threshold": self.monitor.distance_threshold,
             "time_threshold": self.monitor.time_threshold,
-            "camera_source": self.source,
+            "camera_source": redact(self.source),
             "camera_name": self.camera_name,
             "audio_alert_enabled": self.notifier.audio_enabled,
             "monitored_classes": sorted(self.detector.monitored_classes),
@@ -353,7 +354,7 @@ class CameraManager:
             "status": status,
             "last_frame_age": None if age is None else round(age, 1),
             "camera_name": self.camera_name,
-            "source": self.source,
+            "source": redact(self.source),
         }
 
     def set_monitored_classes(self, class_names) -> None:
@@ -380,16 +381,17 @@ class CameraManager:
         if isinstance(new_source, str) and new_source.isdigit():
             new_source = int(new_source)
 
-        if self.source == new_source:
+        # The Cameras page sends back the masked form when the source is unchanged. Treat that as no change.
+        if self.source == new_source or redact(self.source) == new_source:
             return
 
-        print(f"[CameraManager] Attempting to switch source from {self.source} to {new_source}")
+        print(f"[CameraManager] Attempting to switch source from {redact(self.source)} to {redact(new_source)}")
 
         # 1. Test opening the new camera FIRST before releasing old one!
         new_cap = self._create_capture(new_source)
         if not new_cap:
-            print(f"[CameraManager Error] Could not connect to source '{new_source}'. Keeping previous source '{self.source}'.")
-            raise RuntimeError(f"Camera source '{new_source}' could not be opened or is not responding.")
+            print(f"[CameraManager Error] Could not connect to source '{redact(new_source)}'. Keeping previous source '{redact(self.source)}'.")
+            raise RuntimeError(f"Camera source '{redact(new_source)}' could not be opened or is not responding.")
 
         # 2. Safely swap under lock to avoid race conditions with reader thread
         with self.capture_lock:
@@ -408,8 +410,8 @@ class CameraManager:
 
         # 3. Persist to settings
         settings = load_settings()
-        settings["camera_source"] = self.source
+        store_camera_source(settings, self.source)
         if new_camera_name:
             settings["camera_name"] = self.camera_name
         save_settings(settings)
-        print(f"[CameraManager] Successfully switched and saved camera source: {self.source}")
+        print(f"[CameraManager] Successfully switched and saved camera source: {redact(self.source)}")

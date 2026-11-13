@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { api } from '@/lib/api'
+import { api, type Notice } from '@/lib/api'
 import { useAuth } from '@/lib/auth'
 
 export function LoginPage() {
@@ -14,6 +14,7 @@ export function LoginPage() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
+  const [notice, setNotice] = useState<Notice | null>(null)
 
   useEffect(() => {
     api
@@ -22,6 +23,7 @@ export function LoginPage() {
         if (s.setup_required) navigate('/setup', { replace: true })
       })
       .catch(() => undefined)
+    api.getNotice().then(setNotice).catch(() => undefined)
   }, [navigate])
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -49,6 +51,12 @@ export function LoginPage() {
         </CardHeader>
         <form onSubmit={handleSubmit} className="grid gap-6">
           <CardContent className="grid gap-4">
+            {notice && (
+              <p className="rounded-md bg-muted p-3 text-xs text-muted-foreground">
+                Privacy notice: this camera records for security monitoring. Detections are stored
+                {notice.retention_days} day{notice.retention_days === 1 ? '' : 's'} and then deleted automatically.
+              </p>
+            )}
             <div className="grid gap-2">
               <Label htmlFor="username">Username</Label>
               <Input

@@ -2,9 +2,24 @@ import os
 from datetime import timedelta
 from flask import Flask # type: ignore
 from app.database.db import init_db
+from app.database.retention import start_retention_worker
 from app.database.users import prepare_first_run
 from app.stream.routes import stream_bp
 from config.settings_store import load_settings, get_secret_key
+
+# The hub is a single page served from this origin. Scripts and images come only from the same origin.
+# Styles allow inline attributes, because the UI component library uses them.
+SECURITY_CSP = (
+    "default-src 'self'; "
+    "script-src 'self'; "
+    "style-src 'self' 'unsafe-inline'; "
+    "img-src 'self' data: blob:; "
+    "font-src 'self' data:; "
+    "connect-src 'self'; "
+    "frame-ancestors 'none'; "
+    "base-uri 'self'; "
+    "form-action 'self'"
+)
 
 
 def create_app():
@@ -25,6 +40,14 @@ def create_app():
     # Register blueprints
     app.register_blueprint(stream_bp)
 
+    @app.after_request
+    def add_security_headers(response):
+        response.headers.setdefault("Content-Security-Policy", SECURITY_CSP)
+        response.headers.setdefault("X-Content-Type-Options", "nosniff")
+        response.headers.setdefault("X-Frame-Options", "DENY")
+        response.headers.setdefault("Referrer-Policy", "same-origin")
+        return response
+
     return app
 
 
@@ -41,5 +64,6 @@ if __name__ == "__main__":
     print("=" * 65)
 
     app = create_app()
+    start_retention_worker()
     # Note: debug=False prevents duplicate camera initialization by the Flask reloader
     app.run(host=host, port=port, threaded=True, debug=False)

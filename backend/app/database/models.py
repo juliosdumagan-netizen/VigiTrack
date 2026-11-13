@@ -187,6 +187,28 @@ def delete_incident(incident_id: int) -> bool:
         conn.close()
 
 
+def delete_incidents_where(where_sql: str, params: tuple) -> int:
+    """Deletes the incidents matching a SQL condition, and their snapshots. Returns how many were deleted."""
+    conn = get_connection()
+    rows = []
+    try:
+        rows = conn.execute(f"SELECT id, image_path FROM incidents WHERE {where_sql}", params).fetchall()
+        if not rows:
+            return 0
+        ids = [row["id"] for row in rows]
+        placeholders = ",".join("?" * len(ids))
+        conn.execute(f"DELETE FROM incidents WHERE id IN ({placeholders})", ids)
+        conn.commit()
+    except Exception as e:
+        print(f"[Database Error] Failed to delete incidents: {e}")
+        return 0
+    finally:
+        conn.close()
+    for row in rows:
+        _remove_image_file(row["image_path"])
+    return len(rows)
+
+
 def clear_all_incidents() -> int:
     """Clears all incident records and their snapshots from the database."""
     conn = get_connection()

@@ -1,8 +1,18 @@
 import { useCallback, useEffect, useState, type KeyboardEvent, type MouseEvent } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { Trash2 } from 'lucide-react'
+import { CalendarX2, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardAction } from '@/components/ui/card'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Badge } from '@/components/ui/badge'
 import { IncidentDetailSheet, ReviewBadge } from '@/components/incidents/incident-detail-sheet'
@@ -16,6 +26,11 @@ export function IncidentsPage() {
   const [incidents, setIncidents] = useState<Incident[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [purgeOpen, setPurgeOpen] = useState(false)
+  const [purgeStart, setPurgeStart] = useState('')
+  const [purgeEnd, setPurgeEnd] = useState('')
+  const [purgeError, setPurgeError] = useState<string | null>(null)
+  const [purging, setPurging] = useState(false)
 
   const selectedParam = params.get('selected')
   const selectedId = selectedParam && /^\d+$/.test(selectedParam) ? Number(selectedParam) : null
@@ -60,6 +75,37 @@ export function IncidentsPage() {
     load()
   }
 
+  function openPurge() {
+    setPurgeStart('')
+    setPurgeEnd('')
+    setPurgeError(null)
+    setPurgeOpen(true)
+  }
+
+  async function handlePurge() {
+    if (!purgeStart || !purgeEnd) {
+      setPurgeError('Choose both dates.')
+      return
+    }
+    if (purgeEnd < purgeStart) {
+      setPurgeError('The end date is before the start date.')
+      return
+    }
+    setPurgeError(null)
+    if (!confirm(`Delete every incident detected from ${purgeStart} to ${purgeEnd}? This cannot be undone.`)) return
+    setPurging(true)
+    try {
+      const res = await api.purgeIncidents(purgeStart, purgeEnd)
+      setPurgeOpen(false)
+      alert(`${res.deleted} incident(s) deleted.`)
+      load()
+    } catch (err) {
+      setPurgeError(err instanceof Error ? err.message : 'Delete failed')
+    } finally {
+      setPurging(false)
+    }
+  }
+
   function handleRowKey(e: KeyboardEvent, id: number) {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
@@ -78,9 +124,15 @@ export function IncidentsPage() {
               Refresh
             </Button>
             {isAdmin && (
-              <Button variant="destructive" size="sm" onClick={handleClear} disabled={incidents.length === 0}>
-                Clear all
-              </Button>
+              <>
+                <Button variant="outline" size="sm" onClick={openPurge} disabled={incidents.length === 0}>
+                  <CalendarX2 />
+                  Delete by date…
+                </Button>
+                <Button variant="destructive" size="sm" onClick={handleClear} disabled={incidents.length === 0}>
+                  Clear all
+                </Button>
+              </>
             )}
           </CardAction>
         </CardHeader>
@@ -149,6 +201,36 @@ export function IncidentsPage() {
           </Table>
         </CardContent>
       </Card>
+
+      <Dialog open={purgeOpen} onOpenChange={setPurgeOpen}>
+        <DialogContent className="max-w-sm">
+          <DialogHeader>
+            <DialogTitle>Delete incidents by date</DialogTitle>
+            <DialogDescription>
+              Deletes every incident detected from the start date to the end date (inclusive), with their snapshots.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-3">
+            <div className="grid gap-2">
+              <Label htmlFor="purge-start">From (inclusive)</Label>
+              <Input id="purge-start" type="date" value={purgeStart} onChange={(e) => setPurgeStart(e.target.value)} />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="purge-end">To (inclusive)</Label>
+              <Input id="purge-end" type="date" value={purgeEnd} onChange={(e) => setPurgeEnd(e.target.value)} />
+            </div>
+            {purgeError && <p className="text-sm text-destructive">{purgeError}</p>}
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setPurgeOpen(false)} disabled={purging}>
+              Cancel
+            </Button>
+            <Button variant="destructive" onClick={handlePurge} disabled={purging}>
+              {purging ? 'Deleting…' : 'Delete range'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <IncidentDetailSheet
         incidentId={selectedId}

@@ -68,9 +68,15 @@ def init_db():
                 created_at TEXT NOT NULL,
                 actor TEXT,
                 action TEXT NOT NULL,
-                detail TEXT
+                detail TEXT,
+                prev_hash TEXT,
+                entry_hash TEXT
             )
         """)
+        audit_columns = {row["name"] for row in cursor.execute("PRAGMA table_info(audit_log)").fetchall()}
+        for column in ("prev_hash", "entry_hash"):
+            if column not in audit_columns:
+                cursor.execute(f"ALTER TABLE audit_log ADD COLUMN {column} TEXT")
         conn.commit()
     finally:
         conn.close()

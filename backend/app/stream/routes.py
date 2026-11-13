@@ -1,11 +1,14 @@
 import os
 import threading
 import time
+from datetime import datetime, timedelta
 from functools import wraps
 from flask import Blueprint, Response, jsonify, request, session, redirect, send_from_directory
 from werkzeug.security import check_password_hash
+from app.database.retention import DEFAULT_RETENTION_DAYS, purge_between
 from app.detection.classes import SUPPORTED_CLASSES
 from app.stream.camera_manager import CameraManager
+from app.stream.rate_limit import FailureLimiter
 from app.database.models import (
     INCIDENT_IMAGE_DIR,
     clear_all_incidents,
@@ -133,9 +136,19 @@ def _client_ip():
     return request.remote_addr or "unknown"
 
 
+# Per-address limit on failed sign-ins. Stops guessing across many accounts, which the per-account lockout does not.
+login_limiter = FailureLimiter(max_failures=10, window_seconds=60)
+
+
 # =========================================================================
 # Authentication Routes
 # =========================================================================
+
+@stream_bp.route("/api/notice", methods=["GET"])
+def api_notice():
+    """Public: what the privacy notice on the sign-in page should say."""
+    return jsonify({"retention_days": int(load_settings().get("retention_days", DEFAULT_RETENTION_DAYS))})
+
 
 @stream_bp.route("/api/login", methods=["POST"])
 def api_login():
@@ -143,11 +156,19 @@ def api_login():
     if not request.is_json:
         return jsonify({"status": "error", "message": "Expected a JSON request."}), 415
 
+    if login_limiter.is_blocked(_client_ip()):
+        return jsonify({
+            "status": "error",
+            "message": "Too many failed sign-in attempts from this computer. Wait a minute, then try again.",
+        }), 429
+
     data = request.get_json(silent=True) or {}
     username = (data.get("username") or "").strip()
     password = (data.get("password") or "").strip()
 
     user, reason = accounts.authenticate(username, password)
+    if not user:
+        login_limiter.record_failure(_client_ip())
     if user:
         session.clear()
         session.permanent = True
@@ -338,6 +359,14 @@ def api_audit_log():
     return jsonify(accounts.list_audit())
 
 
+@stream_bp.route("/api/audit/verify", methods=["GET"])
+@admin_required
+def api_verify_audit():
+    """Checks the audit log's hash chain. A failure means an entry was changed or removed."""
+    ok, first_bad_id, unhashed = accounts.verify_audit_chain()
+    return jsonify({"ok": ok, "first_bad_id": first_bad_id, "unhashed_entries": unhashed})
+
+
 # =========================================================================
 # Protected Surveillance & Management Routes
 # =========================================================================
@@ -430,11 +459,35 @@ def api_clear_all_incidents():
     return jsonify({"success": True})
 
 
+@stream_bp.route("/api/incidents/purge", methods=["POST"])
+@admin_required
+def api_purge_incidents():
+    """Deletes incidents detected between two dates (inclusive), with their snapshots."""
+    if not request.is_json:
+        return jsonify({"status": "error", "message": "Expected a JSON request."}), 415
+    data = request.get_json(silent=True) or {}
+    try:
+        start = datetime.strptime(str(data.get("start") or ""), "%Y-%m-%d")
+        end = datetime.strptime(str(data.get("end") or ""), "%Y-%m-%d")
+    except ValueError:
+        return jsonify({"status": "error", "message": "Dates must be in the form YYYY-MM-DD."}), 400
+    if end < start:
+        return jsonify({"status": "error", "message": "The end date is before the start date."}), 400
+
+    end_exclusive = end + timedelta(days=1)
+    count = purge_between(start.isoformat(timespec="seconds"), end_exclusive.isoformat(timespec="seconds"))
+    actor = _current_user()["username"]
+    accounts.log_audit(actor, "incidents_purged", f"{count} record(s) from {start.date()} to {end.date()}")
+    return jsonify({"status": "success", "deleted": count})
+
+
 @stream_bp.route("/api/settings", methods=["GET"])
 @login_required
 def api_get_settings():
     cam = get_camera_manager()
-    return jsonify(cam.get_thresholds())
+    data = cam.get_thresholds()
+    data["retention_days"] = int(load_settings().get("retention_days", DEFAULT_RETENTION_DAYS))
+    return jsonify(data)
 
 
 def _parse_monitored_classes(value):
@@ -467,6 +520,12 @@ def api_update_settings():
 
         classes = _parse_monitored_classes(data["monitored_classes"]) if "monitored_classes" in data else None
 
+        retention = None
+        if "retention_days" in data:
+            retention = int(data["retention_days"])
+            if not 1 <= retention <= 3650:
+                raise ValueError("Retention must be between 1 and 3650 days.")
+
         # Camera switch first: if it fails, nothing else is saved
         if "camera_source" in data:
             cam.switch_source(data["camera_source"], data.get("camera_name"))
@@ -487,6 +546,9 @@ def api_update_settings():
         if classes is not None:
             cam.set_monitored_classes(classes)
             s["monitored_classes"] = classes
+
+        if retention is not None:
+            s["retention_days"] = retention
 
         save_settings(s)
         accounts.log_audit(actor, "settings_changed", ", ".join(sorted(data.keys())))

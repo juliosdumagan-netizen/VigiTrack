@@ -19,6 +19,11 @@ export type Settings = {
   camera_name: string
   audio_alert_enabled: boolean
   monitored_classes: string[]
+  retention_days: number
+}
+
+export type Notice = {
+  retention_days: number
 }
 
 export type CameraStatus = {
@@ -131,6 +136,11 @@ export const api = {
   deleteIncident: (id: number) => request<{ success: boolean }>(`/api/incidents/${id}`, { method: 'DELETE' }),
 
   clearIncidents: () => request<{ success: boolean }>('/api/incidents/clear', { method: 'POST' }),
+
+  purgeIncidents: (start: string, end: string) =>
+    request<{ status: string; deleted: number }>('/api/incidents/purge', json({ start, end })),
+
+  getNotice: () => request<Notice>('/api/notice'),
 
   listUsers: () => request<User[]>('/api/users'),
 

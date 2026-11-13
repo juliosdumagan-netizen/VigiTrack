@@ -20,6 +20,7 @@ export function SettingsPage() {
   const [time, setTime] = useState('10')
   const [audio, setAudio] = useState(true)
   const [bags, setBags] = useState<Record<BagClass, boolean>>({ backpack: true, handbag: true, suitcase: true })
+  const [retention, setRetention] = useState('30')
   const [message, setMessage] = useState<{ type: 'ok' | 'error'; text: string } | null>(null)
   const [saving, setSaving] = useState(false)
 
@@ -30,6 +31,7 @@ export function SettingsPage() {
         setDistance(String(s.distance_threshold))
         setTime(String(s.time_threshold))
         setAudio(s.audio_alert_enabled)
+        setRetention(String(s.retention_days))
         setBags({
           backpack: s.monitored_classes.includes('backpack'),
           handbag: s.monitored_classes.includes('handbag'),
@@ -46,8 +48,13 @@ export function SettingsPage() {
 
     const distanceNum = Number(distance)
     const timeNum = Number(time)
+    const retentionNum = Number(retention)
     if (!(distanceNum > 0) || !(timeNum > 0)) {
       setMessage({ type: 'error', text: 'Distance and time thresholds must be positive numbers.' })
+      return
+    }
+    if (!Number.isInteger(retentionNum) || retentionNum < 1 || retentionNum > 3650) {
+      setMessage({ type: 'error', text: 'Retention must be a whole number between 1 and 3650 days.' })
       return
     }
 
@@ -59,6 +66,7 @@ export function SettingsPage() {
         time_threshold: timeNum,
         audio_alert_enabled: audio,
         monitored_classes,
+        retention_days: retentionNum,
       })
       setMessage({ type: 'ok', text: 'Settings saved and active.' })
     } catch (err) {
@@ -111,6 +119,22 @@ export function SettingsPage() {
               <Label htmlFor="time">Time threshold (seconds)</Label>
               <Input id="time" type="number" min={1} step={1} value={time} onChange={(e) => setTime(e.target.value)} disabled={!loaded} />
               <p className="text-xs text-muted-foreground">How long a bag may be unattended before an alert fires.</p>
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="retention">Record retention (days)</Label>
+              <Input
+                id="retention"
+                type="number"
+                min={1}
+                max={3650}
+                step={1}
+                value={retention}
+                onChange={(e) => setRetention(e.target.value)}
+                disabled={!loaded}
+              />
+              <p className="text-xs text-muted-foreground">
+                Incidents and snapshots older than this are deleted automatically, at least once an hour. Also shown on the sign-in privacy notice.
+              </p>
             </div>
             <div className="flex items-center justify-between rounded-lg border p-3">
               <div>

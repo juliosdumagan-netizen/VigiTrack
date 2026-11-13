@@ -1,4 +1,4 @@
-import json
+﻿import json
 import os
 import sqlite3
 import sys
@@ -55,6 +55,7 @@ def check(name, cond, extra=""):
 
 import run  # noqa: E402
 from app.database import users as accounts  # noqa: E402
+from app.stream import routes  # noqa: E402
 
 app = run.create_app()
 
@@ -137,6 +138,9 @@ check("old password no longer works", app.test_client().post("/api/login", json=
 check("new password works", app.test_client().post("/api/login", json={"username": "guard1", "password": "newpass123"}).status_code == 200)
 
 # --- 7. Admin resets password, unlocks, disables ---
+# This section makes several failed sign-ins from one address, which the per-address
+# login limit (added in Phase 2) would throttle before the account lockout is tested.
+routes.login_limiter.reset()
 r = admin.patch(f"/api/users/{guard_id}", json={"new_password": "resetpass1"})
 check("admin resets operator password", r.status_code == 200)
 check("reset password works", app.test_client().post("/api/login", json={"username": "guard1", "password": "resetpass1"}).status_code == 200)
@@ -175,11 +179,13 @@ err = accounts.delete_user(boss_id)
 check("last active admin cannot be deleted", err is not None and "at least one" in err.lower(), err)
 
 # --- 9. Deleting an operator ---
+routes.login_limiter.reset()
 r = admin.delete(f"/api/users/{guard_id}")
 check("admin deletes operator", r.status_code == 200)
 check("deleted operator cannot log in", app.test_client().post("/api/login", json={"username": "guard1", "password": "resetpass1"}).status_code == 401)
 
 # --- 10. Settings and audit ---
+routes.login_limiter.reset()
 r = admin.get("/api/settings")
 check("settings no longer expose admin username", "admin_username" not in r.get_json())
 r = admin.post("/api/settings", json={"distance_threshold": 180, "time_threshold": 12, "admin_password": "hacked123"})

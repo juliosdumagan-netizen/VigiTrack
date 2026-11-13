@@ -22,6 +22,7 @@ except ImportError:  # pragma: no cover - optional dependency for desktop mode
 from flask import abort, send_from_directory  # type: ignore[import-not-found]
 from waitress import serve
 
+from app.database.retention import start_retention_worker
 from run import create_app
 
 FRONTEND_DIST = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend", "dist"))
@@ -81,6 +82,7 @@ def main() -> None:
 
     app = create_app()
     add_frontend(app)
+    start_retention_worker()
 
     port = free_port()
     server = threading.Thread(
