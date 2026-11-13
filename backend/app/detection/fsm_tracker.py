@@ -46,6 +46,8 @@ class BaggageTracklet:
         self.attended_streak: int = 0
         self.lost_frames: int = 0
         self.candidate_owner_streaks: Dict[int, int] = {}
+        self.retrieval_streaks: Dict[int, int] = {}
+        self.separation_episode: int = 0
         self.state_history: List[Dict] = []
 
         cx = (initial_box[0] + initial_box[2]) / 2.0
@@ -55,6 +57,12 @@ class BaggageTracklet:
     @property
     def current_centroid(self) -> Tuple[float, float]:
         return self.centroid_history[-1]
+
+    def start_separation(self, now: float):
+        """Starts the separation timer. A new timer is a new separation episode."""
+        if self.separation_start_time is None:
+            self.separation_start_time = now
+            self.separation_episode += 1
 
     def update_position(self, box: List[float]):
         self.current_box = box
@@ -91,13 +99,15 @@ class AdvancedBaggageMonitor:
                  time_threshold: float = 10.0,
                  attended_confirm_frames: int = 3,
                  max_track_lost_frames: int = 45,
-                 persist_telemetry_frames: int = 15):
+                 persist_telemetry_frames: int = 15,
+                 takeover_confirm_frames: int = 10):
 
         self.distance_threshold = float(distance_threshold)
         self.time_threshold = float(time_threshold)
         self.attended_confirm_frames = attended_confirm_frames
         self.max_track_lost_frames = max_track_lost_frames
         self.persist_telemetry_frames = persist_telemetry_frames
+        self.takeover_confirm_frames = takeover_confirm_frames
 
         self.baggage_pool: Dict[int, BaggageTracklet] = {}
 
@@ -131,8 +141,8 @@ class AdvancedBaggageMonitor:
                         best_id = bid
         return best_id
 
-    def update(self, detections: List[Dict]) -> List[Dict]:
-        now = time.time()
+    def update(self, detections: List[Dict], now: Optional[float] = None) -> List[Dict]:
+        now = time.time() if now is None else now
         people = [d for d in detections if d["class_name"] == "person"]
         bags = [d for d in detections if d["class_name"] in ("backpack", "handbag", "suitcase")]
 
@@ -220,10 +230,10 @@ class AdvancedBaggageMonitor:
                         bag.state = BaggageState.STATIC_ATTENDED if bag_static else BaggageState.CARRIED
                 else:
                     bag.attended_streak = 0
-                    if bag.separation_start_time is None:
-                        bag.separation_start_time = now
+                    bag.start_separation(now)
 
-                    elapsed = now - bag.separation_start_time
+                    separation_start = bag.separation_start_time
+                    elapsed = 0.0 if separation_start is None else (now - separation_start)
                     if elapsed >= self.time_threshold:
                         bag.state = BaggageState.UNATTENDED_ALERT
                     else:
@@ -236,18 +246,29 @@ class AdvancedBaggageMonitor:
 
                 retrieved = False
                 if not bag_static:
+                    takeover_id = None
+                    takeover_dist = float("inf")
                     for p_det in people:
                         p_cen = self._get_centroid(p_det["box"])
-                        if self._distance(bag_center, p_cen) < (self.distance_threshold * 0.5):
-                            bag.owner_id = p_det["id"]
+                        d = self._distance(bag_center, p_cen)
+                        if d < (self.distance_threshold * 0.5) and d < takeover_dist:
+                            takeover_dist = d
+                            takeover_id = p_det["id"]
+
+                    if takeover_id is None:
+                        bag.retrieval_streaks.clear()
+                    else:
+                        streak = bag.retrieval_streaks.get(takeover_id, 0) + 1
+                        bag.retrieval_streaks = {takeover_id: streak}
+                        if streak >= self.takeover_confirm_frames:
+                            bag.owner_id = takeover_id
                             bag.separation_start_time = None
+                            bag.retrieval_streaks.clear()
                             bag.state = BaggageState.CARRIED
                             retrieved = True
-                            break
 
                 if not retrieved:
-                    if bag.separation_start_time is None:
-                        bag.separation_start_time = now
+                    bag.start_separation(now)
 
                     elapsed = now - bag.separation_start_time
                     if elapsed >= self.time_threshold:
@@ -259,8 +280,7 @@ class AdvancedBaggageMonitor:
                     measured_distance = self.distance_threshold + 50.0
 
             else:
-                if bag.separation_start_time is None:
-                    bag.separation_start_time = now
+                bag.start_separation(now)
 
                 elapsed = now - bag.separation_start_time
                 if elapsed >= self.time_threshold:
@@ -290,6 +310,7 @@ class AdvancedBaggageMonitor:
                 "is_static": bag_static,
                 "is_alert": bag.state == BaggageState.UNATTENDED_ALERT,
                 "is_persisted": bag.lost_frames > 0,
+                "episode": bag.separation_episode,
                 "state_history": list(bag.state_history)
             })
 

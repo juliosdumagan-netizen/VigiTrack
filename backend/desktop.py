@@ -14,8 +14,12 @@ import time
 
 os.environ.setdefault("VIGITRACK_DESKTOP", "1")
 
-import webview  # pywebview
-from flask import abort, send_from_directory
+try:
+    import webview  # type: ignore[import-not-found]
+except ImportError:  # pragma: no cover - optional dependency for desktop mode
+    webview = None
+
+from flask import abort, send_from_directory  # type: ignore[import-not-found]
 from waitress import serve
 
 from run import create_app
@@ -69,6 +73,10 @@ def wait_for_server(port: int, timeout: float = 15.0) -> None:
 def main() -> None:
     if not os.path.isfile(os.path.join(FRONTEND_DIST, "index.html")):
         print("The hub has not been built yet. Run 'npm run build' in the frontend folder, then try again.")
+        sys.exit(1)
+
+    if webview is None:
+        print("Desktop mode requires the 'pywebview' package. Install it with 'pip install pywebview'.")
         sys.exit(1)
 
     app = create_app()
