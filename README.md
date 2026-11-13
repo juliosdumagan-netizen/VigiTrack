@@ -216,7 +216,7 @@ Inference settings: `imgsz=640`, base `conf=0.15` (the per-class filters above a
 ### 7.2 Association lock (bystander rejection)
 1. For a bag with no associated person, find the **nearest person within 150 px**.
 2. That person must stay nearest for **2 consecutive frames** (`streak >= 2`). Then they are **locked** (`owner_id = person_id`).
-3. Once locked, **other people walking closer do not replace them**, so passers-by can't reset the alarm.
+3. Once locked, **other people walking closer do not replace them**, so passers-by can't reset the alarm. The lock can pass to a new person only when the original owner has left the frame, and that person stays within **75 px** (half the threshold) of a moving bag for **10 consecutive frames** (`takeover_confirm_frames = 10`). Someone who just walks past is not enough.
 4. To cancel a running countdown, the associated person must be back within range for **3 consecutive frames** (`attended_confirm_frames = 3`). This hysteresis stops flicker.
 
 ### 7.3 The 6 states (exact names in code)
@@ -291,13 +291,14 @@ Camera resolution requested: 1280×720. JPEG quality: 75.
 | `status` | TEXT (default `'unattended'`) | unattended |
 | `detected_at` | TEXT (ISO timestamp) | 2026-11-10T14:57:22 |
 
-- **No duplicate rows:** `camera_manager.py` keeps a set `self.logged_bag_ids`. Each bag ID is logged **once** even if the alarm stays on for minutes.
+- **No duplicate rows:** `camera_manager.py` keeps `self.logged_episodes`, which records the last separation episode logged for each bag ID. Each separation is logged **once**, even if the alarm stays on for minutes. When the owner returns and walks away again, that is a new episode and a new incident.
 - **Why SQLite?** Serverless, a single file, zero configuration, works offline. Ideal for one edge PC. (For multi-site/central reporting you'd migrate to PostgreSQL/MySQL.)
 
 ### 8.4 Alerts — `notifier.py`
 - **Audio:** `winsound.Beep(1200 Hz, 350 ms)` in a **background thread** (video never freezes). **Rate-limited** to once every 3 s while an alert is active. Can be toggled in Settings.
 - **Visual:** a semi-transparent red banner `"WARNING: UNATTENDED OBJECT DETECTED"` drawn with `cv2.addWeighted`, plus a red box and `UNATTENDED BACKPACK #4` label.
 - **Dashboard:** latest 25 alerts via `GET /api/alerts`.
+- **Idle timeout:** a session ends after 30 minutes without user activity. Set `VIGITRACK_IDLE_MINUTES` to change it. Background polling does not count as activity.
 
 ### 8.5 Settings persistence — `settings_store.py` + `data/settings.json`
 - Defaults: `distance_threshold 150`, `time_threshold 10`, `audio_alert_enabled true`, `camera_source 0`, `camera_name "BUILT-IN WEBCAM"`.
@@ -309,19 +310,32 @@ Camera resolution requested: 1280×720. JPEG quality: 75.
 | Method & route | Access | Purpose |
 |---|---|---|
 | `GET /` | Public | Futuristic Landing Page with system overview & Admin Access Portal |
-| `POST /api/login` | Public | Validates username and password, applies lockout after 5 failed attempts, and creates a session |
+| `POST /api/login` | Public | Validates username and password, applies per-account lockout after 5 failed attempts and a per-IP limit of 10 failures per minute, and creates a session |
 | `GET /api/setup/status`, `POST /api/setup` | Public, only before the first account exists | First-run setup: creates the administrator with the one-time setup code printed in the backend terminal |
 | `GET /logout` | Admin | Clears session and redirects back to Landing Page |
 | `GET /dashboard` | Admin Only | Protected live surveillance dashboard |
 | `GET /incidents` | Admin Only | Incident history page |
 | `GET /settings` | Admin Only | Settings page (thresholds, camera source, and Admin credentials) |
 | `GET /video_feed` | Admin Only | Protected live MJPEG video stream |
-| `GET /api/alerts` | Admin Only | Recent alerts (JSON) |
+| `GET /api/alerts` | Logged in | Recent alerts (JSON). Background polling; does not extend the session |
+| `GET /api/camera/status` | Logged in | Camera status: `online`, `reconnecting` or `offline`, with the age of the last frame |
+| `POST /api/incidents/<id>/review` | Logged in | Acknowledge, verify, or dismiss an incident as a false alarm (a reason is required) |
 | `GET /api/incidents` | Admin Only | Incident list (newest 100) |
 | `DELETE /api/incidents/<id>` | Admin Only | Delete one incident |
 | `POST /api/incidents/clear` | Admin Only | Clear all incidents |
-| `GET /api/settings` | Admin Only | Current thresholds, camera source, audio, admin username |
-| `POST /api/settings` | Admin Only | Update thresholds, camera source, audio, and admin credentials |
+| `POST /api/incidents/purge` | Admin Only | Delete incidents detected between two dates (YYYY-MM-DD), with their snapshots |
+| `GET /api/settings` | Admin Only | Current thresholds, camera source (masked), audio, retention days |
+| `POST /api/settings` | Admin Only | Update thresholds, camera source, audio, and retention days (1–3650) |
+| `GET /api/audit/verify` | Admin Only | Verifies the audit log's hash chain; reports the first broken entry |
+| `GET /api/notice` | Public | Privacy notice for the sign-in page (what is recorded and for how long) |
+
+Login rate limit: 10 failed sign-ins from one IP address within 60 seconds returns HTTP 429; the block lifts as the window empties.
+
+Security headers on every response: `Content-Security-Policy: default-src 'self'`, `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: same-origin`.
+
+Record retention: incidents and snapshots older than the configured number of days (default 30, 1–3650) are deleted automatically at least once an hour, and each purge is recorded in the audit log. Set it on the Settings page (`retention_days`).
+
+Camera credentials: RTSP URLs are encrypted with Windows DPAPI and stored as `camera_source_secret`; the settings file keeps only the masked form (`rtsp://***@host`) for display, and the video log never prints the credentials.
 
 Server: `app.run(host="0.0.0.0", port=5000, threaded=True, debug=False)`. `debug=False` prevents the reloader from opening the camera twice.
 
@@ -399,7 +413,7 @@ The switch is **automatic** at startup (`detector.py`). The pipeline after detec
 ### 11.2 "Why use yours instead of existing systems?"
 > *"Many existing CCTV analytics only check whether an object has stayed in one spot for X seconds. A student reading on a bench with their bag beside them triggers an alarm. Guards get tired of these false alarms and turn the feature off. VigiTrack:*
 > 1. *tracks the **person with the bag**, so no alarm while someone is with it;*
-> 2. ***ignores passers-by**: a stranger walking past can't reset or take over the association;*
+> 2. ***ignores passers-by**: a stranger walking past can't reset the association, and can take over a moving bag only after the owner has left the frame and the stranger stays beside it for about 10 frames;*
 > 3. ***keeps counting when the person leaves the frame**;*
 > 4. *runs on **existing cameras and ordinary school PCs**, with no expensive GPU or enterprise license.*
 > *Existing systems detect stationary pixels. VigiTrack detects human separation."*
@@ -407,6 +421,52 @@ The switch is **automatic** at startup (`detector.py`). The pipeline after detec
 ### 11.3 Careful wording
 - ❌ Don't say *"No existing system associates people with bags. We invented it."* Person-bag association exists in research papers (e.g., airport surveillance).
 - ✅ Say *"We contribute a practical, lightweight, privacy-preserving implementation (no face recognition) that fixes the false-alarm problem and runs on commodity campus hardware."*
+
+---
+
+## 11.4 Evaluation & Benchmarking (Phase 3)
+
+The evaluation harness replays the **same labelled clips** through two methods and scores them against ground truth:
+
+- **VigiTrack** — the person–object association FSM (`AdvancedBaggageMonitor`)
+- **Stationary-timer baseline** — the naive "bag hasn't moved for N seconds → alert" method (`app/evaluation/baseline.py`), which knows nothing about owners
+
+Metrics per method: **false alarms per hour**, **recall** (labelled events detected), and **mean detection latency** (seconds after the event starts).
+
+All commands run from the `backend/` folder:
+
+| Command | What it does |
+|---|---|
+| `python -m app.evaluation.cli evaluate` | Scores the built-in 5-scenario synthetic set and prints the comparison table |
+| `python -m app.evaluation.cli evaluate path/to/clip.json` | Scores real labelled clips (give it as many files as you like) |
+| `python -m app.evaluation.cli synthetic --out data/eval` | Writes the synthetic scenario files, so you can inspect or edit them |
+| `python -m app.evaluation.cli record-video --video clip.mp4 --out data/eval/clip.json` | Runs the real YOLO + ByteTrack pipeline over a video (or a camera index) and dumps per-frame detections for labelling |
+| `python -m app.evaluation.cli benchmark --seconds 30` | Measures detection FPS and frame latency on this PC (NFR-01) |
+| `python -m app.evaluation.cli soak --url rtsp://... --hours 2` | Runs an RTSP stream for hours and reports fps, reconnects and a PASS/FAIL (Phase 3 exit test) |
+
+**Scenario file format** (`record-video` writes this; add the `events` yourself):
+
+```json
+{
+  "name": "bench_clip_1",
+  "fps": 25.0,
+  "frames": [{"t": 0.0, "dets": [{"id": 1, "class_name": "person", "box": [500, 250, 580, 550]}]}, ...],
+  "events": [{"label": "unattended", "start": 13.6, "end": 45.0, "bag_id": 2}]
+}
+```
+
+An `event` is ground truth: the bag was genuinely unattended from `start` to `end` (seconds). `bag_id` is optional; omit it to match any bag. Add events by watching the clip and noting when the owner stops attending the bag and when they return.
+
+**Current results on the synthetic smoke set** (235 s of simulated footage; `python tests/test_evaluation.py` reproduces them, 27/27 checks):
+
+| Method | Events detected | Recall | False alarms | False alarms/hour | Mean latency |
+|---|---|---|---|---|---|
+| VigiTrack FSM | 3 / 3 | 100% | 0 | 0.0 | 10.0 s |
+| Stationary-timer baseline | 3 / 3 | 100% | 4 | 61.3 | 2.0 s |
+
+Both find the real events, but the baseline **also** alarms on every clip where a bag sits still beside its seated owner — and it fires *while the bag is still attended*. VigiTrack stays silent there because the owner is still within the distance threshold. The baseline's lower latency on walk-away clips is the flip side of the same coin: it starts its timer while the owner is still there.
+
+⚠️ **This is synthetic evidence.** The labelled *real-footage* scenario set (NFR-31) is still to be recorded and labelled with `record-video`, and FPS/RTSP measurements need the school PC. Don't present these numbers as real-world accuracy.
 
 ---
 
@@ -440,8 +500,8 @@ The switch is **automatic** at startup (`detector.py`). The pipeline after detec
 | Main contribution? | Person-Object Association, which removes false alarms for seated or nearby people |
 | Why "person" not "owner"? | The camera can't verify ownership. It only measures who is physically with the item |
 | Which part is AI? | YOLOv8 (detection) with ByteTrack tracking. The rest is rules and math, kept deterministic so it is transparent and adjustable |
-| How is association done? | Centroid distance ≤ 150 px, locked after 2 consecutive frames. Others can't take it over. 10 s countdown on separation |
-| Stranger walks past? | The association is locked to the first person, so passers-by are ignored |
+| How is association done? | Centroid distance ≤ 150 px, locked after 2 consecutive frames. Others can't take it over, except as described in 7.2. 10 s countdown on separation |
+| Stranger walks past? | The association stays with the owner. A stranger can take over a moving bag only if the owner has left the frame and the stranger stays within 75 px for 10 frames |
 | Person leaves the frame? | `OWNER_OUT_OF_VIEW` state. The countdown keeps running |
 | Person comes back at 8 s? | Back within range for 3 frames → timer resets, no alarm |
 | Bag never had anyone near it? | Timer runs from detection and alerts after 10 s |
@@ -454,7 +514,7 @@ The switch is **automatic** at startup (`detector.py`). The pipeline after detec
 | Why "video streaming" if it's an app? | It's a local display pipeline (localhost/LAN), not internet streaming. It also lets other LAN PCs view without installing anything |
 | Why MJPEG? | Browsers can't play RTSP. MJPEG is native, plugin-free and low-latency |
 | Why SQLite? | Serverless single file, zero config, offline. Ideal for an edge PC |
-| Duplicate DB rows? | No. `logged_bag_ids` logs each bag once |
+| Duplicate DB rows? | No. `logged_episodes` logs each separation episode once. A new separation is a new incident |
 | Does the beep freeze video? | No. It plays in a background thread, rate-limited to every 3 s |
 | Settings lost on restart? | No. Saved to `settings.json`, with automatic defaults if the file is corrupt |
 | Why threads + locks? | The reader keeps frames fresh, the worker runs AI. Locks prevent two threads touching the same frame |
@@ -497,7 +557,7 @@ Some earlier chat answers and the generated **`VigiTrack_Capstone_Defense_Handbo
 | FSM state names (PDF) | `IN_TRANSIT → ASSOCIATED → UNATTENDED → ALERT_PENDING → ALARM_ACTIVE → CLEARED` | `UNASSIGNED, CARRIED, STATIC_ATTENDED, SEPARATED, OWNER_OUT_OF_VIEW, UNATTENDED_ALERT` |
 | Association lock | "5 consecutive frames (`DEBOUNCE_COMMIT_FRAMES = 5`)" | **2 frames** (`streak >= 2`) to lock. **3 frames** (`attended_confirm_frames`) to confirm the person is back |
 | Confidence thresholds | person 0.55, bags 0.28 / 0.30 | person **0.60**, backpack **0.22**, handbag **0.18**, suitcase **0.25** |
-| Dedup set name | `self.logged_ids` | `self.logged_bag_ids` |
+| Dedup set name | `self.logged_ids` | `self.logged_episodes` (bag ID to last logged episode) |
 | Beep | 1000 Hz, 400 ms | **1200 Hz, 350 ms**, rate-limited every **3 s** |
 | Banner text | "UNATTENDED BAGGAGE ALERT ACTIVE" | "WARNING: UNATTENDED OBJECT DETECTED" |
 | Database code | `person_track_id = Column(Integer)` (ORM style) | Plain `sqlite3` with `CREATE TABLE`. Also has a `status` column. WAL mode |
