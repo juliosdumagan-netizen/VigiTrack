@@ -198,6 +198,15 @@ for expected in ("login", "login_failed", "login_blocked", "user_created", "pass
                  "user_disabled", "user_enabled", "user_unlocked", "role_changed", "user_deleted", "settings_changed"):
     check(f"audit records {expected}", expected in actions)
 
+# --- 10b. Passwords preserve leading/trailing spaces across creation and login ---
+routes.login_limiter.reset()
+r = admin.post("/api/users", json={"username": "spaceuser", "password": " space pass ", "role": "operator"})
+check("account created with leading/trailing spaces in password", r.status_code == 201)
+check("login succeeds with exact spaced password",
+      app.test_client().post("/api/login", json={"username": "spaceuser", "password": " space pass "}).status_code == 200)
+check("login fails when spaces are stripped",
+      app.test_client().post("/api/login", json={"username": "spaceuser", "password": "space pass"}).status_code == 401)
+
 passed = sum(1 for _, ok in results if ok)
 print(f"\n{passed}/{len(results)} checks passed")
 

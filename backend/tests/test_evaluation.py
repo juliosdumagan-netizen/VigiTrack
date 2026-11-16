@@ -116,6 +116,12 @@ s = score([{"start": 10.0, "end": 20.0}], [{"bag_id": 7, "t": 15.0, "on": True}]
 check("an event with no bag id matches any bag",
       s["detected"] == 1 and s["latencies"] == [5.0], str(s))
 
+s = score([{"start": 10.0, "end": 20.0}],
+          [{"bag_id": 1, "t": 5.0, "on": True}, {"bag_id": 2, "t": 6.0, "on": False}],
+          1800.0)
+check("multi-bag event with no bag id still sees bag 1 alerting at start",
+      s["detected"] == 1 and s["latencies"] == [0.0], str(s))
+
 # --- 5. Baseline re-arms when the object moves ---
 b = StationaryTimerBaseline(time_threshold=1.0, static_tolerance_px=3.0)
 static = [{"id": 1, "class_name": "backpack", "box": [0, 0, 70, 70]}]

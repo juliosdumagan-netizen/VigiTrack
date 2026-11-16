@@ -20,9 +20,16 @@ for _ in range(4):
 check("majority class wins", h.dominant() == "suitcase", h.dominant())
 
 h = ClassHistory()
-h.add("handbag", 0.2)
+h.add("handbag", 0.3)
 h.add("suitcase", 0.3)
 check("tie goes to the most recent class", h.dominant() == "suitcase", h.dominant())
+
+h = ClassHistory()
+for _ in range(6):
+    h.add("suitcase", 0.26)
+for _ in range(5):
+    h.add("backpack", 0.72)
+check("higher-confidence frames outweigh more weak frames", h.dominant() == "backpack", h.dominant())
 
 h = ClassHistory(maxlen=5)
 for _ in range(5):

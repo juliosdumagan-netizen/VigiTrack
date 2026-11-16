@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import { AppSidebar } from '@/components/layout/app-sidebar'
 import { IncidentNotifier } from '@/components/incidents/incident-notifier'
@@ -5,6 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
 import { Toaster } from '@/components/ui/sonner'
+import { api, UnauthorizedError, type CameraStatus } from '@/lib/api'
 import { useAuth } from '@/lib/auth'
 
 const titles: Record<string, string> = {
@@ -12,13 +14,47 @@ const titles: Record<string, string> = {
   '/cameras': 'Cameras',
   '/incidents': 'Incidents',
   '/users': 'Users',
+  '/audit': 'Audit',
   '/account': 'My account',
   '/settings': 'Settings',
 }
 
+type HeaderHealth = CameraStatus['status'] | 'checking' | 'unreachable'
+
+const HEADER_STATUS: Record<HeaderHealth, { label: string; dot: string }> = {
+  checking: { label: 'Checking…', dot: 'bg-muted-foreground' },
+  online: { label: 'Camera Online', dot: 'bg-emerald-500' },
+  reconnecting: { label: 'Reconnecting…', dot: 'bg-amber-500' },
+  offline: { label: 'Camera Offline', dot: 'bg-destructive' },
+  unreachable: { label: 'Backend Offline', dot: 'bg-destructive' },
+}
+
 export function DashboardLayout() {
   const location = useLocation()
-  const { user, loading, error } = useAuth()
+  const { user, loading, error, refresh } = useAuth()
+  const [health, setHealth] = useState<HeaderHealth>('checking')
+
+  useEffect(() => {
+    if (!user || user.must_change_password) return
+    let active = true
+
+    const poll = () =>
+      api
+        .getCameraStatus()
+        .then((s) => active && setHealth(s.status))
+        .catch((err) => {
+          if (!active) return
+          if (err instanceof UnauthorizedError) void refresh()
+          else setHealth('unreachable')
+        })
+
+    void poll()
+    const timer = setInterval(poll, 3000)
+    return () => {
+      active = false
+      clearInterval(timer)
+    }
+  }, [user, refresh])
 
   if (loading) {
     return (
@@ -58,12 +94,14 @@ export function DashboardLayout() {
           <SidebarTrigger className="-ml-1" />
           <Separator orientation="vertical" className="mr-2 h-4" />
           <h1 className="text-sm font-medium">{title}</h1>
-          <div className="ml-auto">
-            <Badge variant="outline" className="gap-1.5">
-              <span className="size-2 rounded-full bg-emerald-500" />
-              System Online
-            </Badge>
-          </div>
+          {!user.must_change_password && (
+            <div className="ml-auto">
+              <Badge variant="outline" className="gap-1.5">
+                <span className={`size-2 rounded-full ${HEADER_STATUS[health].dot}`} />
+                {HEADER_STATUS[health].label}
+              </Badge>
+            </div>
+          )}
         </header>
         <main className="flex flex-1 flex-col gap-4 p-4 md:p-6">
           <Outlet />

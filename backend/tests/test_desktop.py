@@ -24,9 +24,13 @@ port = desktop.free_port()
 threading.Thread(target=serve, kwargs={"app": app, "host": "127.0.0.1", "port": port, "threads": 4, "_quiet": True}, daemon=True).start()
 desktop.wait_for_server(port)
 base = f"http://127.0.0.1:{port}"
+# Bypass any ambient HTTP_PROXY when probing the in-process 127.0.0.1 test server.
+_opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+
+
 def get(path):
     try:
-        with urllib.request.urlopen(base + path, timeout=10) as r:
+        with _opener.open(base + path, timeout=10) as r:
             return r.status, r.headers.get("Content-Type"), r.read()
     except urllib.error.HTTPError as e:
         return e.code, e.headers.get("Content-Type"), e.read()
@@ -49,4 +53,5 @@ chk("protected API still requires login", s == 401)
 s, ct, body = get("/%2e%2e/%2e%2e/etc/passwd")
 chk("path traversal blocked", s != 200 or b"root:" not in body)
 print(f"\n{sum(res)}/{len(res)} checks passed")
+sys.exit(0 if sum(res) == len(res) else 1)
 

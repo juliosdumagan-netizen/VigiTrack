@@ -6,13 +6,14 @@ import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { api } from '@/lib/api'
 
-type BagClass = 'backpack' | 'handbag' | 'suitcase' | 'laptop'
+type BagClass = 'backpack' | 'handbag' | 'suitcase' | 'laptop' | 'cell phone'
 
 const BAG_CLASSES: { key: BagClass; label: string }[] = [
   { key: 'backpack', label: 'Backpack' },
   { key: 'handbag', label: 'Handbag' },
   { key: 'suitcase', label: 'Suitcase' },
   { key: 'laptop', label: 'Laptop' },
+  { key: 'cell phone', label: 'Mobile phone' },
 ]
 
 export function SettingsPage() {
@@ -25,6 +26,7 @@ export function SettingsPage() {
     handbag: true,
     suitcase: true,
     laptop: false,
+    'cell phone': false,
   })
   const [retention, setRetention] = useState('30')
   const [message, setMessage] = useState<{ type: 'ok' | 'error'; text: string } | null>(null)
@@ -43,6 +45,7 @@ export function SettingsPage() {
           handbag: s.monitored_classes.includes('handbag'),
           suitcase: s.monitored_classes.includes('suitcase'),
           laptop: s.monitored_classes.includes('laptop'),
+          'cell phone': s.monitored_classes.includes('cell phone'),
         })
         setLoaded(true)
       })

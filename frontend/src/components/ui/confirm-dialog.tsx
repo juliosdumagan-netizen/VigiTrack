@@ -40,6 +40,8 @@ export function ConfirmDialog({
     try {
       await onConfirm()
       onOpenChange(false)
+    } catch {
+      // Caller surfaces the error; keep the dialog open.
     } finally {
       setBusy(false)
     }

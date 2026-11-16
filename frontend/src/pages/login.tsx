@@ -33,7 +33,7 @@ export function LoginPage() {
     setError(null)
     setSubmitting(true)
     try {
-      const res = await api.login(username.trim(), password.trim())
+      const res = await api.login(username.trim(), password)
       setUser(res.user)
       navigate('/dashboard', { replace: true })
     } catch (err) {
@@ -55,7 +55,7 @@ export function LoginPage() {
           <CardContent className="grid gap-4">
             {notice && (
               <p className="rounded-md bg-muted p-3 text-xs text-muted-foreground">
-                Privacy notice: this camera records for security monitoring. Detections are stored
+                Privacy notice: this camera records for security monitoring. Detections are stored{' '}
                 {notice.retention_days} day{notice.retention_days === 1 ? '' : 's'} and then deleted automatically.
               </p>
             )}

@@ -6,30 +6,55 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { api, UnauthorizedError, type Settings } from '@/lib/api'
+import { api, UnauthorizedError, type CameraStatus, type Settings } from '@/lib/api'
 import { useAuth } from '@/lib/auth'
+
+const CAMERA_BADGE: Record<CameraStatus['status'], { label: string; dot: string }> = {
+  online: { label: 'Online', dot: 'bg-emerald-500' },
+  reconnecting: { label: 'Reconnecting…', dot: 'bg-amber-500' },
+  offline: { label: 'Offline', dot: 'bg-destructive' },
+}
 
 export function CamerasPage() {
   const navigate = useNavigate()
   const { isAdmin } = useAuth()
   const [settings, setSettings] = useState<Settings | null>(null)
+  const [camera, setCamera] = useState<CameraStatus | null>(null)
   const [source, setSource] = useState('')
   const [name, setName] = useState('')
   const [message, setMessage] = useState<{ type: 'ok' | 'error'; text: string } | null>(null)
   const [saving, setSaving] = useState(false)
 
   useEffect(() => {
+    let active = true
     api
       .getSettings()
       .then((s) => {
+        if (!active) return
         setSettings(s)
         setSource(String(s.camera_source))
         setName(s.camera_name)
       })
       .catch((err) => {
+        if (!active) return
         if (err instanceof UnauthorizedError) navigate('/login', { replace: true })
         else setMessage({ type: 'error', text: err instanceof Error ? err.message : 'Failed to load' })
       })
+
+    const pollStatus = () =>
+      api
+        .getCameraStatus()
+        .then((c) => active && setCamera(c))
+        .catch((err) => {
+          if (err instanceof UnauthorizedError) navigate('/login', { replace: true })
+        })
+
+    void pollStatus()
+    const timer = setInterval(pollStatus, 3000)
+    return () => {
+      active = false
+      clearInterval(timer)
+    }
   }, [navigate])
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -48,6 +73,7 @@ export function CamerasPage() {
       }
       const res = await api.updateSettings(payload)
       setSettings(res.settings as Settings)
+      setCamera(await api.getCameraStatus().catch(() => null))
       setMessage({ type: 'ok', text: 'Camera source switched.' })
     } catch (err) {
       setMessage({ type: 'error', text: err instanceof Error ? err.message : 'Switch failed' })
@@ -78,10 +104,17 @@ export function CamerasPage() {
                   <TableCell className="font-medium">{settings.camera_name}</TableCell>
                   <TableCell className="font-mono text-xs">{String(settings.camera_source)}</TableCell>
                   <TableCell>
-                    <Badge variant="outline" className="gap-1.5">
-                      <span className="size-2 rounded-full bg-emerald-500" />
-                      Active
-                    </Badge>
+                    {camera ? (
+                      <Badge variant="outline" className="gap-1.5">
+                        <span className={`size-2 rounded-full ${CAMERA_BADGE[camera.status].dot}`} />
+                        {CAMERA_BADGE[camera.status].label}
+                      </Badge>
+                    ) : (
+                      <Badge variant="outline" className="gap-1.5">
+                        <span className="size-2 rounded-full bg-muted-foreground" />
+                        Checking…
+                      </Badge>
+                    )}
                   </TableCell>
                 </TableRow>
               )}

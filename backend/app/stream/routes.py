@@ -1,8 +1,11 @@
+import math
 import os
+import secrets
 import threading
 import time
 from datetime import datetime, timedelta
 from functools import wraps
+from typing import Dict, Optional
 from flask import Blueprint, Response, jsonify, request, session, redirect, send_from_directory
 from werkzeug.security import check_password_hash
 from app.database.retention import DEFAULT_RETENTION_DAYS, purge_between
@@ -46,10 +49,61 @@ def get_camera_manager():
     return camera_manager
 
 
-def generate_frames():
+IDLE_TIMEOUT_SECONDS = int(os.getenv("VIGITRACK_IDLE_MINUTES", "30")) * 60
+_STREAM_CHECK_INTERVAL_SECONDS = 1.0
+
+_session_lock = threading.Lock()
+_active_sessions: Dict[str, float] = {}
+_revoked_sids: Dict[str, float] = {}
+
+
+def _prune_sessions(now: float) -> None:
+    max_age = max(IDLE_TIMEOUT_SECONDS, 8 * 3600)
+    for store in (_active_sessions, _revoked_sids):
+        expired = [k for k, ts in store.items() if now - ts > max_age]
+        for k in expired:
+            del store[k]
+
+
+def _touch_session(sid: str, now: float) -> None:
+    with _session_lock:
+        _prune_sessions(now)
+        _active_sessions[sid] = now
+
+
+def _drop_session(sid: Optional[str]) -> None:
+    if not sid:
+        return
+    now = time.time()
+    with _session_lock:
+        _prune_sessions(now)
+        _active_sessions.pop(sid, None)
+        _revoked_sids[sid] = now
+
+
+def _session_still_valid(user_id: int, sid: Optional[str]) -> bool:
+    if sid is not None:
+        with _session_lock:
+            if sid in _revoked_sids:
+                return False
+            last_active = _active_sessions.get(sid)
+        if last_active is None or time.time() - last_active > IDLE_TIMEOUT_SECONDS:
+            return False
+    user = accounts.get_user(user_id)
+    return user is not None and bool(user["is_active"])
+
+
+def generate_frames(user_id: Optional[int] = None, sid: Optional[str] = None):
     """Generator streaming multipart MJPEG frames to web clients."""
     cam = get_camera_manager()
+    last_check = time.monotonic()
     while True:
+        if user_id is not None:
+            now_mono = time.monotonic()
+            if now_mono - last_check >= _STREAM_CHECK_INTERVAL_SECONDS:
+                last_check = now_mono
+                if not _session_still_valid(user_id, sid):
+                    return
         frame_bytes = cam.get_frame()
         if frame_bytes is not None:
             yield (
@@ -58,8 +112,6 @@ def generate_frames():
             )
         time.sleep(0.03)  # ~30 FPS throttle for streaming
 
-
-IDLE_TIMEOUT_SECONDS = int(os.getenv("VIGITRACK_IDLE_MINUTES", "30")) * 60
 
 # Polling endpoints the hub calls in the background. They do not count as user activity,
 # so a dashboard left open on its own still times out.
@@ -78,8 +130,16 @@ def _current_user():
     user_id = session.get("user_id")
     if not user_id:
         return None
+    sid = session.get("sid")
+    if sid:
+        with _session_lock:
+            if sid in _revoked_sids:
+                session.clear()
+                return None
+
     user = accounts.get_user(user_id)
     if user is None or not user["is_active"]:
+        _drop_session(sid)
         session.clear()
         return None
 
@@ -87,10 +147,20 @@ def _current_user():
     last_seen = session.get("last_seen")
     if last_seen is not None and now - last_seen > IDLE_TIMEOUT_SECONDS:
         accounts.log_audit(user["username"], "session_expired", "idle timeout")
+        _drop_session(sid)
         session.clear()
         return None
+
+    if not sid:
+        sid = secrets.token_hex(16)
+        session["sid"] = sid
+
     if last_seen is None or request.endpoint not in BACKGROUND_ENDPOINTS:
         session["last_seen"] = now
+        _touch_session(sid, now)
+    else:
+        with _session_lock:
+            _active_sessions.setdefault(sid, last_seen)
     return user
 
 
@@ -177,7 +247,7 @@ def api_login():
 
     data = request.get_json(silent=True) or {}
     username = (data.get("username") or "").strip()
-    password = (data.get("password") or "").strip()
+    password = str(data.get("password") or "")
 
     user, reason = accounts.authenticate(username, password)
     if not user:
@@ -186,7 +256,11 @@ def api_login():
         session.clear()
         session.permanent = True
         session["user_id"] = user["id"]
-        session["last_seen"] = time.time()
+        now = time.time()
+        session["last_seen"] = now
+        sid = secrets.token_hex(16)
+        session["sid"] = sid
+        _touch_session(sid, now)
         return jsonify({
             "status": "success",
             "message": "Authentication successful",
@@ -230,7 +304,11 @@ def api_setup():
     session.clear()
     session.permanent = True
     session["user_id"] = user["id"]
-    session["last_seen"] = time.time()
+    now = time.time()
+    session["last_seen"] = now
+    sid = secrets.token_hex(16)
+    session["sid"] = sid
+    _touch_session(sid, now)
     return jsonify({"status": "success", "user": user}), 201
 
 
@@ -239,6 +317,7 @@ def api_logout():
     user = _current_user()
     if user:
         accounts.log_audit(user["username"], "logout")
+    _drop_session(session.get("sid"))
     session.clear()
     return jsonify({"status": "success"})
 
@@ -249,6 +328,7 @@ def logout():
     user = _current_user()
     if user:
         accounts.log_audit(user["username"], "logout")
+    _drop_session(session.get("sid"))
     session.clear()
     return redirect("/")
 
@@ -453,7 +533,7 @@ def api_export_audit_csv():
 def video_feed():
     """Protected live MJPEG video stream."""
     return Response(
-        generate_frames(),
+        generate_frames(user_id=session.get("user_id"), sid=session.get("sid")),
         mimetype="multipart/x-mixed-replace; boundary=frame"
     )
 
@@ -704,6 +784,15 @@ def _parse_monitored_classes(value):
     return sorted(set(value) | {"person"})
 
 
+def _parse_positive_float(value, name: str) -> float:
+    if isinstance(value, bool):
+        raise ValueError(f"{name} must be a positive number.")
+    parsed = float(value)
+    if not math.isfinite(parsed) or parsed <= 0:
+        raise ValueError(f"{name} must be a positive finite number.")
+    return parsed
+
+
 @stream_bp.route("/api/settings", methods=["POST"])
 @admin_required
 def api_update_settings():
@@ -717,10 +806,19 @@ def api_update_settings():
 
     try:
         # Validate and parse every value before anything is saved
+        has_dist = "distance_threshold" in data
+        has_time = "time_threshold" in data
         dist = time_thresh = None
-        if "distance_threshold" in data and "time_threshold" in data:
-            dist = float(data["distance_threshold"])
-            time_thresh = float(data["time_threshold"])
+        if has_dist or has_time:
+            current = cam.get_thresholds()
+            raw_dist = data["distance_threshold"] if has_dist else current.get(
+                "distance_threshold", before.get("distance_threshold", 150)
+            )
+            raw_time = data["time_threshold"] if has_time else current.get(
+                "time_threshold", before.get("time_threshold", 10)
+            )
+            dist = _parse_positive_float(raw_dist, "distance_threshold")
+            time_thresh = _parse_positive_float(raw_time, "time_threshold")
 
         classes = _parse_monitored_classes(data["monitored_classes"]) if "monitored_classes" in data else None
 

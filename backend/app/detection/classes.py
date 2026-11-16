@@ -6,12 +6,13 @@ SUPPORTED_CLASSES = {
     26: "handbag",
     28: "suitcase",
     63: "laptop",
+    67: "cell phone",
 }
 
-# Objects that can be left behind. Laptops are opt-in: they are only tracked when
-# monitored_classes includes them (see Settings → Objects to monitor).
-BAG_CLASSES = ("backpack", "handbag", "suitcase", "laptop")
+# Objects that can be left behind. Laptops and cell phones are opt-in: they are only tracked
+# when monitored_classes includes them (see Settings → Objects to monitor).
+BAG_CLASSES = ("backpack", "handbag", "suitcase", "laptop", "cell phone")
 
 # Bags that YOLO often confuses with each other, so a track may switch between them.
-# Laptops are not in this group: a laptop track only matches laptop detections.
+# Laptops and cell phones are excluded: their tracks only match their own class.
 CROSS_BAG_CLASSES = ("backpack", "handbag", "suitcase")

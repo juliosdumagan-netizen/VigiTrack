@@ -24,13 +24,15 @@ class ClassHistory:
         self._items.append((class_name, float(confidence)))
 
     def dominant(self) -> Optional[str]:
-        """The most common class in the window. A tie goes to the most recent of the tied classes."""
+        """Highest total-confidence class in the window. Ties break toward the most recent class."""
         if not self._items:
             return None
-        counts = Counter(name for name, _ in self._items)
-        best = max(counts.values())
+        scores: Dict[str, float] = {}
+        for name, conf in self._items:
+            scores[name] = scores.get(name, 0.0) + conf
+        best = max(scores.values())
         for name, _ in reversed(self._items):
-            if counts[name] == best:
+            if abs(scores[name] - best) <= 1e-9:
                 return name
         return None
 

@@ -205,7 +205,10 @@ export function LiveFeedCard({ cameraName, className }: { cameraName: string; cl
                           step={1}
                           className="w-24"
                           value={zone.time_threshold ?? ''}
-                          onChange={(e) => updateZone(zone.id, { time_threshold: Number(e.target.value) })}
+                          onChange={(e) => {
+                            const raw = e.target.value
+                            updateZone(zone.id, { time_threshold: raw === '' ? undefined : Number(raw) })
+                          }}
                         />
                       </div>
                     ) : (

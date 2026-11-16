@@ -77,10 +77,20 @@ export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted,
 
   async function confirmDelete() {
     if (!incident) return
-    await api.deleteIncident(incident.id).catch(() => undefined)
-    setDeleteOpen(false)
-    onDeleted()
-    onClose()
+    try {
+      await api.deleteIncident(incident.id)
+      setDeleteOpen(false)
+      onDeleted()
+      onClose()
+    } catch (err) {
+      if (err instanceof UnauthorizedError) {
+        setDeleteOpen(false)
+        onClose()
+      } else {
+        toast.error(err instanceof Error ? err.message : 'Failed to delete incident')
+        throw err
+      }
+    }
   }
 
   async function submitReview(action: ReviewAction) {

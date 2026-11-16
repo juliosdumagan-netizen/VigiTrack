@@ -1,15 +1,16 @@
 import { useCallback, useEffect, useState, type FormEvent } from 'react'
-import { KeyRound, Lock, Trash2, Unlock } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { KeyRound, Lock, ScrollText, Trash2, Unlock } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { api, type AuditEntry, type Role, type User } from '@/lib/api'
+import { api, type Role, type User } from '@/lib/api'
 import { useAuth } from '@/lib/auth'
 
 type Notice = { type: 'ok' | 'error'; text: string }
@@ -17,7 +18,6 @@ type Notice = { type: 'ok' | 'error'; text: string }
 export function UsersPage() {
   const { user: me } = useAuth()
   const [users, setUsers] = useState<User[]>([])
-  const [audit, setAudit] = useState<AuditEntry[]>([])
   const [notice, setNotice] = useState<Notice | null>(null)
 
   const [newName, setNewName] = useState('')
@@ -32,7 +32,6 @@ export function UsersPage() {
 
   const load = useCallback(() => {
     api.listUsers().then(setUsers).catch((err) => setNotice({ type: 'error', text: err.message }))
-    api.getAudit().then(setAudit).catch(() => undefined)
   }, [])
 
   useEffect(() => {
@@ -104,6 +103,14 @@ export function UsersPage() {
           <CardHeader>
             <CardTitle>Accounts</CardTitle>
             <CardDescription>Administrators can manage every account. Operators can view and acknowledge.</CardDescription>
+            <CardAction>
+              <Button asChild variant="outline" size="sm">
+                <Link to="/audit">
+                  <ScrollText />
+                  Audit log
+                </Link>
+              </Button>
+            </CardAction>
           </CardHeader>
           <CardContent>
             <Table>
@@ -246,40 +253,6 @@ export function UsersPage() {
           </form>
         </Card>
       </div>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Activity log</CardTitle>
-          <CardDescription>Logins, account changes and settings updates, newest first</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Time</TableHead>
-                <TableHead>User</TableHead>
-                <TableHead>Action</TableHead>
-                <TableHead>Detail</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {audit.length === 0 && (
-                <TableRow>
-                  <TableCell colSpan={4} className="text-center text-muted-foreground">No activity yet.</TableCell>
-                </TableRow>
-              )}
-              {audit.slice(0, 100).map((entry) => (
-                <TableRow key={entry.id}>
-                  <TableCell className="whitespace-nowrap">{new Date(entry.created_at).toLocaleString()}</TableCell>
-                  <TableCell>{entry.actor ?? '—'}</TableCell>
-                  <TableCell className="font-mono text-xs">{entry.action}</TableCell>
-                  <TableCell className="text-muted-foreground">{entry.detail ?? ''}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
 
       <ConfirmDialog
         open={deleteTarget !== null}

@@ -32,7 +32,7 @@ def main():
 
     print(f"[Config] Source: {source}")
     print(f"[Config] Distance Threshold: {distance_thresh}px | Time Threshold: {time_thresh}s")
-    print("[Config] Target Classes: Person (0), Backpack (24), Handbag (26), Suitcase (28)")
+    print(f"[Config] Monitored Classes: {settings.get('monitored_classes')}")
 
     # 3. Open Video Capture
     print(f"[Camera] Opening video source {source}...")
@@ -53,7 +53,7 @@ def main():
 
     # 4. Initialize AI Models
     print("[AI Pipeline] Initializing YOLOv8 and ByteTrack...")
-    detector = ObjectDetector(model_name="yolov8m.pt")
+    detector = ObjectDetector(monitored_classes=settings.get("monitored_classes"))
     monitor = AdvancedBaggageMonitor(
         distance_threshold=distance_thresh,
         time_threshold=time_thresh

@@ -2,7 +2,7 @@ import type { Incident } from '@/lib/api'
 
 type Evidence = NonNullable<Incident['class_evidence']>
 
-const BAG_LABELS = ['backpack', 'handbag', 'suitcase', 'laptop']
+const BAG_LABELS = ['backpack', 'handbag', 'suitcase', 'laptop', 'cell phone']
 
 /** True when the track was labelled as more than one bag type during its window. */
 export function mixedBagLabels(evidence: Evidence) {

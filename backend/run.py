@@ -55,7 +55,7 @@ if __name__ == "__main__":
     settings = load_settings()
     src = settings.get("camera_source", 0)
     host = os.getenv("VIGITRACK_HOST", "0.0.0.0")
-    port = int(os.getenv("VIGITRACK_PORT", "5000"))
+    port = int(os.getenv("VIGITRACK_PORT", "5001"))
     print("=" * 65)
     print("  VigiTrack: AI Surveillance & Unattended Object Detection")
     print(f"  Active Camera Source : {src} ({settings.get('camera_name', 'Default')})")

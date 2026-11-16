@@ -154,6 +154,19 @@ check("camera source not reverted by later save", s["camera_source"] == 1, s["ca
 # 9. Bad numeric input is rejected cleanly
 r = client.post("/api/settings", json={"distance_threshold": "abc", "time_threshold": 5})
 check("non-numeric threshold gives 400", r.status_code == 400, r.get_json())
+for bad_val in (0, -5, True, "nan", "inf"):
+    r_d = client.post("/api/settings", json={"distance_threshold": bad_val})
+    r_t = client.post("/api/settings", json={"time_threshold": bad_val})
+    check(f"invalid threshold {bad_val!r} gives 400", r_d.status_code == 400 and r_t.status_code == 400,
+          (r_d.status_code, r_t.status_code))
+
+# 10. Single-field threshold updates work independently
+r = client.post("/api/settings", json={"distance_threshold": 210})
+s = settings_store.load_settings()
+check("single-field distance update succeeds", r.status_code == 200 and s["distance_threshold"] == 210 and s["time_threshold"] == 15, s)
+r = client.post("/api/settings", json={"time_threshold": 25})
+s = settings_store.load_settings()
+check("single-field time update succeeds", r.status_code == 200 and s["distance_threshold"] == 210 and s["time_threshold"] == 25, s)
 
 passed = sum(1 for _, ok in results if ok)
 print(f"\n{passed}/{len(results)} checks passed")

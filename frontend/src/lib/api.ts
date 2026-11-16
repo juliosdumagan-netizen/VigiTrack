@@ -230,8 +230,6 @@ export const api = {
 
   deleteUser: (id: number) => request<{ status: string }>(`/api/users/${id}`, { method: 'DELETE' }),
 
-  getAudit: () => request<AuditEntry[]>('/api/audit'),
-
   searchAudit: (params: AuditQuery) => request<AuditSearchResponse>(`/api/audit/search?${auditQueryString(params)}`),
 
   auditActions: () => request<string[]>('/api/audit/actions'),

@@ -58,6 +58,9 @@ class FakeCameraManager:
     def get_camera_status(self):
         return {"status": "online", "last_frame_age": 0.1, "camera_name": "TEST CAM", "source": 0}
 
+    def get_frame(self):
+        return b"\xff\xd8FAKEFRAME\xff\xd9"
+
     def set_monitored_classes(self, names):
         self.monitored = set(names) | {"person"}
         self.calls.append(sorted(names))
@@ -194,6 +197,9 @@ check("change is applied to the running detector", FakeCameraManager.calls[-1] =
       str(FakeCameraManager.calls))
 check("change is saved for the next start", "handbag" in settings_store.load_settings()["monitored_classes"])
 
+r = admin.post("/api/settings", json={"monitored_classes": ["person", "cell phone"]})
+check("admin enables opt-in cell phone class", r.status_code == 200 and "cell phone" in r.get_json()["settings"]["monitored_classes"])
+
 r = admin.post("/api/settings", json={"monitored_classes": ["person", "toaster"]})
 check("unknown class is refused", r.status_code == 400 and "Unknown class: toaster" in r.get_json()["message"], r.get_json())
 
@@ -202,6 +208,42 @@ check("non-list value is refused", r.status_code == 400)
 
 r = operator.post("/api/settings", json={"monitored_classes": ["handbag"]})
 check("operator cannot change monitored classes", r.status_code == 403)
+
+# --- 5. Long-lived MJPEG stream stops on logout or idle timeout ---
+routes._STREAM_CHECK_INTERVAL_SECONDS = 0.05
+stream_client = app.test_client()
+login_res = stream_client.post("/api/login", json={"username": "guard", "password": "guardpass1"})
+guard_uid = login_res.get_json()["user"]["id"]
+with stream_client.session_transaction() as sess:
+    guard_sid = sess.get("sid")
+gen = routes.generate_frames(user_id=guard_uid, sid=guard_sid)
+first_chunk = next(gen)
+check("active session receives MJPEG frame", b"FAKEFRAME" in first_chunk)
+stream_client.post("/api/logout")
+time.sleep(0.08)
+try:
+    for _ in range(5):
+        next(gen)
+    stream_stopped = False
+except StopIteration:
+    stream_stopped = True
+check("MJPEG stream generator stops after logout", stream_stopped)
+
+idle_stream_client = app.test_client()
+idle_stream_client.post("/api/login", json={"username": "guard", "password": "guardpass1"})
+with idle_stream_client.session_transaction() as sess:
+    idle_sid = sess.get("sid")
+routes.IDLE_TIMEOUT_SECONDS = 0
+gen_idle = routes.generate_frames(user_id=guard_uid, sid=idle_sid)
+time.sleep(0.08)
+try:
+    for _ in range(5):
+        next(gen_idle)
+    idle_stopped = False
+except StopIteration:
+    idle_stopped = True
+check("MJPEG stream generator stops after idle timeout", idle_stopped)
+routes.IDLE_TIMEOUT_SECONDS = 30 * 60
 
 passed = sum(results)
 print(f"\n{passed}/{len(results)} checks passed")

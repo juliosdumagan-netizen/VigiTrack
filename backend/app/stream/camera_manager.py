@@ -44,6 +44,7 @@ class CameraManager:
         self.notifier = Notifier(audio_enabled=settings.get("audio_alert_enabled", True))
 
         # Zones are stored normalised; they are converted to pixels once the frame size is known.
+        self.zones_lock = threading.Lock()
         self.zones_config: List[Dict] = normalise_zones(settings.get("zones", []))
         self.zones_dirty = True
         self.zone_set: Optional[ZoneSet] = None
@@ -128,22 +129,39 @@ class CameraManager:
         return None
 
     def _open_capture(self):
-        """Opens cv2.VideoCapture with thread safety."""
+        """Opens cv2.VideoCapture without holding capture_lock during slow connect attempts."""
         with self.capture_lock:
-            old_cap = self.cap
-            new_cap = self._create_capture(self.source)
-            if new_cap:
-                self.cap = new_cap
-                if old_cap:
-                    try:
-                        old_cap.release()
-                    except Exception:
-                        pass
-                print(f"[CameraManager] Active capture open on source '{redact(self.source)}'")
-                return True
+            target_source = self.source
+
+        new_cap = self._create_capture(target_source)
+        if not new_cap:
+            print(f"[CameraManager Warning] Failed to open capture source: {redact(target_source)}")
+            return False
+
+        old_cap = None
+        discard_new = False
+        with self.capture_lock:
+            stopped = self.capture_thread is not None and not self.running
+            if self.source != target_source or stopped:
+                discard_new = True
             else:
-                print(f"[CameraManager Warning] Failed to open capture source: {redact(self.source)}")
-                return False
+                old_cap = self.cap
+                self.cap = new_cap
+
+        if discard_new:
+            try:
+                new_cap.release()
+            except Exception:
+                pass
+            return False
+
+        if old_cap:
+            try:
+                old_cap.release()
+            except Exception:
+                pass
+        print(f"[CameraManager] Active capture open on source '{redact(target_source)}'")
+        return True
 
     def _reader_loop(self):
         """Dedicated thread to constantly drain OpenCV frame buffers and eliminate lag."""
@@ -195,13 +213,18 @@ class CameraManager:
                     frame = self.raw_frame.copy()
 
                 height, width = frame.shape[:2]
-                if self.frame_size != {"width": width, "height": height}:
-                    self.frame_size = {"width": width, "height": height}
-                    self.zones_dirty = True
-                if self.zones_dirty:
-                    self.zone_set = ZoneSet.from_config(self.zones_config, width, height)
+                with self.zones_lock:
+                    if self.frame_size != {"width": width, "height": height}:
+                        self.frame_size = {"width": width, "height": height}
+                        self.zones_dirty = True
+                    if self.zones_dirty:
+                        zones_snapshot = list(self.zones_config)
+                        self.zones_dirty = False
+                    else:
+                        zones_snapshot = None
+                if zones_snapshot is not None:
+                    self.zone_set = ZoneSet.from_config(zones_snapshot, width, height)
                     self.monitor.set_zones(self.zone_set)
-                    self.zones_dirty = False
 
                 # 1. Run YOLOv8 + ByteTrack
                 detections = self.detector.detect_and_track(frame)
@@ -321,7 +344,7 @@ class CameraManager:
                             object_class=entry["class_name"],
                             object_track_id=entry["bag_id"],
                             person_track_id=entry["owner_id"],
-                            distance=entry_dist if entry_dist > 0 else self.monitor.distance_threshold,
+                            distance=entry_dist if (entry["owner_id"] is not None and entry_dist >= 0) else None,
                             camera_name=self.camera_name,
                             image_bytes=snap_bytes,
                             state_history=entry["state_history"],
@@ -389,13 +412,18 @@ class CameraManager:
 
     def get_zones(self) -> Dict:
         """Zones in normalised coordinates, plus the frame size they are drawn against (None until a frame arrives)."""
-        return {"zones": self.zones_config, "frame": self.frame_size}
+        with self.zones_lock:
+            return {
+                "zones": list(self.zones_config),
+                "frame": dict(self.frame_size) if self.frame_size else None,
+            }
 
     def set_zones(self, zones) -> List[Dict]:
         """Validates, saves and applies ignore and watch zones. Raises ZoneError if the zones are not valid."""
         cleaned = normalise_zones(zones)
-        self.zones_config = cleaned
-        self.zones_dirty = True
+        with self.zones_lock:
+            self.zones_config = cleaned
+            self.zones_dirty = True
 
         settings = load_settings()
         settings["zones"] = cleaned
@@ -444,11 +472,11 @@ class CameraManager:
             if new_camera_name:
                 self.camera_name = new_camera_name
 
-            if old_cap:
-                try:
-                    old_cap.release()
-                except Exception:
-                    pass
+        if old_cap:
+            try:
+                old_cap.release()
+            except Exception:
+                pass
 
         # 3. Persist to settings
         settings = load_settings()

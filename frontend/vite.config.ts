@@ -3,8 +3,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-// Flask backend port. Matches VIGITRACK_PORT used by run.py (default 5000).
-const backend = `http://127.0.0.1:${process.env.VIGITRACK_PORT ?? '5000'}`
+// Flask backend port. Matches VIGITRACK_PORT used by run.py (default 5001).
+const backend = `http://127.0.0.1:${process.env.VIGITRACK_PORT ?? '5001'}`
 
 // https://vite.dev/config/
 export default defineConfig({

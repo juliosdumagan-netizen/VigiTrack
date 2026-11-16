@@ -5,8 +5,15 @@ from typing import Any, List, Dict, Optional, Tuple, cast
 import torch
 import numpy as np
 from ultralytics import YOLO
-from app.detection.classes import BAG_CLASSES, SUPPORTED_CLASSES
+from app.detection.classes import CROSS_BAG_CLASSES, SUPPORTED_CLASSES
 from app.detection.class_vote import ClassHistory
+
+_CROSS_BAG_SET = set(CROSS_BAG_CLASSES)
+
+
+def _compatible_classes(cls_a: str, cls_b: str) -> bool:
+    """True when two detections may belong to the same object track (identical or interchangeable bag classes)."""
+    return cls_a == cls_b or (cls_a in _CROSS_BAG_SET and cls_b in _CROSS_BAG_SET)
 
 
 def box_iou(box1: List[float], box2: List[float]) -> float:
@@ -51,76 +58,46 @@ class SpatialIdentityStabilizer:
         return math.hypot(p1[0] - p2[0], p1[1] - p2[1])
 
     def stabilize(self, raw_detections: List[Dict]) -> List[Dict]:
-        bag_classes = set(BAG_CLASSES)
         unmatched_dets = list(range(len(raw_detections)))
         matched_tracks = set()
         det_to_canonical = {}
 
-        # 1. TIER 1 MATCHING: High IoU Overlap
-        for d_idx in list(unmatched_dets):
+        # 1. TIER 1 MATCHING: Global best IoU overlap
+        iou_pairs = []
+        for d_idx in unmatched_dets:
             det = raw_detections[d_idx]
-            det_box = det["box"]
-            det_cls = det["class_name"]
-
-            best_cid = None
-            best_iou = self.min_iou
-
             for cid, trk in self.active_tracks.items():
-                if cid in matched_tracks:
+                if not _compatible_classes(det["class_name"], trk["class_name"]):
                     continue
+                iou = box_iou(det["box"], trk["box"])
+                if iou > self.min_iou:
+                    iou_pairs.append((iou, d_idx, cid))
+        iou_pairs.sort(key=lambda item: item[0], reverse=True)
+        for _, d_idx, cid in iou_pairs:
+            if d_idx in det_to_canonical or cid in matched_tracks:
+                continue
+            det_to_canonical[d_idx] = cid
+            matched_tracks.add(cid)
+        unmatched_dets = [d_idx for d_idx in unmatched_dets if d_idx not in det_to_canonical]
 
-                # Anti-morphing rule: An established bag cannot match a new 'person' detection
-                trk_is_bag = trk["class_name"] in bag_classes
-                det_is_bag = det_cls in bag_classes
-
-                if trk_is_bag != det_is_bag:
-                    continue
-
-                same_category = (det_cls == trk["class_name"]) or (det_is_bag and trk_is_bag)
-                if not same_category:
-                    continue
-
-                iou = box_iou(det_box, trk["box"])
-                if iou > best_iou:
-                    best_iou = iou
-                    best_cid = cid
-
-            if best_cid is not None:
-                det_to_canonical[d_idx] = best_cid
-                matched_tracks.add(best_cid)
-                unmatched_dets.remove(d_idx)
-
-        # 2. TIER 2 MATCHING: Centroid Proximity
-        for d_idx in list(unmatched_dets):
+        # 2. TIER 2 MATCHING: Global nearest centroid proximity
+        dist_pairs = []
+        for d_idx in unmatched_dets:
             det = raw_detections[d_idx]
             det_cen = self._centroid(det["box"])
-            det_cls = det["class_name"]
-
-            best_cid = None
-            best_dist = self.max_centroid_dist
-
             for cid, trk in self.active_tracks.items():
-                if cid in matched_tracks:
+                if cid in matched_tracks or not _compatible_classes(det["class_name"], trk["class_name"]):
                     continue
-
-                trk_is_bag = trk["class_name"] in bag_classes
-                det_is_bag = det_cls in bag_classes
-                if trk_is_bag != det_is_bag:
-                    continue
-
-                same_category = (det_cls == trk["class_name"]) or (det_is_bag and trk_is_bag)
-                if not same_category:
-                    continue
-
                 d = self._dist(det_cen, trk["centroid"])
-                if d < best_dist:
-                    best_dist = d
-                    best_cid = cid
-
-            if best_cid is not None:
-                det_to_canonical[d_idx] = best_cid
-                matched_tracks.add(best_cid)
-                unmatched_dets.remove(d_idx)
+                if d < self.max_centroid_dist:
+                    dist_pairs.append((d, d_idx, cid))
+        dist_pairs.sort(key=lambda item: item[0])
+        for _, d_idx, cid in dist_pairs:
+            if d_idx in det_to_canonical or cid in matched_tracks:
+                continue
+            det_to_canonical[d_idx] = cid
+            matched_tracks.add(cid)
+        unmatched_dets = [d_idx for d_idx in unmatched_dets if d_idx not in det_to_canonical]
 
         # 3. TIER 3: Spawn New Canonical IDs for genuinely new items
         for d_idx in unmatched_dets:
@@ -173,11 +150,12 @@ class SpatialIdentityStabilizer:
 
 class ObjectDetector:
     """
-    High-precision detector tuned for surveillance baggage & handbag detection:
-    - Calibrated confidences: person (0.60), backpack (0.22), handbag (0.18), suitcase (0.25).
+    High-precision detector tuned for surveillance baggage & personal-item detection:
+    - Calibrated confidences: person (0.60), backpack (0.24), handbag (0.22), suitcase (0.38),
+      laptop (0.25), cell phone (0.25).
     - Cross-Class Collision Resolution: suppresses phantom 'person' boxes on top of backpacks.
-    - Geometric Morphological Filter: rejects squarish/flat false-person detections.
-    - SpatialIdentityStabilizer: guarantees persistent Canonical IDs (1, 2, 3...).
+    - Geometric Morphological Filter: rejects squat false-person detections, tiny speckles, and slivers.
+    - SpatialIdentityStabilizer: guarantees persistent Canonical IDs (1, 2, 3...) via global matching.
     - Box deduplication (IoU 0.45) to prevent double-detections on the same physical object.
     - Automatic hardware adaptation (CUDA GPU vs OpenVINO/CPU).
     """
@@ -185,15 +163,23 @@ class ObjectDetector:
     TARGET_CLASSES = SUPPORTED_CLASSES
 
     # Calibrated confidence gates:
-    # 'person' raised to 0.60: Eliminates false person detections on upright backpacks/chairs
-    # while preserving 100% sensitivity to real humans (which score 0.75-0.95).
+    # - 'person' raised to 0.60: Eliminates false person detections on upright backpacks/chairs
+    #   while preserving sensitivity to real humans (typically 0.75-0.95).
+    # - 'suitcase' raised to 0.38: Prevents low-confidence backpacks/handbags/pouches from
+    #   being misclassified as suitcases on generic COCO weights.
     CLASS_CONFIDENCE = {
         "person": 0.60,
-        "backpack": 0.22,
-        "handbag": 0.18,
-        "suitcase": 0.25,
+        "backpack": 0.24,
+        "handbag": 0.22,
+        "suitcase": 0.38,
         "laptop": 0.25,
+        "cell phone": 0.25,
     }
+
+    _MIN_BOX_SIZE = {
+        "cell phone": (10.0, 10.0),
+    }
+    _DEFAULT_BAG_MIN_SIZE = (16.0, 16.0)
 
     def __init__(self, model_name=None, monitored_classes=None):
         project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -268,6 +254,20 @@ class ObjectDetector:
 
         return True
 
+    def _filter_object_geometry(self, class_name: str, box: List[float], conf: float) -> bool:
+        """Filters geometrically implausible detections (tiny speckles, extreme slivers, squat people)."""
+        w = max(1.0, box[2] - box[0])
+        h = max(1.0, box[3] - box[1])
+        if class_name == "person":
+            return self._filter_person_geometry(box, conf)
+
+        min_w, min_h = self._MIN_BOX_SIZE.get(class_name, self._DEFAULT_BAG_MIN_SIZE)
+        if (w < min_w or h < min_h) and conf < 0.60:
+            return False
+        if max(w / h, h / w) > 5.0 and conf < 0.65:
+            return False
+        return True
+
     def _resolve_person_bag_conflicts(self, candidates: List[Dict], iou_thresh: float = 0.40) -> List[Dict]:
         """
         Eliminates duplicate hallucinations where YOLO outputs both a 'person' box
@@ -311,10 +311,7 @@ class ObjectDetector:
         for cand in sorted_dets:
             overlap = False
             for k in kept:
-                is_both_person = (cand["class_name"] == "person" and k["class_name"] == "person")
-                is_both_bag = (cand["class_name"] != "person" and k["class_name"] != "person")
-
-                if (is_both_person or is_both_bag) and box_iou(cand["box"], k["box"]) > iou_thresh:
+                if _compatible_classes(cand["class_name"], k["class_name"]) and box_iou(cand["box"], k["box"]) > iou_thresh:
                     overlap = True
                     break
             if not overlap:
@@ -365,8 +362,8 @@ class ObjectDetector:
 
                     box_coords = [float(b) for b in box]
 
-                    # Morphological check for persons to eliminate squarish bag hallucinations
-                    if class_name == "person" and not self._filter_person_geometry(box_coords, conf):
+                    # Morphological validation to reject squat person hallucinations, tiny speckles, and slivers
+                    if not self._filter_object_geometry(class_name, box_coords, conf):
                         continue
 
                     raw_id = int(ids[idx]) if (ids is not None and idx < len(ids)) else -1

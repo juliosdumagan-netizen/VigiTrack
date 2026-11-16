@@ -85,5 +85,68 @@ vt = aggregate(laptop_results, "vigitrack")
 check("vigitrack on laptop clips: all 3 unattended events detected, no false alarms",
       vt["detected"] == 3 and vt["false_alarms"] == 0, (vt["detected"], vt["false_alarms"]))
 
+# --- 4. Upstream detector stabilizer and deduplicator do not merge laptop with bag classes ---
+from app.detection.detector import ObjectDetector, SpatialIdentityStabilizer
+
+stab = SpatialIdentityStabilizer()
+first = stab.stabilize([{"class_name": "backpack", "box": spot, "confidence": 0.8}])
+second = stab.stabilize([{"class_name": "laptop", "box": spot, "confidence": 0.8}])
+check("stabilizer gives laptop a distinct canonical track from backpack at same box",
+      first[0]["id"] != second[0]["id"] and second[0]["class_name"] == "laptop",
+      (first[0]["id"], second[0]["id"], second[0]["class_name"]))
+
+dedup_laptop = ObjectDetector._deduplicate_boxes(
+    None,  # type: ignore[arg-type]
+    [
+        {"class_name": "backpack", "box": spot, "confidence": 0.9},
+        {"class_name": "laptop", "box": spot, "confidence": 0.8},
+    ],
+)
+check("deduplicate keeps overlapping backpack and laptop",
+      len(dedup_laptop) == 2, [d["class_name"] for d in dedup_laptop])
+
+dedup_bags = ObjectDetector._deduplicate_boxes(
+    None,  # type: ignore[arg-type]
+    [
+        {"class_name": "backpack", "box": spot, "confidence": 0.9},
+        {"class_name": "handbag", "box": spot, "confidence": 0.8},
+    ],
+)
+check("deduplicate still suppresses overlapping backpack and handbag",
+      len(dedup_bags) == 1, [d["class_name"] for d in dedup_bags])
+
+# --- 5. Cell phone opt-in class & detection refinements ---
+check("cell phone is COCO class 67", SUPPORTED_CLASSES.get(67) == "cell phone")
+check("cell phone is a bag/item class for the FSM", "cell phone" in BAG_CLASSES)
+check("cell phone is excluded from cross-bag merging", "cell phone" not in CROSS_BAG_CLASSES)
+
+stab_phone = SpatialIdentityStabilizer()
+p1 = stab_phone.stabilize([{"class_name": "backpack", "box": spot, "confidence": 0.8}])
+p2 = stab_phone.stabilize([{"class_name": "cell phone", "box": spot, "confidence": 0.8}])
+check("stabilizer keeps cell phone distinct from backpack",
+      p1[0]["id"] != p2[0]["id"] and p2[0]["class_name"] == "cell phone")
+
+# Global best IoU matching prevents det 0 from stealing track 1 when det 1 overlaps it much better.
+stab_global = SpatialIdentityStabilizer()
+init = stab_global.stabilize([
+    {"class_name": "person", "box": [100.0, 100.0, 180.0, 300.0], "confidence": 0.9},
+])
+t1_id = init[0]["id"]
+next_frame = stab_global.stabilize([
+    {"class_name": "person", "box": [140.0, 100.0, 220.0, 300.0], "confidence": 0.9},  # lower IoU with track 1
+    {"class_name": "person", "box": [102.0, 100.0, 182.0, 300.0], "confidence": 0.9},  # high IoU with track 1
+])
+check("global stabilizer matching avoids ID swap on crossing boxes",
+      next_frame[1]["id"] == t1_id and next_frame[0]["id"] != t1_id,
+      [d["id"] for d in next_frame])
+
+dummy_det = ObjectDetector.__new__(ObjectDetector)
+check("geometry rejects tiny low-confidence backpack speckle",
+      not dummy_det._filter_object_geometry("backpack", [0.0, 0.0, 8.0, 8.0], 0.30))
+check("geometry rejects extreme sliver false positive",
+      not dummy_det._filter_object_geometry("suitcase", [0.0, 0.0, 10.0, 120.0], 0.40))
+check("geometry keeps valid small cell phone box",
+      dummy_det._filter_object_geometry("cell phone", [10.0, 10.0, 24.0, 34.0], 0.30))
+
 passed = sum(1 for _, ok in results if ok)
 print(f"\n{passed}/{len(results)} checks passed")

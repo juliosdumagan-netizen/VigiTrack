@@ -160,6 +160,37 @@ class AdvancedBaggageMonitor:
             return self.time_threshold
         return self.zones.time_limit(bag_center, self.time_threshold)
 
+    def _try_pickup_takeover(self, bag: BaggageTracklet, people: List[Dict],
+                             bag_center: Tuple[float, float], bag_static: bool) -> bool:
+        """Confirms a new owner when a moving bag has someone within half-threshold for N frames."""
+        if bag_static:
+            bag.retrieval_streaks.clear()
+            return False
+
+        takeover_id = None
+        takeover_dist = float("inf")
+        for p_det in people:
+            p_cen = self._get_centroid(p_det["box"])
+            d = self._distance(bag_center, p_cen)
+            if d < (self.distance_threshold * 0.5) and d < takeover_dist:
+                takeover_dist = d
+                takeover_id = p_det["id"]
+
+        if takeover_id is None:
+            bag.retrieval_streaks.clear()
+            return False
+
+        streak = bag.retrieval_streaks.get(takeover_id, 0) + 1
+        bag.retrieval_streaks = {takeover_id: streak}
+        if streak < self.takeover_confirm_frames:
+            return False
+
+        bag.owner_id = takeover_id
+        bag.separation_start_time = None
+        bag.retrieval_streaks.clear()
+        bag.state = BaggageState.CARRIED
+        return True
+
     def update(self, detections: List[Dict], now: Optional[float] = None) -> List[Dict]:
         now = time.time() if now is None else now
         people = [d for d in detections if d["class_name"] == "person"]
@@ -213,27 +244,33 @@ class AdvancedBaggageMonitor:
 
             # STEP A: OWNER ASSOCIATION
             if bag.owner_id is None:
-                nearest_person_id = None
-                nearest_dist = float("inf")
-
-                for p_det in people:
-                    p_center = self._get_centroid(p_det["box"])
-                    dist = self._distance(bag_center, p_center)
-                    if dist <= self.distance_threshold and dist < nearest_dist:
-                        nearest_dist = dist
-                        nearest_person_id = p_det["id"]
-
-                if nearest_person_id is not None:
-                    streak = bag.candidate_owner_streaks.get(nearest_person_id, 0) + 1
-                    bag.candidate_owner_streaks[nearest_person_id] = streak
-
-                    if streak >= 2:
-                        bag.owner_id = nearest_person_id
-                        bag.state = BaggageState.STATIC_ATTENDED if bag_static else BaggageState.CARRIED
-                        bag.separation_start_time = None
-                else:
+                if bag.state == BaggageState.UNATTENDED_ALERT:
+                    # Once an ownerless bag is already alerting, require sustained pickup rather than
+                    # letting a brief passer-by auto-adopt and silence the alarm.
                     bag.candidate_owner_streaks.clear()
-                    bag.state = BaggageState.UNASSIGNED
+                    self._try_pickup_takeover(bag, people, bag_center, bag_static)
+                else:
+                    nearest_person_id = None
+                    nearest_dist = float("inf")
+
+                    for p_det in people:
+                        p_center = self._get_centroid(p_det["box"])
+                        dist = self._distance(bag_center, p_center)
+                        if dist <= self.distance_threshold and dist < nearest_dist:
+                            nearest_dist = dist
+                            nearest_person_id = p_det["id"]
+
+                    if nearest_person_id is not None:
+                        streak = bag.candidate_owner_streaks.get(nearest_person_id, 0) + 1
+                        bag.candidate_owner_streaks = {nearest_person_id: streak}
+
+                        if streak >= 2:
+                            bag.owner_id = nearest_person_id
+                            bag.state = BaggageState.STATIC_ATTENDED if bag_static else BaggageState.CARRIED
+                            bag.separation_start_time = None
+                    else:
+                        bag.candidate_owner_streaks.clear()
+                        bag.state = BaggageState.UNASSIGNED
 
             # STEP B: EVALUATE ATTENDED / SEPARATED STATUS
             assigned_owner = next((p for p in people if p["id"] == bag.owner_id), None)
@@ -265,28 +302,7 @@ class AdvancedBaggageMonitor:
                 bag.owner_missing_frames += 1
                 bag.attended_streak = 0
 
-                retrieved = False
-                if not bag_static:
-                    takeover_id = None
-                    takeover_dist = float("inf")
-                    for p_det in people:
-                        p_cen = self._get_centroid(p_det["box"])
-                        d = self._distance(bag_center, p_cen)
-                        if d < (self.distance_threshold * 0.5) and d < takeover_dist:
-                            takeover_dist = d
-                            takeover_id = p_det["id"]
-
-                    if takeover_id is None:
-                        bag.retrieval_streaks.clear()
-                    else:
-                        streak = bag.retrieval_streaks.get(takeover_id, 0) + 1
-                        bag.retrieval_streaks = {takeover_id: streak}
-                        if streak >= self.takeover_confirm_frames:
-                            bag.owner_id = takeover_id
-                            bag.separation_start_time = None
-                            bag.retrieval_streaks.clear()
-                            bag.state = BaggageState.CARRIED
-                            retrieved = True
+                retrieved = self._try_pickup_takeover(bag, people, bag_center, bag_static)
 
                 if not retrieved:
                     separation_start = bag.start_separation(now)

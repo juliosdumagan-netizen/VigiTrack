@@ -12,9 +12,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 
 const WEEKDAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
 
-/** "Today" for the current app session; computed once at module load. */
-const TODAY_ISO = toISO(new Date())
-
 /** Parse a YYYY-MM-DD string as a local date (no timezone shift). */
 function parseISO(value: string): Date | null {
   const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value)
@@ -66,12 +63,15 @@ function DatePicker({
   const selected = parseISO(value)
   const [open, setOpen] = React.useState(false)
   const [view, setView] = React.useState<Date>(() => startOfMonth(selected ?? new Date()))
-
-  const todayISO = TODAY_ISO
+  const [todayISO, setTodayISO] = React.useState<string>(() => toISO(new Date()))
 
   function handleOpenChange(next: boolean) {
     setOpen(next)
-    if (next) setView(startOfMonth(parseISO(value) ?? new Date()))
+    if (next) {
+      const now = new Date()
+      setTodayISO(toISO(now))
+      setView(startOfMonth(parseISO(value) ?? now))
+    }
   }
 
   function choose(date: Date) {

@@ -75,15 +75,35 @@ export function IncidentsPage() {
 
   async function confirmDelete() {
     if (deleteTarget === null) return
-    await api.deleteIncident(deleteTarget).catch(() => undefined)
-    setDeleteTarget(null)
-    load()
+    try {
+      await api.deleteIncident(deleteTarget)
+      setDeleteTarget(null)
+      load()
+    } catch (err) {
+      if (err instanceof UnauthorizedError) {
+        setDeleteTarget(null)
+        navigate('/login', { replace: true })
+      } else {
+        toast.error(err instanceof Error ? err.message : 'Failed to delete incident')
+        throw err
+      }
+    }
   }
 
   async function confirmClear() {
-    await api.clearIncidents().catch(() => undefined)
-    setClearOpen(false)
-    load()
+    try {
+      await api.clearIncidents()
+      setClearOpen(false)
+      load()
+    } catch (err) {
+      if (err instanceof UnauthorizedError) {
+        setClearOpen(false)
+        navigate('/login', { replace: true })
+      } else {
+        toast.error(err instanceof Error ? err.message : 'Failed to clear incidents')
+        throw err
+      }
+    }
   }
 
   async function handleExport() {

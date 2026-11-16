@@ -67,14 +67,14 @@ def _matches(ev, bag_id) -> bool:
 
 
 def _alerting_at_start(ev, transitions):
-    """Returns the event start if the method was already alerting then, else None."""
-    latest = None
+    """Returns the event start if the method was already alerting for a matching bag then, else None."""
+    active_by_bag = {}
     for tr in transitions:  # transitions are in clip time order
         if tr["t"] > ev["start"]:
             break
         if _matches(ev, tr["bag_id"]):
-            latest = tr
-    return ev["start"] if latest is not None and latest["on"] else None
+            active_by_bag[tr["bag_id"]] = bool(tr["on"])
+    return ev["start"] if any(active_by_bag.values()) else None
 
 
 def score(events, transitions, duration_seconds: float) -> dict:

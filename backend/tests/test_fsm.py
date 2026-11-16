@@ -147,6 +147,28 @@ out, t = run(m, [[owner(OWNER_FAR), bag_at(60, BAG_CX, BAG_CY)] for _ in range(8
 e_later = telemetry_for(out, 60)["episode"]
 check("one continuous separation keeps one episode number", e_start == e_later, f"{e_start} vs {e_later}")
 
+# --- 7. Non-consecutive alternating people do not bind ownership ---
+m = AdvancedBaggageMonitor(distance_threshold=150, time_threshold=10)
+p1_close = person_at(1, BAG_CX - 30, BAG_CY)
+p2_closer = person_at(2, BAG_CX + 10, BAG_CY)
+alt_frames = [[bag_at(70, BAG_CX, BAG_CY), p1_close],
+              [bag_at(70, BAG_CX, BAG_CY), p2_closer],
+              [bag_at(70, BAG_CX, BAG_CY), p1_close]]
+out, t = run(m, alt_frames, 7000.0, 0.1)
+check("alternating nearest people do not bind owner on non-consecutive frames",
+      m.baggage_pool[70].owner_id is None, f"owner_id={m.baggage_pool[70].owner_id}")
+
+# --- 8. Already-alerting UNASSIGNED bag is not cleared by 2-frame passer-by ---
+m = AdvancedBaggageMonitor(distance_threshold=150, time_threshold=10)
+out, t = run(m, [[bag_at(80, BAG_CX, BAG_CY)] for _ in range(3)], 8000.0, 0.1)
+out, t = run(m, [[bag_at(80, BAG_CX, BAG_CY)] for _ in range(120)], t, 0.1)
+check("unassigned bag enters alert", telemetry_for(out, 80)["state"] == "UNATTENDED_ALERT")
+out, t = run(m, [[bag_at(80, BAG_CX, BAG_CY), person_at(9, BAG_CX + 80, BAG_CY)] for _ in range(5)], t, 0.1)
+tel_after = telemetry_for(out, 80)
+check("brief passer-by cannot adopt alerting unassigned bag",
+      tel_after["state"] == "UNATTENDED_ALERT" and m.baggage_pool[80].owner_id is None,
+      (tel_after["state"], m.baggage_pool[80].owner_id))
+
 passed = sum(results)
 print(f"\n{passed}/{len(results)} checks passed")
 sys.exit(0 if passed == len(results) else 1)
