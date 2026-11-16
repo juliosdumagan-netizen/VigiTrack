@@ -11,7 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
-import { Input } from '@/components/ui/input'
+import { DatePicker } from '@/components/ui/date-picker'
 import { Label } from '@/components/ui/label'
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
@@ -245,11 +245,21 @@ export function IncidentsPage() {
           <div className="grid gap-3">
             <div className="grid gap-2">
               <Label htmlFor="purge-start">From (inclusive)</Label>
-              <Input id="purge-start" type="date" value={purgeStart} onChange={(e) => setPurgeStart(e.target.value)} />
+              <DatePicker
+                id="purge-start"
+                aria-label="From date"
+                value={purgeStart}
+                onChange={setPurgeStart}
+              />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="purge-end">To (inclusive)</Label>
-              <Input id="purge-end" type="date" value={purgeEnd} onChange={(e) => setPurgeEnd(e.target.value)} />
+              <DatePicker
+                id="purge-end"
+                aria-label="To date"
+                value={purgeEnd}
+                onChange={setPurgeEnd}
+              />
             </div>
             {purgeError && <p className="text-sm text-destructive">{purgeError}</p>}
           </div>

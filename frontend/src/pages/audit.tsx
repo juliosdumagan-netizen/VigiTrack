@@ -6,6 +6,14 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardAction } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { DatePicker } from '@/components/ui/date-picker'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import {
   api,
@@ -174,27 +182,40 @@ export function AuditPage() {
             </div>
             <div className="grid gap-1.5">
               <Label htmlFor="audit-action">Action</Label>
-              <select
-                id="audit-action"
-                value={action}
-                onChange={(e) => changeFilter(setAction, e.target.value)}
-                className="h-9 rounded-md border border-input bg-transparent px-3 text-sm shadow-xs"
+              <Select
+                value={action || "__all__"}
+                onValueChange={(value) => changeFilter(setAction, value === "__all__" ? "" : value)}
               >
-                <option value="">All actions</option>
-                {actions.map((name) => (
-                  <option key={name} value={name}>
-                    {name}
-                  </option>
-                ))}
-              </select>
+                <SelectTrigger id="audit-action" className="w-full" aria-label="Action">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent position="popper" align="start">
+                  <SelectItem value="__all__">All actions</SelectItem>
+                  {actions.map((name) => (
+                    <SelectItem key={name} value={name}>
+                      {name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
             <div className="grid gap-1.5">
               <Label htmlFor="audit-start">From</Label>
-              <Input id="audit-start" type="date" value={start} onChange={(e) => changeFilter(setStart, e.target.value)} />
+              <DatePicker
+                id="audit-start"
+                aria-label="From date"
+                value={start}
+                onChange={(value) => changeFilter(setStart, value)}
+              />
             </div>
             <div className="grid gap-1.5">
               <Label htmlFor="audit-end">To</Label>
-              <Input id="audit-end" type="date" value={end} onChange={(e) => changeFilter(setEnd, e.target.value)} />
+              <DatePicker
+                id="audit-end"
+                aria-label="To date"
+                value={end}
+                onChange={(value) => changeFilter(setEnd, value)}
+              />
             </div>
           </div>
 
