@@ -183,8 +183,10 @@ check("zone save is written to the audit log", len(zone_audit) == 1 and zone_aud
 from app.database.models import get_incident as _get_incident
 evidence = {"suitcase": {"frames": 11, "max_confidence": 0.35}, "handbag": {"frames": 3, "max_confidence": 0.21}}
 with_ev = log_incident("suitcase", 22, None, 150.0, "LOBBY", class_evidence=evidence)
-check("class evidence is stored and read back", _get_incident(with_ev)["class_evidence"] == evidence)
-check("incident without evidence reads as null", _get_incident(no_snap)["class_evidence"] is None)
+stored_ev = _get_incident(with_ev) if with_ev is not None else None
+stored_none = _get_incident(no_snap) if no_snap is not None else None
+check("class evidence is stored and read back", stored_ev is not None and stored_ev["class_evidence"] == evidence)
+check("incident without evidence reads as null", stored_none is not None and stored_none["class_evidence"] is None)
 
 passed = sum(1 for _, ok in results if ok)
 print(f"\n{passed}/{len(results)} checks passed")
