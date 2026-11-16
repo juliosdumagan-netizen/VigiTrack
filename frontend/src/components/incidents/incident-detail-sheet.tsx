@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { ImageOff, Trash2 } from 'lucide-react'
+import { ImageOff, Maximize2, Minimize2, Trash2 } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet'
@@ -28,6 +29,7 @@ export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [imageFailed, setImageFailed] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   useEffect(() => {
     if (incidentId === null) return
@@ -57,35 +59,61 @@ export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted 
   const firstTime = incident?.state_history[0]?.time ? new Date(incident.state_history[0].time).getTime() : null
 
   return (
-    <Sheet open={incidentId !== null} onOpenChange={(open) => !open && onClose()}>
-      <SheetContent side="right" className="w-full overflow-y-auto sm:max-w-xl">
-        <SheetHeader>
-          <SheetTitle>Incident #{incidentId}</SheetTitle>
-          <SheetDescription>
-            {incident
-              ? `${capitalize(incident.object_class)} · ${new Date(incident.detected_at).toLocaleString()}`
-              : 'Loading incident details…'}
-          </SheetDescription>
-        </SheetHeader>
+    <>
+      <Sheet
+        open={incidentId !== null}
+        onOpenChange={(open) => {
+          if (!open) {
+            setIsExpanded(false)
+            onClose()
+          }
+        }}
+      >
+        <SheetContent side="right" className="w-full overflow-y-auto sm:max-w-xl">
+          <SheetHeader>
+            <SheetTitle>Incident #{incidentId}</SheetTitle>
+            <SheetDescription>
+              {incident
+                ? `${capitalize(incident.object_class)} · ${new Date(incident.detected_at).toLocaleString()}`
+                : 'Loading incident details…'}
+            </SheetDescription>
+          </SheetHeader>
 
-        <div className="grid gap-6 px-4 pb-6">
-          {error && <p className="text-sm text-destructive">{error}</p>}
+          <div className="grid gap-6 px-4 pb-6">
+            {error && <p className="text-sm text-destructive">{error}</p>}
 
-          <div className="overflow-hidden rounded-lg border bg-muted">
-            {incident?.image_url && !imageFailed ? (
-              <img
-                src={incident.image_url}
-                alt={`Snapshot for incident ${incident.id}`}
-                className="w-full object-contain"
-                onError={() => setImageFailed(true)}
-              />
-            ) : (
-              <div className="flex aspect-video flex-col items-center justify-center gap-2 text-sm text-muted-foreground">
-                <ImageOff className="size-6" />
-                {loading ? 'Loading snapshot…' : 'No snapshot recorded for this incident'}
-              </div>
-            )}
-          </div>
+            <div className="group relative overflow-hidden rounded-lg border bg-muted">
+              {incident?.image_url && !imageFailed ? (
+                <>
+                  <img
+                    src={incident.image_url}
+                    alt={`Snapshot for incident ${incident.id}`}
+                    className="w-full cursor-pointer object-contain transition duration-150 hover:opacity-95"
+                    onClick={() => setIsExpanded(true)}
+                    onError={() => setImageFailed(true)}
+                    title="Click to enlarge snapshot"
+                  />
+                  <div className="absolute top-2 right-2">
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      size="sm"
+                      onClick={() => setIsExpanded(true)}
+                      className="h-8 gap-1.5 rounded-md bg-background/85 px-2.5 text-xs font-medium shadow-xs backdrop-blur-xs transition hover:bg-background"
+                      aria-label="Expand screenshot"
+                    >
+                      <Maximize2 className="size-3.5" />
+                      <span>Expand</span>
+                    </Button>
+                  </div>
+                </>
+              ) : (
+                <div className="flex aspect-video flex-col items-center justify-center gap-2 text-sm text-muted-foreground">
+                  <ImageOff className="size-6" />
+                  {loading ? 'Loading snapshot…' : 'No snapshot recorded for this incident'}
+                </div>
+              )}
+            </div>
 
           {incident && (
             <>
@@ -153,7 +181,57 @@ export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted 
         </div>
       </SheetContent>
     </Sheet>
-  )
+
+    {incident?.image_url && !imageFailed && (
+      <Dialog open={isExpanded} onOpenChange={setIsExpanded}>
+        <DialogContent
+          showCloseButton={false}
+          overlayClassName="bg-black/75 backdrop-blur-sm z-[60]"
+          className="z-[60] max-h-[92vh] w-full sm:max-w-4xl lg:max-w-5xl xl:max-w-6xl flex flex-col p-4 sm:p-6 gap-3"
+        >
+          <DialogHeader className="flex flex-row items-center justify-between gap-4 space-y-0 pb-1">
+            <div>
+              <DialogTitle className="text-base sm:text-lg">
+                Incident #{incident.id} · Snapshot
+              </DialogTitle>
+              <DialogDescription className="text-xs sm:text-sm">
+                {capitalize(incident.object_class)} detected at {new Date(incident.detected_at).toLocaleString()}
+              </DialogDescription>
+            </div>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => setIsExpanded(false)}
+              className="h-8 gap-1.5 text-xs font-medium shrink-0"
+              aria-label="Minimize screenshot"
+              title="Minimize screenshot (Esc)"
+            >
+              <Minimize2 className="size-3.5" />
+              <span>Minimize</span>
+            </Button>
+          </DialogHeader>
+
+          <div className="relative flex flex-1 items-center justify-center overflow-hidden rounded-lg bg-black/95 p-1 sm:p-2 border">
+            <img
+              src={incident.image_url}
+              alt={`Enlarged snapshot for incident ${incident.id}`}
+              className="max-h-[70vh] w-auto max-w-full rounded object-contain select-none shadow-md"
+            />
+          </div>
+
+          <DialogFooter className="flex flex-row items-center justify-between gap-3 pt-1">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+              <Badge variant="destructive" className="capitalize">{incident.status}</Badge>
+              <span>Camera: {incident.camera_name ?? '—'}</span>
+              {incident.distance != null && <span>· Distance: {incident.distance.toFixed(0)} px</span>}
+            </div>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    )}
+  </>
+)
 }
 
 function DetailRow({ label, children }: { label: string; children: React.ReactNode }) {
