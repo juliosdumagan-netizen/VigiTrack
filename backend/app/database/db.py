@@ -40,6 +40,7 @@ def init_db():
             "review_note": "TEXT",
             "reviewed_by": "TEXT",
             "reviewed_at": "TEXT",
+            "class_evidence": "TEXT",
         }
         for name, column_type in new_columns.items():
             if name not in existing:

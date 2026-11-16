@@ -6,6 +6,7 @@ import torch
 import numpy as np
 from ultralytics import YOLO
 from app.detection.classes import BAG_CLASSES, SUPPORTED_CLASSES
+from app.detection.class_vote import ClassHistory
 
 
 def box_iou(box1: List[float], box2: List[float]) -> float:
@@ -136,9 +137,15 @@ class SpatialIdentityStabilizer:
             cls_name = det["class_name"]
             cen = self._centroid(box)
 
+            prev = self.active_tracks.get(cid)
+            history = prev["history"] if prev else ClassHistory()
+            history.add(cls_name, det["confidence"])
+            voted = history.dominant() or cls_name
+
             self.active_tracks[cid] = {
                 "canonical_id": cid,
-                "class_name": cls_name,
+                "class_name": voted,
+                "history": history,
                 "box": box,
                 "centroid": cen,
                 "lost_frames": 0,
@@ -147,9 +154,11 @@ class SpatialIdentityStabilizer:
 
             stabilized.append({
                 "id": cid,
-                "class_name": cls_name,
+                "class_name": voted,
+                "raw_class": cls_name,
                 "box": box,
-                "confidence": det["confidence"]
+                "confidence": det["confidence"],
+                "class_evidence": history.evidence()
             })
 
         # 5. Age out unmatched tracks

@@ -73,15 +73,23 @@ def incident_to_pdf(incident, snapshot_bytes, generated_by, generated_at=None) -
         story += [Paragraph("No snapshot was saved for this incident.", small), Spacer(1, 6 * mm)]
 
     col = [42 * mm, 130 * mm]
+    evidence = incident.get("class_evidence") or {}
+    evidence_text = ", ".join(
+        f"{name} {entry['frames']} frames (best {entry['max_confidence']:.2f})"
+        for name, entry in sorted(evidence.items(), key=lambda kv: -kv[1]["frames"])
+    )
+    object_rows = [
+        ["Object", escape(_value(incident["object_class"]))],
+        ["Object track ID", _value(incident.get("object_track_id"))],
+        ["Person track ID", _value(incident.get("person_track_id"))],
+        ["Distance at alert", _value(round(incident["distance"]) if incident.get("distance") is not None else None, " px")],
+        ["Status", escape(_value(incident.get("status")))],
+    ]
+    if evidence_text:
+        object_rows.insert(1, ["Class evidence", escape(evidence_text)])
     story += [
         Paragraph("Object and detection", heading),
-        _grid([
-            ["Object", escape(_value(incident["object_class"]))],
-            ["Object track ID", _value(incident.get("object_track_id"))],
-            ["Person track ID", _value(incident.get("person_track_id"))],
-            ["Distance at alert", _value(round(incident["distance"]) if incident.get("distance") is not None else None, " px")],
-            ["Status", escape(_value(incident.get("status")))],
-        ], col),
+        _grid(object_rows, col),
         Spacer(1, 5 * mm),
         Paragraph("Settings used", heading),
         _grid([

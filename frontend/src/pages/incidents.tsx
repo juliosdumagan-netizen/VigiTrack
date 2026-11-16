@@ -18,6 +18,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Badge } from '@/components/ui/badge'
 import { toast } from 'sonner'
 import { IncidentDetailSheet, ReviewBadge } from '@/components/incidents/incident-detail-sheet'
+import { mixedBagLabels } from '@/lib/incident-evidence'
 import { api, saveBlob, UnauthorizedError, type Incident } from '@/lib/api'
 import { useAuth } from '@/lib/auth'
 
@@ -197,7 +198,12 @@ export function IncidentsPage() {
                   aria-label={`Open incident ${row.id}`}
                 >
                   <TableCell>{row.id}</TableCell>
-                  <TableCell className="capitalize">{row.object_class}</TableCell>
+                  <TableCell className="capitalize">
+                    {row.object_class}
+                    {row.class_evidence && mixedBagLabels(row.class_evidence) && (
+                      <span className="block text-xs normal-case text-muted-foreground">mixed bag labels</span>
+                    )}
+                  </TableCell>
                   <TableCell>{row.object_track_id ?? '—'}</TableCell>
                   <TableCell>{row.person_track_id ?? '—'}</TableCell>
                   <TableCell>{row.distance != null ? `${row.distance.toFixed(0)} px` : '—'}</TableCell>

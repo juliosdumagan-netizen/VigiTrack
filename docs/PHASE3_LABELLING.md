@@ -39,6 +39,14 @@ For a live camera, use the camera index instead of a file (for example `--video 
 
 This runs the real detector over the clip and writes the detections. It runs at the detector's own speed, which is not yet measured on this PC; it may take longer than the clip itself. Note the time it takes for the first clip.
 
+To see how often the detector changes its mind about a bag, run:
+
+```
+python -m app.evaluation.cli classes data/eval/seated_reader_1.json
+```
+
+This prints, for each track, the per-frame labels before voting and the agreement with the dominant label. Record the agreement for each bag track in the results. If it is low (for example under 80%), the model is confusing bag types and fine-tuning is worth considering.
+
 The annotated MP4 shows the clip time (`t=12.30s`) and each track's ID (`backpack #2`). Use it to find the bag ID and the times for step 4.
 
 ## 4. Add the ground truth

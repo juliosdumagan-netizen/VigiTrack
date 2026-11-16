@@ -98,6 +98,7 @@ def cmd_record_video(args) -> int:
         frames.append({
             "t": round(idx / fps, 3),
             "dets": [{"id": d["id"], "class_name": d["class_name"],
+                      "raw_class": d.get("raw_class", d["class_name"]),
                       "box": [round(b, 1) for b in d["box"]]} for d in dets],
         })
         if writer is not None:
@@ -225,6 +226,35 @@ def cmd_soak(args) -> int:
     return 0 if ok else 1
 
 
+def cmd_classes(args) -> int:
+    """
+    Measures how often each track's per-frame label (before voting) agrees with its overall label.
+    Low agreement on bag tracks means the model is flickering between bag classes.
+    """
+    from app.detection.class_vote import class_stability
+    from app.evaluation.evaluate import load_scenario
+
+    for path in args.files:
+        scenario = load_scenario(path)
+        per_track: dict = {}
+        for frame in scenario["frames"]:
+            for det in frame["dets"]:
+                if det["class_name"] == "person":
+                    continue
+                per_track.setdefault(det["id"], []).append(det.get("raw_class", det["class_name"]))
+
+        print(f"\n{scenario['name']} ({path})")
+        if not per_track:
+            print("  no non-person tracks")
+            continue
+        print(f"  {'track':>6} {'frames':>7} {'dominant':<10} {'agreement':>9}  labels seen")
+        for track_id, labels in sorted(per_track.items()):
+            s = class_stability(labels)
+            seen = ", ".join(f"{k} {v}" for k, v in sorted(s["counts"].items(), key=lambda kv: -kv[1]))
+            print(f"  {track_id:>6} {s['frames']:>7} {s['dominant']:<10} {s['agreement'] * 100:>8.0f}%  {seen}")
+    return 0
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="python -m app.evaluation.cli",
                                      description="VigiTrack evaluation harness")
@@ -249,6 +279,10 @@ def main(argv=None) -> int:
     p.add_argument("--annotated-out", help="also write an mp4 showing each track's ID and the clip time, for labelling")
     p.add_argument("--max-seconds", type=float, help="stop after this many seconds of video")
     p.set_defaults(func=cmd_record_video)
+
+    p = sub.add_parser("classes", help="per-track class stability in recorded scenario files")
+    p.add_argument("files", nargs="+", help="scenario JSON files from record-video")
+    p.set_defaults(func=cmd_classes)
 
     p = sub.add_parser("benchmark", help="measure detection FPS on this machine (NFR-01)")
     p.add_argument("--camera", type=int, default=0, help="camera index")

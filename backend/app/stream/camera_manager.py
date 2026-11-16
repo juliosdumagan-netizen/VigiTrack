@@ -282,6 +282,7 @@ class CameraManager:
 
                         self.notifier.play_alert_sound(bid)
                         if self.logged_episodes.get(bid) != item["episode"]:
+                            item["class_evidence"] = bag_det.get("class_evidence") if bag_det else None
                             pending_logs.append(item)
                             self.logged_episodes[bid] = item["episode"]
 
@@ -326,6 +327,7 @@ class CameraManager:
                             state_history=entry["state_history"],
                             distance_threshold=self.monitor.distance_threshold,
                             time_threshold=self.monitor.time_threshold,
+                            class_evidence=entry.get("class_evidence"),
                         )
                         self._record_alert(entry["class_name"], entry["bag_id"])
 

@@ -11,6 +11,7 @@ import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
 import { api, saveBlob, UnauthorizedError, type Incident, type ReviewAction, type ReviewStatus } from '@/lib/api'
+import { formatEvidence, mixedBagLabels } from '@/lib/incident-evidence'
 
 const STATE_LABELS: Record<string, string> = {
   UNASSIGNED: 'Unassigned',
@@ -179,6 +180,14 @@ export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted,
                   <Badge variant="destructive" className="capitalize">{incident.status}</Badge>
                 </DetailRow>
                 <DetailRow label="Object">{capitalize(incident.object_class)} #{incident.object_track_id ?? '—'}</DetailRow>
+                {incident.class_evidence && (
+                  <DetailRow label="Class evidence">
+                    <span className="text-xs font-normal text-muted-foreground">
+                      {formatEvidence(incident.class_evidence)}
+                      {mixedBagLabels(incident.class_evidence) && ' · model was unsure which bag type this is'}
+                    </span>
+                  </DetailRow>
+                )}
                 <DetailRow label="Associated person">{incident.person_track_id != null ? `Person #${incident.person_track_id}` : 'None'}</DetailRow>
                 <DetailRow label="Distance at alert">
                   {incident.distance != null ? `${incident.distance.toFixed(0)} px` : '—'}

@@ -10,6 +10,8 @@ def _row_to_incident(row):
     item = dict(row)
     raw_history = item.pop("state_history", None)
     item["state_history"] = json.loads(raw_history) if raw_history else []
+    raw_evidence = item.pop("class_evidence", None)
+    item["class_evidence"] = json.loads(raw_evidence) if raw_evidence else None
     image_path = item.pop("image_path", None)
     item["image_url"] = f"/api/incidents/{item['id']}/image" if image_path else None
     return item
@@ -28,9 +30,11 @@ def _remove_image_file(filename):
 
 
 def log_incident(object_class, object_track_id, person_track_id, distance, camera_name="CAMERA 01",
-                 image_bytes=None, state_history=None, distance_threshold=None, time_threshold=None):
+                 image_bytes=None, state_history=None, distance_threshold=None, time_threshold=None,
+                 class_evidence=None):
     """
     Inserts a new unattended-object incident record, with an optional JPEG snapshot.
+    class_evidence is the per-class frame count and best confidence the track had seen.
     Returns the new incident's row id, or None if logging failed.
     """
     conn = get_connection()
@@ -50,9 +54,10 @@ def log_incident(object_class, object_track_id, person_track_id, distance, camer
                 detected_at,
                 state_history,
                 distance_threshold,
-                time_threshold
+                time_threshold,
+                class_evidence
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             str(object_class),
             int(object_track_id) if object_track_id is not None else None,
@@ -64,6 +69,7 @@ def log_incident(object_class, object_track_id, person_track_id, distance, camer
             json.dumps(state_history or []),
             float(distance_threshold) if distance_threshold is not None else None,
             float(time_threshold) if time_threshold is not None else None,
+            json.dumps(class_evidence) if class_evidence else None,
         ))
         incident_id = cursor.lastrowid
 

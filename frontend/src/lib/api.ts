@@ -64,6 +64,7 @@ export type Incident = {
   review_note: string | null
   reviewed_by: string | null
   reviewed_at: string | null
+  class_evidence: Record<string, { frames: number; max_confidence: number }> | null
 }
 
 export type ZoneKind = 'ignore' | 'watch'
