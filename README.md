@@ -152,6 +152,8 @@ flowchart LR
 
 > **One-liner for the panel:** *"We use **AI for perception** (seeing and tracking), and **deterministic rules for decisions** (distance, timer, alarm). That way alerts are predictable, transparent and easy for security staff to adjust."*
 
+Within the broader field of Artificial Intelligence, YOLOv8 is a specialized, narrow AI model designed for computer vision. Specifically, it is a deep learning-based object detector built on a Convolutional Neural Network architecture. Instead of relying on human-programmed rules, the CNN uses mathematical filters to automatically extract spatial features—like edges and shapes—from pixel grids, allowing the model to classify and locate objects in a single pass." - GL_Tensei
+
 | Part | AI? | What it actually is | File |
 |---|---|---|---|
 | Object detection | ✅ **Yes** | YOLOv8 Convolutional Neural Network, pre-trained on MS COCO | `detector.py` |
@@ -392,10 +394,9 @@ The switch is **automatic** at startup (`detector.py`). The pipeline after detec
 
 > **Performance numbers:** the figures from our discussion (Medium on i5 ≈ 3–7 FPS; Nano ≈ 15–22 FPS; Nano + OpenVINO ≈ 25–30 FPS) are **typical estimates, not your measurements**. Measure the real FPS on the school's PC and use those numbers in Chapter 4.
 
-### 10.3 Packaging for the school (decided direction, partly built)
+### 10.3 Packaging for the school (decided direction, not yet built)
 - The goal: the school installs VigiTrack on **their** PC, and your laptop stays with you.
-- Plan: (1) Nano + OpenVINO ✅ done → (2) a native desktop window using `pywebview` that runs the backend on `127.0.0.1` only and opens the hub without a browser or terminal ✅ done (`backend/desktop.py`) → (3) PyInstaller/Inno Setup installer ⏳ next.
-- In desktop mode the setup code is not required, because the server only accepts connections from the same PC.
+- Plan: (1) Nano + OpenVINO ✅ done → (2) one-click `Start_VigiTrack.bat` launcher that starts the server and opens Edge/Chrome in **`--app` mode** (no address bar, looks like a desktop app) ⏳ → (3) optional PyInstaller/Inno Setup installer ⏳.
 
 ---
 
@@ -607,16 +608,6 @@ cd C:\Users\garya\Desktop\VigiTrack
 python run.py
 # Open http://127.0.0.1:5000   (other LAN PCs: http://<this-PC-IP>:5000)
 ```
-
-**Desktop window (no browser, no terminal):**
-```powershell
-cd backend
-.\venv\Scripts\activate
-python -m pip install pywebview waitress     # one time only
-cd ..\frontend ; npm run build ; cd ..\backend
-python desktop.py                            # backend on 127.0.0.1, hub in its own window
-```
-The window uses `backend/assets/vigitrack.ico` as its icon. Close the window to stop the app. Only one instance can use the camera at a time, so don't run `run.py` and `desktop.py` together.
 Useful tools:
 ```powershell
 python scan_cctv.py                      # which camera indices work
