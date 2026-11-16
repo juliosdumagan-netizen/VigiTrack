@@ -40,11 +40,11 @@ class FakeCameraManager:
         pass
 
 stub = types.ModuleType("app.stream.camera_manager")
-stub.CameraManager = FakeCameraManager
+stub.CameraManager = FakeCameraManager  # type: ignore
 sys.modules["app.stream.camera_manager"] = stub
 
 results = []
-def check(name, cond, extra=""):
+def check(name, cond, extra: object = ""):
     results.append((name, bool(cond)))
     print(("PASS " if cond else "FAIL ") + name + (f"  [{extra}]" if extra else ""))
 

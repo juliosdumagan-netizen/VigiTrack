@@ -66,6 +66,24 @@ export type Incident = {
   reviewed_at: string | null
 }
 
+export type ZoneKind = 'ignore' | 'watch'
+
+/** Points are [x, y] in 0–1 across the frame. */
+export type ZonePoint = [number, number]
+
+export type Zone = {
+  id: string
+  name: string
+  type: ZoneKind
+  points: ZonePoint[]
+  time_threshold?: number
+}
+
+export type ZonesResponse = {
+  zones: Zone[]
+  frame: { width: number; height: number } | null
+}
+
 export type AuditEntry = {
   id: number
   created_at: string
@@ -99,6 +117,28 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 }
 
 const json = (body: unknown): RequestInit => ({ method: 'POST', body: JSON.stringify(body) })
+
+/** Fetches a file download (CSV, PDF) as a Blob. Errors are thrown the same way as JSON requests. */
+async function fetchFile(path: string): Promise<Blob> {
+  const res = await fetch(path, {
+    credentials: 'same-origin',
+    signal: AbortSignal.timeout(60000),
+  })
+  if (res.status === 401) throw new UnauthorizedError('Authentication required')
+  if (!res.ok) throw new Error(`Download failed (${res.status})`)
+  return res.blob()
+}
+
+export function saveBlob(blob: Blob, filename: string) {
+  const url = URL.createObjectURL(blob)
+  const link = document.createElement('a')
+  link.href = url
+  link.download = filename
+  document.body.appendChild(link)
+  link.click()
+  link.remove()
+  URL.revokeObjectURL(url)
+}
 
 export const api = {
   login: (username: string, password: string) =>
@@ -140,7 +180,16 @@ export const api = {
   purgeIncidents: (start: string, end: string) =>
     request<{ status: string; deleted: number }>('/api/incidents/purge', json({ start, end })),
 
+  exportIncidentsCsv: () => fetchFile('/api/incidents/export.csv'),
+
+  incidentReportPdf: (id: number) => fetchFile(`/api/incidents/${id}/report.pdf`),
+
   getNotice: () => request<Notice>('/api/notice'),
+
+  getZones: () => request<ZonesResponse>('/api/zones'),
+
+  saveZones: (zones: Zone[]) =>
+    request<{ status: string; zones: Zone[] }>('/api/zones', json({ zones })),
 
   listUsers: () => request<User[]>('/api/users'),
 

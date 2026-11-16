@@ -10,7 +10,7 @@ detector the panel asked us to compare against: it should catch abandoned bags,
 but it also fires on any bag that sits still beside its owner (seated readers).
 """
 
-BAG_CLASSES = ("backpack", "handbag", "suitcase")
+from app.detection.classes import BAG_CLASSES
 
 
 def _centroid(box):

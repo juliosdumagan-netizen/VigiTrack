@@ -10,13 +10,14 @@ class FakeCam:
     def __init__(self, *a, **k): self.camera_name = "X"; self.notifier = types.SimpleNamespace(audio_enabled=True)
     def start(self): pass
     def get_thresholds(self): return {}
-st = types.ModuleType("app.stream.camera_manager"); st.CameraManager = FakeCam; sys.modules["app.stream.camera_manager"] = st
+st = types.ModuleType("app.stream.camera_manager"); st.CameraManager = FakeCam; sys.modules["app.stream.camera_manager"] = st  # type: ignore
 os.environ["VIGITRACK_DESKTOP"] = "1"
 import webview  # real pywebview import, window NOT started
 sys.modules["webview"] = webview
 import desktop
 from run import create_app
 import urllib.request
+import urllib.error
 app = create_app(); desktop.add_frontend(app)
 from waitress import serve
 port = desktop.free_port()

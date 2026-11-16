@@ -3,7 +3,7 @@ import time
 import cv2
 
 
-def test_source(source=1):
+def test_source(source: int | str = 1):
     print("=" * 60)
     print(f"  VigiTrack: CCTV / Virtual Camera Test (Source: {source})")
     print("=" * 60)

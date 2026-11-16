@@ -27,7 +27,7 @@ from app.evaluation.synthetic import build_synthetic_set  # noqa: E402
 results = []
 
 
-def check(name, cond, extra=""):
+def check(name, cond, extra: object = ""):
     results.append(bool(cond))
     print(("PASS " if cond else "FAIL ") + name + (f"  [{extra}]" if extra else ""))
 

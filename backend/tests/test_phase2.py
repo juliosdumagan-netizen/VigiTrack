@@ -64,7 +64,7 @@ class FakeCameraManager:
 
 
 stub = types.ModuleType("app.stream.camera_manager")
-stub.CameraManager = FakeCameraManager
+stub.CameraManager = FakeCameraManager  # type: ignore
 sys.modules["app.stream.camera_manager"] = stub
 
 import run  # noqa: E402
@@ -78,7 +78,7 @@ from app.stream.rate_limit import FailureLimiter  # noqa: E402
 results = []
 
 
-def check(name, cond, extra=""):
+def check(name, cond, extra: object = ""):
     results.append(bool(cond))
     print(("PASS " if cond else "FAIL ") + name + (f"  [{extra}]" if extra else ""))
 

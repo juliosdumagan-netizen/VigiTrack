@@ -16,6 +16,7 @@ DEFAULTS = {
     "camera_source": 0,
     "camera_name": "BUILT-IN WEBCAM",
     "retention_days": 30,
+    "zones": [],
 }
 
 

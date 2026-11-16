@@ -17,6 +17,9 @@ from enum import Enum
 from collections import deque
 from typing import List, Dict, Optional, Tuple
 
+from app.detection.classes import BAG_CLASSES, CROSS_BAG_CLASSES
+from app.detection.zones import ZoneSet
+
 
 class BaggageState(Enum):
     UNASSIGNED = "UNASSIGNED"
@@ -58,11 +61,17 @@ class BaggageTracklet:
     def current_centroid(self) -> Tuple[float, float]:
         return self.centroid_history[-1]
 
-    def start_separation(self, now: float):
-        """Starts the separation timer. A new timer is a new separation episode."""
-        if self.separation_start_time is None:
+    def start_separation(self, now: float) -> float:
+        """Starts the separation timer if it is not running, and returns its start time.
+
+        A new timer is a new separation episode.
+        """
+        start = self.separation_start_time
+        if start is None:
+            start = now
             self.separation_start_time = now
             self.separation_episode += 1
+        return start
 
     def update_position(self, box: List[float]):
         self.current_box = box
@@ -110,6 +119,7 @@ class AdvancedBaggageMonitor:
         self.takeover_confirm_frames = takeover_confirm_frames
 
         self.baggage_pool: Dict[int, BaggageTracklet] = {}
+        self.zones: Optional[ZoneSet] = None
 
     @staticmethod
     def _get_centroid(box: List[float]) -> Tuple[float, float]:
@@ -127,7 +137,7 @@ class AdvancedBaggageMonitor:
         """
         best_id = None
         best_dist = float("inf")
-        bag_classes = {"backpack", "handbag", "suitcase"}
+        bag_classes = set(CROSS_BAG_CLASSES)
 
         for bid, bag in self.baggage_pool.items():
             if bag.lost_frames > 0:
@@ -141,10 +151,22 @@ class AdvancedBaggageMonitor:
                         best_id = bid
         return best_id
 
+    def set_zones(self, zones: Optional[ZoneSet]) -> None:
+        """Applies ignore and watch zones. None or an empty set means no zones."""
+        self.zones = zones if zones is not None and not zones.is_empty else None
+
+    def _time_limit_for(self, bag_center: Tuple[float, float]) -> float:
+        if self.zones is None:
+            return self.time_threshold
+        return self.zones.time_limit(bag_center, self.time_threshold)
+
     def update(self, detections: List[Dict], now: Optional[float] = None) -> List[Dict]:
         now = time.time() if now is None else now
         people = [d for d in detections if d["class_name"] == "person"]
-        bags = [d for d in detections if d["class_name"] in ("backpack", "handbag", "suitcase")]
+        bags = [d for d in detections if d["class_name"] in BAG_CLASSES]
+        # Objects inside an ignore zone are not tracked. People are never ignored, so they still count as owners.
+        if self.zones is not None:
+            bags = [d for d in bags if not self.zones.is_ignored(self._get_centroid(d["box"]))]
 
         active_canonical_ids = set()
         telemetry = []
@@ -187,6 +209,7 @@ class AdvancedBaggageMonitor:
 
             bag_center = bag.current_centroid
             bag_static = bag.is_static()
+            limit = self._time_limit_for(bag_center)
 
             # STEP A: OWNER ASSOCIATION
             if bag.owner_id is None:
@@ -230,11 +253,9 @@ class AdvancedBaggageMonitor:
                         bag.state = BaggageState.STATIC_ATTENDED if bag_static else BaggageState.CARRIED
                 else:
                     bag.attended_streak = 0
-                    bag.start_separation(now)
-
-                    separation_start = bag.separation_start_time
-                    elapsed = 0.0 if separation_start is None else (now - separation_start)
-                    if elapsed >= self.time_threshold:
+                    separation_start = bag.start_separation(now)
+                    elapsed = now - separation_start
+                    if elapsed >= limit:
                         bag.state = BaggageState.UNATTENDED_ALERT
                     else:
                         bag.state = BaggageState.SEPARATED
@@ -268,10 +289,9 @@ class AdvancedBaggageMonitor:
                             retrieved = True
 
                 if not retrieved:
-                    bag.start_separation(now)
-
-                    elapsed = now - bag.separation_start_time
-                    if elapsed >= self.time_threshold:
+                    separation_start = bag.start_separation(now)
+                    elapsed = now - separation_start
+                    if elapsed >= limit:
                         bag.state = BaggageState.UNATTENDED_ALERT
                     else:
                         bag.state = BaggageState.OWNER_OUT_OF_VIEW
@@ -280,10 +300,9 @@ class AdvancedBaggageMonitor:
                     measured_distance = self.distance_threshold + 50.0
 
             else:
-                bag.start_separation(now)
-
-                elapsed = now - bag.separation_start_time
-                if elapsed >= self.time_threshold:
+                separation_start = bag.start_separation(now)
+                elapsed = now - separation_start
+                if elapsed >= limit:
                     bag.state = BaggageState.UNATTENDED_ALERT
                 else:
                     bag.state = BaggageState.UNASSIGNED
@@ -294,7 +313,7 @@ class AdvancedBaggageMonitor:
             elapsed_time = 0.0
             if bag.separation_start_time is not None:
                 elapsed_time = now - bag.separation_start_time
-                time_remaining = max(0.0, self.time_threshold - elapsed_time)
+                time_remaining = max(0.0, limit - elapsed_time)
 
             telemetry.append({
                 "bag_id": bid,  # Locked Canonical ID

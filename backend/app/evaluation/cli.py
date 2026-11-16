@@ -15,6 +15,7 @@ only run on the machine with the camera. evaluate/synthetic are pure Python.
 
 import argparse
 import json
+import os
 import sys
 
 
@@ -53,6 +54,19 @@ def cmd_synthetic(args) -> int:
     return 0
 
 
+def _annotate(frame, dets, t: float):
+    """Draws each track's ID and class, plus the clip time, so ground-truth labels can be matched to IDs."""
+    import cv2
+
+    cv2.putText(frame, f"t={t:.2f}s", (10, 28), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv2.LINE_AA)
+    for d in dets:
+        x1, y1, x2, y2 = (int(v) for v in d["box"])
+        cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+        cv2.putText(frame, f"{d['class_name']} #{d['id']}", (x1, max(20, y1 - 6)),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2, cv2.LINE_AA)
+    return frame
+
+
 def cmd_record_video(args) -> int:
     """Runs the real detector + ByteTrack over a video and dumps per-frame detections."""
     import cv2
@@ -65,6 +79,13 @@ def cmd_record_video(args) -> int:
         return 1
     fps = cap.get(cv2.CAP_PROP_FPS) or 25.0
     detector = ObjectDetector()
+
+    writer = None
+    if args.annotated_out:
+        width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        fourcc = cv2.VideoWriter_fourcc(*"mp4v")  # type: ignore[attr-defined]  # missing from the OpenCV stubs
+        writer = cv2.VideoWriter(args.annotated_out, fourcc, fps, (width, height))
 
     frames = []
     max_seconds = args.max_seconds or float("inf")
@@ -79,17 +100,22 @@ def cmd_record_video(args) -> int:
             "dets": [{"id": d["id"], "class_name": d["class_name"],
                       "box": [round(b, 1) for b in d["box"]]} for d in dets],
         })
+        if writer is not None:
+            writer.write(_annotate(frame.copy(), dets, idx / fps))
         idx += 1
         if idx % 300 == 0:
             print(f"  {idx} frames ({idx / fps:.0f} s)...")
     cap.release()
+    if writer is not None:
+        writer.release()
+        print(f"Annotated video written to {args.annotated_out}")
 
     if not frames:
         print("ERROR: no frames read.", file=sys.stderr)
         return 1
 
     scenario = {
-        "name": args.name or ("clip_" + str(abs(hash(args.video)) % 100000)),
+        "name": args.name or os.path.splitext(os.path.basename(args.video))[0],
         "fps": fps,
         "description": f"Recorded from {args.video}. Add ground-truth 'events' before evaluating.",
         "events": [],
@@ -220,6 +246,7 @@ def main(argv=None) -> int:
     p.add_argument("--video", required=True, help="video path or camera index (e.g. 0)")
     p.add_argument("--out", required=True, help="output scenario JSON")
     p.add_argument("--name", help="scenario name (default derived from source)")
+    p.add_argument("--annotated-out", help="also write an mp4 showing each track's ID and the clip time, for labelling")
     p.add_argument("--max-seconds", type=float, help="stop after this many seconds of video")
     p.set_defaults(func=cmd_record_video)
 

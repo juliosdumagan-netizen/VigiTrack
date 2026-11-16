@@ -217,6 +217,7 @@ def complete_setup(code: str, username: str, password: str) -> Tuple[Optional[di
         user, error = create_user(username, password, "admin")
         if error:
             return None, error
+        assert user is not None
 
         _setup_state["code"] = None
         log_audit(user["username"], "setup_completed")
@@ -279,6 +280,7 @@ def create_user(username: str, password: str, role: str, must_change: bool = Fal
         user_id = cursor.lastrowid
     finally:
         conn.close()
+    assert user_id is not None, "INSERT always reports a lastrowid"
     return get_user(user_id), None
 
 

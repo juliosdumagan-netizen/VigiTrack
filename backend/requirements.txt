@@ -7,3 +7,4 @@ torch>=2.0.0
 openvino>=2024.0.0
 pywebview>=5.0
 waitress>=3.0.0
+reportlab>=4.0.0

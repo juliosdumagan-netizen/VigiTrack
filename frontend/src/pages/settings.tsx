@@ -6,12 +6,13 @@ import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { api } from '@/lib/api'
 
-type BagClass = 'backpack' | 'handbag' | 'suitcase'
+type BagClass = 'backpack' | 'handbag' | 'suitcase' | 'laptop'
 
 const BAG_CLASSES: { key: BagClass; label: string }[] = [
   { key: 'backpack', label: 'Backpack' },
   { key: 'handbag', label: 'Handbag' },
   { key: 'suitcase', label: 'Suitcase' },
+  { key: 'laptop', label: 'Laptop' },
 ]
 
 export function SettingsPage() {
@@ -19,7 +20,12 @@ export function SettingsPage() {
   const [distance, setDistance] = useState('150')
   const [time, setTime] = useState('10')
   const [audio, setAudio] = useState(true)
-  const [bags, setBags] = useState<Record<BagClass, boolean>>({ backpack: true, handbag: true, suitcase: true })
+  const [bags, setBags] = useState<Record<BagClass, boolean>>({
+    backpack: true,
+    handbag: true,
+    suitcase: true,
+    laptop: false,
+  })
   const [retention, setRetention] = useState('30')
   const [message, setMessage] = useState<{ type: 'ok' | 'error'; text: string } | null>(null)
   const [saving, setSaving] = useState(false)
@@ -36,6 +42,7 @@ export function SettingsPage() {
           backpack: s.monitored_classes.includes('backpack'),
           handbag: s.monitored_classes.includes('handbag'),
           suitcase: s.monitored_classes.includes('suitcase'),
+          laptop: s.monitored_classes.includes('laptop'),
         })
         setLoaded(true)
       })

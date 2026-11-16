@@ -188,7 +188,7 @@ Camera (USB or RTSP)
 | FR-36 | Only admins shall be able to delete one incident or clear all incidents. Deleting an incident shall also delete its snapshot file. | Implemented |
 | FR-37 | The system shall show recent alerts on the dashboard. | Implemented |
 | FR-38 | Operators shall be able to acknowledge, verify or dismiss an incident, with a note. Dismissing as a false alarm requires a reason. | Implemented (review fields in the database, POST /api/incidents/<id>/review, audited) |
-| FR-39 | The system shall allow an incident to be exported (CSV for the list, PDF for one incident). | Planned |
+| FR-39 | The system shall allow an incident to be exported (CSV for the list, PDF for one incident). | Implemented in Phase 4: CSV of all incidents (`GET /api/incidents/export.csv`, UTF-8 with BOM, spreadsheet formula injection neutralised); one-page PDF per incident (`GET /api/incidents/<id>/report.pdf`: snapshot, details, settings used, timeline, review). Both exports are audited. PDF uses Helvetica, so characters outside Latin-1 may not render. |
 | FR-40 | The system shall delete snapshots older than a configured retention period. | Implemented (default 30 days, 1–3650 configurable; checked hourly, each run audited) |
 
 ### 3.6 Accounts, roles and sessions
@@ -232,6 +232,9 @@ Camera (USB or RTSP)
 | FR-65 | The desktop application shall show the VigiTrack logo as the window icon and group the window under VigiTrack in the taskbar. | Implemented (icon file verified; visual check pending) |
 | FR-66 | The desktop application shall stop when its window is closed. | Implemented (by design; to be confirmed in testing) |
 | FR-67 | The desktop application shall stop with a clear message if the hub has not been built. | Implemented |
+| FR-68 | The system shall let an administrator draw ignore zones on the camera view. Objects whose centre is inside an ignore zone are not tracked and raise no alert. People inside an ignore zone still count as owners. | Implemented in Phase 4 (`app/detection/zones.py`, `fsm_tracker.py`); tested in code (`test_zones.py`). Not yet measured on real footage. |
+| FR-69 | The system shall let an administrator draw watch zones on the camera view. An unattended object whose centre is inside a watch zone alerts after that zone's own time limit, instead of the global one. Overlapping watch zones use the shortest limit. | Implemented in Phase 4; tested in code (`test_zones.py`). Not yet measured on real footage. |
+| FR-70 | Zone changes shall be validated, stored as normalised coordinates, and written to the audit log. Every signed-in user can view zones; only administrators can change them. | Implemented in Phase 4 (`GET/POST /api/zones`, `test_phase4.py`). |
 
 ---
 
@@ -410,7 +413,7 @@ The test scripts are now in `backend/tests/` and run from the backend folder wit
 | O-6 | ~~Camera credentials are stored in plain text in the settings file.~~ | Closed in Phase 2. RTSP URLs are encrypted with Windows DPAPI; the settings file and every log line keep only a masked copy. | FR-62 | Closed |
 | O-7 | ~~The session secret key was stored in git history.~~ | Closed in Phase 0: the key was regenerated on 13 Nov 2026, so the old value no longer works. It still appears in old commits. | NFR-13 | Closed (history not rewritten) |
 | O-8 | Snapshots have no retention limit and show people unblurred. | Privacy compliance risk. | FR-40, NFR-22, NFR-23 | Retention closed in Phase 2 (configurable retention, hourly purge, admin range delete). Face blurring still needs accuracy testing. |
-| O-9 | Object list covers only the COCO classes. Parcels and boxes are not detected; laptops are not in the monitored set. | Limits the scope of what can be reported. | FR-07, FR-15 | Add laptop (COCO class 63); fine-tune for parcels if needed. |
+| O-9 | Object list covers only the COCO classes. Parcels and boxes are not detected. | Limits the scope of what can be reported. | FR-07, FR-15 | Laptop (COCO class 63) added in Phase 4 as an opt-in monitored class. Its detection confidence (0.25) is a starting value, not yet tuned. Laptop precision and false-alarm rate on real footage are not yet measured. Parcels still need fine-tuning if required. |
 | O-10 | RTSP has not been tested on real hardware. | Unknown behaviour with IP cameras. | FR-01 | Test with a real camera or NVR; consider TCP transport. |
 | O-11 | Browser-mode deployment has no HTTPS. | Credentials and video cross the network unencrypted. | NFR-16 | HTTPS reverse proxy before any network deployment. |
 | O-12 | Installer not yet built. Desktop mode requires Python and the built hub. | Not yet deployable to non-technical staff. | FR-63 to FR-67 | PyInstaller and Inno Setup packaging. |
@@ -425,11 +428,12 @@ The test scripts are now in `backend/tests/` and run from the backend folder wit
 | Detection and tracking (FR-07 to FR-15) | 9 | 9 | 0 | 0 |
 | Ownership and state (FR-16 to FR-26) | 11 | 11 | 0 | 0 |
 | Visual output (FR-27 to FR-32) | 6 | 6 | 0 | 0 |
-| Incidents (FR-33 to FR-40) | 8 | 7 | 0 | 1 |
+| Incidents (FR-33 to FR-40) | 8 | 8 | 0 | 0 |
 | Accounts and sessions (FR-41 to FR-56) | 16 | 16 | 0 | 0 |
 | Settings and alerts (FR-57 to FR-62) | 6 | 6 | 0 | 0 |
 | Desktop (FR-63 to FR-67) | 5 | 5 | 0 | 0 |
-| **Functional total (FR-01 to FR-67)** | **67** | **66** | **0** | **1** |
+| Zones (FR-68 to FR-70) | 3 | 3 | 0 | 0 |
+| **Functional total (FR-01 to FR-70)** | **70** | **70** | **0** | **0** |
 | Non-functional (NFR-01 to NFR-32) | 32 | 23 | 3 | 6 |
 
 Of the 6 non-functional requirements counted as Planned, three (NFR-01 to NFR-03) are performance targets that are not yet measured, and the rest (NFR-07 worker restart, NFR-16 HTTPS, NFR-23 face blurring) are planned work. Three more (NFR-19 dependency audit, NFR-28 error-message quality, NFR-31 labelled scenario set) are Partial.

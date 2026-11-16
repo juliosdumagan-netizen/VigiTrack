@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { ImageOff, Maximize2, Minimize2, Trash2 } from 'lucide-react'
+import { Download, ImageOff, Maximize2, Minimize2, Trash2 } from 'lucide-react'
+import { toast } from 'sonner'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
@@ -8,7 +9,8 @@ import { Label } from '@/components/ui/label'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet'
-import { api, type Incident, type ReviewAction, type ReviewStatus } from '@/lib/api'
+import { ConfirmDialog } from '@/components/ui/confirm-dialog'
+import { api, saveBlob, UnauthorizedError, type Incident, type ReviewAction, type ReviewStatus } from '@/lib/api'
 
 const STATE_LABELS: Record<string, string> = {
   UNASSIGNED: 'Unassigned',
@@ -50,6 +52,8 @@ export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted,
   const [reviewing, setReviewing] = useState(false)
   const [reviewError, setReviewError] = useState<string | null>(null)
   const [isExpanded, setIsExpanded] = useState(false)
+  const [deleteOpen, setDeleteOpen] = useState(false)
+  const [reportBusy, setReportBusy] = useState(false)
 
   useEffect(() => {
     if (incidentId === null) return
@@ -70,10 +74,10 @@ export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted,
     }
   }, [incidentId])
 
-  async function handleDelete() {
+  async function confirmDelete() {
     if (!incident) return
-    if (!confirm(`Delete incident #${incident.id}?`)) return
     await api.deleteIncident(incident.id).catch(() => undefined)
+    setDeleteOpen(false)
     onDeleted()
     onClose()
   }
@@ -91,6 +95,20 @@ export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted,
       setReviewError(err instanceof Error ? err.message : 'Review failed')
     } finally {
       setReviewing(false)
+    }
+  }
+
+  async function downloadReport() {
+    if (!incident) return
+    setReportBusy(true)
+    try {
+      const blob = await api.incidentReportPdf(incident.id)
+      saveBlob(blob, `vigitrack-incident-${incident.id}.pdf`)
+    } catch (err) {
+      if (err instanceof UnauthorizedError) onClose()
+      else toast.error(err instanceof Error ? err.message : 'Could not create the PDF')
+    } finally {
+      setReportBusy(false)
     }
   }
 
@@ -246,18 +264,31 @@ export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted,
 
               <Separator />
 
-              {canDelete && (
-                <div className="flex justify-end">
-                  <Button variant="destructive" onClick={handleDelete}>
+              <div className="flex flex-wrap justify-between gap-2">
+                <Button variant="outline" disabled={reportBusy} onClick={downloadReport}>
+                  <Download />
+                  {reportBusy ? 'Preparing PDF…' : 'Download PDF report'}
+                </Button>
+                {canDelete && (
+                  <Button variant="destructive" onClick={() => setDeleteOpen(true)}>
                     <Trash2 />
                     Delete incident
                   </Button>
-                </div>
-              )}
+                )}
+              </div>
             </>
           )}
         </div>
       </SheetContent>
+
+      <ConfirmDialog
+        open={deleteOpen}
+        onOpenChange={(open) => !open && setDeleteOpen(false)}
+        title={`Delete incident #${incidentId}?`}
+        description="The snapshot and timeline for this incident are removed permanently. This cannot be undone."
+        confirmLabel="Delete"
+        onConfirm={confirmDelete}
+      />
     </Sheet>
 
     {incident?.image_url && !imageFailed && (

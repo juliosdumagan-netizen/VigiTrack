@@ -126,5 +126,40 @@
     }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
+    }
+}
+
+/* Landing page motion */
+@keyframes vt-scan {
+    0% {
+        top: -2%;
+        opacity: 0;
+    }
+    8% {
+        opacity: 1;
+    }
+    92% {
+        opacity: 1;
+    }
+    100% {
+        top: 102%;
+        opacity: 0;
+    }
+}
+
+@keyframes vt-alert-pulse {
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
     }
 }

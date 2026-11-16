@@ -13,7 +13,7 @@ from app.detection.fsm_tracker import AdvancedBaggageMonitor  # noqa: E402
 results = []
 
 
-def check(name, cond, extra=""):
+def check(name, cond, extra: object = ""):
     results.append(bool(cond))
     print(("PASS " if cond else "FAIL ") + name + (f"  [{extra}]" if extra else ""))
 
@@ -50,7 +50,10 @@ def run(monitor, frames, start, dt):
 
 
 def telemetry_for(items, bid):
-    return next((i for i in items if i["bag_id"] == bid), None)
+    for i in items:
+        if i["bag_id"] == bid:
+            return i
+    raise AssertionError(f"no telemetry for bag {bid}")
 
 
 # --- 1. Seated owner keeps the bag attended (regression) ---

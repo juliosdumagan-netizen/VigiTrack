@@ -123,3 +123,19 @@ def build_synthetic_set():
     """Returns the five scenario dicts, freshly built (each call returns new data)."""
     return [seated_reader(), owner_walks_away(), owner_leaves_frame(),
             passer_by(), abandoned_bag()]
+
+
+def as_laptops(scenarios):
+    """
+    The same clips with every bag relabelled as a laptop. Boxes, ids and ground truth are unchanged,
+    so any difference in results comes from the laptop class handling alone.
+    """
+    out = []
+    for sc in scenarios:
+        frames = []
+        for f in sc["frames"]:
+            dets = [dict(d, class_name="laptop") if d["class_name"] == "backpack" else d for d in f["dets"]]
+            frames.append({"t": f["t"], "dets": dets})
+        out.append(dict(sc, name=f"{sc['name']}_laptop",
+                        description=f"{sc['description']} (bag replaced by a laptop)", frames=frames))
+    return out

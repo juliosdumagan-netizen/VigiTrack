@@ -189,7 +189,7 @@ If time is short, complete **Phase 0, Phase 1 and Phase 3** before the defense. 
 | 0. Stabilise | Complete, not yet committed. All six test suites pass (`python tests/run_all.py`). |
 | 1. Operator workflow | Built and tested in code (all 8 suites pass, frontend builds). Not yet checked in the live hub on the school PC. |
 | 2. Security and privacy | Built and tested in code (`test_phase2.py` 42/42; all 8 suites pass, frontend builds). Dependency audit and a live header check still to do. |
-| 3. Evaluation | Harness built and tested in code: stationary-timer baseline, five-scenario synthetic set, scorer (FA/h, recall, latency), CLI (`record-video`, `benchmark`, `soak`); `test_evaluation.py` 27/27, all 9 suites pass, frontend builds. Real-footage labelling, school-PC FPS numbers and the 2-hour RTSP soak test still to be run by hand. |
-| 4. Zones and reporting | Not started |
+| 3. Evaluation | Harness built and tested in code: stationary-timer baseline, five-scenario synthetic set, scorer (FA/h, recall, latency), CLI (`record-video`, with `--annotated-out` for labelling, `benchmark`, `soak`); `test_evaluation.py` 27/27. Labelling protocol written (`docs/PHASE3_LABELLING.md`). Still to run by hand: recording and labelling real clips, school-PC FPS numbers, and the 2-hour RTSP soak test. |
+| 4. Zones and reporting | In progress. Done: CSV export and one-page PDF per incident (`test_phase4.py`); ignore and watch zones drawn on the live feed (`test_zones.py` 22/22); laptop as an opt-in monitored class (`test_laptop.py` 11/11). All 12 suites pass, frontend builds. Open: zone and laptop effects are not measured on real footage (needs the labelled set from Phase 3). The laptop check on the synthetic set shows no change in the logic. Laptop detector precision is still unmeasured. |
 | 5. Multi-camera | Not started |
 | 6. Packaging | Not started |

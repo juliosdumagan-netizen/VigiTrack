@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardAction } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { LiveFeedCard } from '@/components/zones/live-feed-card'
 import { api, UnauthorizedError, type Alert, type CameraStatus, type Settings } from '@/lib/api'
 
 export function DashboardPage() {
@@ -52,20 +53,7 @@ export function DashboardPage() {
 
   return (
     <div className="grid gap-4 lg:grid-cols-3">
-      <Card className="lg:col-span-2">
-        <CardHeader>
-          <CardTitle>{settings?.camera_name ?? 'Camera'}</CardTitle>
-          <CardDescription>Live feed with person and object detection</CardDescription>
-          <CardAction>
-            <Badge variant="destructive">● Live</Badge>
-          </CardAction>
-        </CardHeader>
-        <CardContent>
-          <div className="relative aspect-video overflow-hidden rounded-lg bg-black">
-            <img src="/video_feed" alt="Live surveillance feed" className="size-full object-contain" />
-          </div>
-        </CardContent>
-      </Card>
+      <LiveFeedCard cameraName={settings?.camera_name ?? 'Camera'} className="lg:col-span-2" />
 
       <div className="grid content-start gap-4">
         <Card>

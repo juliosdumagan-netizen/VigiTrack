@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState, type KeyboardEvent, type MouseEvent } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { CalendarX2, Trash2 } from 'lucide-react'
+import { CalendarX2, Download, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardAction } from '@/components/ui/card'
 import {
@@ -13,10 +13,12 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { ConfirmDialog } from '@/components/ui/confirm-dialog'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Badge } from '@/components/ui/badge'
+import { toast } from 'sonner'
 import { IncidentDetailSheet, ReviewBadge } from '@/components/incidents/incident-detail-sheet'
-import { api, UnauthorizedError, type Incident } from '@/lib/api'
+import { api, saveBlob, UnauthorizedError, type Incident } from '@/lib/api'
 import { useAuth } from '@/lib/auth'
 
 export function IncidentsPage() {
@@ -31,6 +33,9 @@ export function IncidentsPage() {
   const [purgeEnd, setPurgeEnd] = useState('')
   const [purgeError, setPurgeError] = useState<string | null>(null)
   const [purging, setPurging] = useState(false)
+  const [deleteTarget, setDeleteTarget] = useState<number | null>(null)
+  const [clearOpen, setClearOpen] = useState(false)
+  const [exporting, setExporting] = useState(false)
 
   const selectedParam = params.get('selected')
   const selectedId = selectedParam && /^\d+$/.test(selectedParam) ? Number(selectedParam) : null
@@ -64,15 +69,33 @@ export function IncidentsPage() {
 
   async function handleDelete(e: MouseEvent, id: number) {
     e.stopPropagation()
-    if (!confirm(`Delete incident #${id}?`)) return
-    await api.deleteIncident(id).catch(() => undefined)
+    setDeleteTarget(id)
+  }
+
+  async function confirmDelete() {
+    if (deleteTarget === null) return
+    await api.deleteIncident(deleteTarget).catch(() => undefined)
+    setDeleteTarget(null)
     load()
   }
 
-  async function handleClear() {
-    if (!confirm('Delete ALL incident records?')) return
+  async function confirmClear() {
     await api.clearIncidents().catch(() => undefined)
+    setClearOpen(false)
     load()
+  }
+
+  async function handleExport() {
+    setExporting(true)
+    try {
+      const blob = await api.exportIncidentsCsv()
+      saveBlob(blob, `vigitrack-incidents-${new Date().toISOString().slice(0, 10)}.csv`)
+    } catch (err) {
+      if (err instanceof UnauthorizedError) navigate('/login', { replace: true })
+      else toast.error(err instanceof Error ? err.message : 'Export failed')
+    } finally {
+      setExporting(false)
+    }
   }
 
   function openPurge() {
@@ -92,12 +115,11 @@ export function IncidentsPage() {
       return
     }
     setPurgeError(null)
-    if (!confirm(`Delete every incident detected from ${purgeStart} to ${purgeEnd}? This cannot be undone.`)) return
     setPurging(true)
     try {
       const res = await api.purgeIncidents(purgeStart, purgeEnd)
       setPurgeOpen(false)
-      alert(`${res.deleted} incident(s) deleted.`)
+      toast.success(`${res.deleted} incident(s) deleted.`)
       load()
     } catch (err) {
       setPurgeError(err instanceof Error ? err.message : 'Delete failed')
@@ -123,13 +145,17 @@ export function IncidentsPage() {
             <Button variant="outline" size="sm" onClick={load} disabled={loading}>
               Refresh
             </Button>
+            <Button variant="outline" size="sm" onClick={handleExport} disabled={exporting || incidents.length === 0}>
+              <Download />
+              {exporting ? 'Exporting…' : 'Export CSV'}
+            </Button>
             {isAdmin && (
               <>
                 <Button variant="outline" size="sm" onClick={openPurge} disabled={incidents.length === 0}>
                   <CalendarX2 />
                   Delete by date…
                 </Button>
-                <Button variant="destructive" size="sm" onClick={handleClear} disabled={incidents.length === 0}>
+                <Button variant="destructive" size="sm" onClick={() => setClearOpen(true)} disabled={incidents.length === 0}>
                   Clear all
                 </Button>
               </>
@@ -231,6 +257,24 @@ export function IncidentsPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      <ConfirmDialog
+        open={deleteTarget !== null}
+        onOpenChange={(open) => !open && setDeleteTarget(null)}
+        title={`Delete incident #${deleteTarget}?`}
+        description="The snapshot and timeline for this incident are removed permanently. This cannot be undone."
+        confirmLabel="Delete"
+        onConfirm={confirmDelete}
+      />
+
+      <ConfirmDialog
+        open={clearOpen}
+        onOpenChange={setClearOpen}
+        title="Delete ALL incident records?"
+        description="Every incident, snapshot, and timeline in the history is removed permanently. This cannot be undone."
+        confirmLabel="Delete all"
+        onConfirm={confirmClear}
+      />
 
       <IncidentDetailSheet
         incidentId={selectedId}

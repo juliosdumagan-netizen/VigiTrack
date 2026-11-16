@@ -9,11 +9,15 @@ from app.database.retention import DEFAULT_RETENTION_DAYS, purge_between
 from app.detection.classes import SUPPORTED_CLASSES
 from app.stream.camera_manager import CameraManager
 from app.stream.rate_limit import FailureLimiter
+from app.detection.zones import ZoneError
+from app.database.export import incidents_to_csv
+from app.database.incident_report import incident_to_pdf
 from app.database.models import (
     INCIDENT_IMAGE_DIR,
     clear_all_incidents,
     delete_incident,
     get_all_incidents,
+    get_all_incidents_for_export,
     get_incident,
     get_incident_image_filename,
     review_incident,
@@ -89,6 +93,13 @@ def _current_user():
     return user
 
 
+def _actor() -> str:
+    """Username of the signed-in user. Only used behind login_required/admin_required."""
+    user = _current_user()
+    assert user is not None, "login_required has already checked the session"
+    return user["username"]
+
+
 PASSWORD_CHANGE_ALLOWED = {
     "stream_bp.api_me",
     "stream_bp.api_change_own_password",
@@ -120,6 +131,7 @@ def role_required(role):
         @login_required
         def decorated_function(*args, **kwargs):
             user = _current_user()
+            assert user is not None, "login_required has already checked the session"
             if user["role"] != role and user["role"] != "admin":
                 return jsonify({"status": "forbidden", "message": "This action needs an administrator account."}), 403
             return f(*args, **kwargs)
@@ -187,7 +199,7 @@ def api_login():
     }
     return jsonify({
         "status": "error",
-        "message": messages.get(reason, "Invalid username or password."),
+        "message": messages.get(reason or "", "Invalid username or password."),
     }), 401
 
 
@@ -213,6 +225,7 @@ def api_setup():
     if error:
         status = 403 if error.startswith("Setup code") or error.startswith("Too many") else 400
         return jsonify({"status": "error", "message": error}), status
+    assert user is not None
     session.clear()
     session.permanent = True
     session["user_id"] = user["id"]
@@ -251,6 +264,7 @@ def api_change_own_password():
     if not request.is_json:
         return jsonify({"status": "error", "message": "Expected a JSON request."}), 415
     user = _current_user()
+    assert user is not None, "login_required has already checked the session"
     data = request.get_json(silent=True) or {}
     current = str(data.get("current_password") or "")
     new = str(data.get("new_password") or "")
@@ -282,7 +296,7 @@ def api_list_users():
 def api_create_user():
     if not request.is_json:
         return jsonify({"status": "error", "message": "Expected a JSON request."}), 415
-    actor = _current_user()["username"]
+    actor = _actor()
     data = request.get_json(silent=True) or {}
     username = str(data.get("username") or "").strip()
     password = str(data.get("password") or "")
@@ -291,6 +305,7 @@ def api_create_user():
     user, error = accounts.create_user(username, password, role, must_change=True)
     if error:
         return jsonify({"status": "error", "message": error}), 400
+    assert user is not None
     accounts.log_audit(actor, "user_created", f"{user['username']} ({user['role']})")
     return jsonify({"status": "success", "user": user}), 201
 
@@ -301,6 +316,7 @@ def api_update_user(user_id):
     if not request.is_json:
         return jsonify({"status": "error", "message": "Expected a JSON request."}), 415
     actor_user = _current_user()
+    assert actor_user is not None, "admin_required has already checked the session"
     data = request.get_json(silent=True) or {}
     target = accounts.get_user(user_id)
     if target is None:
@@ -341,6 +357,7 @@ def api_update_user(user_id):
 @admin_required
 def api_delete_user(user_id):
     actor_user = _current_user()
+    assert actor_user is not None, "admin_required has already checked the session"
     target = accounts.get_user(user_id)
     if target is None:
         return jsonify({"status": "error", "message": "User not found."}), 404
@@ -402,6 +419,21 @@ def api_get_incidents():
     return jsonify(incidents)
 
 
+@stream_bp.route("/api/incidents/export.csv", methods=["GET"])
+@login_required
+def api_export_incidents_csv():
+    """Every incident as a CSV download. Each export is logged, since it copies personal data out of the hub."""
+    incidents = get_all_incidents_for_export()
+    actor = _actor()
+    accounts.log_audit(actor, "incidents_exported", f"{len(incidents)} record(s) as CSV")
+    filename = f"vigitrack-incidents-{datetime.now().strftime('%Y%m%d-%H%M%S')}.csv"
+    return Response(
+        incidents_to_csv(incidents),
+        mimetype="text/csv",
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+    )
+
+
 @stream_bp.route("/api/incidents/<int:incident_id>/review", methods=["POST"])
 @login_required
 def api_review_incident(incident_id):
@@ -410,12 +442,14 @@ def api_review_incident(incident_id):
         return jsonify({"status": "error", "message": "Expected a JSON request."}), 415
     data = request.get_json(silent=True) or {}
     user = _current_user()
+    assert user is not None, "login_required has already checked the session"
     action = str(data.get("action") or "")
 
     incident, error = review_incident(incident_id, action, user["username"], data.get("note"))
     if error:
         status = 404 if error == "Incident not found." else 400
         return jsonify({"status": "error", "message": error}), status
+    assert incident is not None
 
     detail = f"#{incident_id} → {action}"
     if incident["review_note"]:
@@ -442,12 +476,39 @@ def api_get_incident_image(incident_id):
     return send_from_directory(INCIDENT_IMAGE_DIR, filename, mimetype="image/jpeg")
 
 
+@stream_bp.route("/api/incidents/<int:incident_id>/report.pdf", methods=["GET"])
+@login_required
+def api_incident_report(incident_id):
+    """One-page PDF for a single incident: snapshot, details, timeline and settings used."""
+    incident = get_incident(incident_id)
+    if incident is None:
+        return jsonify({"status": "error", "message": "Incident not found"}), 404
+
+    snapshot = None
+    filename = get_incident_image_filename(incident_id)
+    if filename:
+        try:
+            with open(os.path.join(INCIDENT_IMAGE_DIR, os.path.basename(filename)), "rb") as f:
+                snapshot = f.read()
+        except OSError:
+            snapshot = None
+
+    actor = _actor()
+    accounts.log_audit(actor, "incident_report_exported", f"#{incident_id}")
+    pdf = incident_to_pdf(incident, snapshot, actor)
+    return Response(
+        pdf,
+        mimetype="application/pdf",
+        headers={"Content-Disposition": f'attachment; filename="vigitrack-incident-{incident_id}.pdf"'},
+    )
+
+
 @stream_bp.route("/api/incidents/<int:incident_id>", methods=["DELETE"])
 @admin_required
 def api_delete_incident(incident_id):
     success = delete_incident(incident_id)
     if success:
-        accounts.log_audit(_current_user()["username"], "incident_deleted", f"#{incident_id}")
+        accounts.log_audit(_actor(), "incident_deleted", f"#{incident_id}")
     return jsonify({"success": success})
 
 
@@ -455,7 +516,7 @@ def api_delete_incident(incident_id):
 @admin_required
 def api_clear_all_incidents():
     count = clear_all_incidents()
-    accounts.log_audit(_current_user()["username"], "incidents_cleared", f"{count} records")
+    accounts.log_audit(_actor(), "incidents_cleared", f"{count} records")
     return jsonify({"success": True})
 
 
@@ -476,9 +537,32 @@ def api_purge_incidents():
 
     end_exclusive = end + timedelta(days=1)
     count = purge_between(start.isoformat(timespec="seconds"), end_exclusive.isoformat(timespec="seconds"))
-    actor = _current_user()["username"]
+    actor = _actor()
     accounts.log_audit(actor, "incidents_purged", f"{count} record(s) from {start.date()} to {end.date()}")
     return jsonify({"status": "success", "deleted": count})
+
+
+@stream_bp.route("/api/zones", methods=["GET"])
+@login_required
+def api_get_zones():
+    return jsonify(get_camera_manager().get_zones())
+
+
+@stream_bp.route("/api/zones", methods=["POST"])
+@admin_required
+def api_save_zones():
+    """Replaces the ignore and watch zones. Zones are drawn in normalised frame coordinates."""
+    if not request.is_json:
+        return jsonify({"status": "error", "message": "Expected a JSON request."}), 415
+    data = request.get_json(silent=True) or {}
+    try:
+        saved = get_camera_manager().set_zones(data.get("zones"))
+    except ZoneError as e:
+        return jsonify({"status": "error", "message": str(e)}), 400
+
+    ignore_count = sum(1 for z in saved if z["type"] == "ignore")
+    accounts.log_audit(_actor(), "zones_updated", f"{ignore_count} ignore, {len(saved) - ignore_count} watch")
+    return jsonify({"status": "success", "zones": saved})
 
 
 @stream_bp.route("/api/settings", methods=["GET"])
@@ -509,7 +593,7 @@ def api_update_settings():
 
     data = request.get_json(silent=True) or {}
     cam = get_camera_manager()
-    actor = _current_user()["username"]
+    actor = _actor()
 
     try:
         # Validate and parse every value before anything is saved
@@ -533,7 +617,7 @@ def api_update_settings():
         # switch_source persists its own change, so reload before applying the rest
         s = load_settings()
 
-        if dist is not None:
+        if dist is not None and time_thresh is not None:
             cam.update_thresholds(dist, time_thresh)
             s["distance_threshold"] = dist
             s["time_threshold"] = time_thresh

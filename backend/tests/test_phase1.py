@@ -31,6 +31,8 @@ class FakeNotifier:
 
 
 class FakeCameraManager:
+    calls: list = []
+
     def __init__(self, *a, **k):
         s = settings_store.load_settings()
         self.monitored = set(s.get("monitored_classes", ["person"]))
@@ -61,10 +63,8 @@ class FakeCameraManager:
         self.calls.append(sorted(names))
 
 
-FakeCameraManager.calls = []
-
 stub = types.ModuleType("app.stream.camera_manager")
-stub.CameraManager = FakeCameraManager
+stub.CameraManager = FakeCameraManager  # type: ignore
 sys.modules["app.stream.camera_manager"] = stub
 
 import run  # noqa: E402
@@ -76,7 +76,7 @@ from app.stream.camera_health import classify  # noqa: E402
 results = []
 
 
-def check(name, cond, extra=""):
+def check(name, cond, extra: object = ""):
     results.append(bool(cond))
     print(("PASS " if cond else "FAIL ") + name + (f"  [{extra}]" if extra else ""))
 
@@ -194,8 +194,8 @@ check("change is applied to the running detector", FakeCameraManager.calls[-1] =
       str(FakeCameraManager.calls))
 check("change is saved for the next start", "handbag" in settings_store.load_settings()["monitored_classes"])
 
-r = admin.post("/api/settings", json={"monitored_classes": ["person", "laptop"]})
-check("unknown class is refused", r.status_code == 400 and "Unknown class: laptop" in r.get_json()["message"], r.get_json())
+r = admin.post("/api/settings", json={"monitored_classes": ["person", "toaster"]})
+check("unknown class is refused", r.status_code == 400 and "Unknown class: toaster" in r.get_json()["message"], r.get_json())
 
 r = admin.post("/api/settings", json={"monitored_classes": "handbag"})
 check("non-list value is refused", r.status_code == 400)

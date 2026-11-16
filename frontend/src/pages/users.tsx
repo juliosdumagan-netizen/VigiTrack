@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { ConfirmDialog } from '@/components/ui/confirm-dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
@@ -26,6 +27,8 @@ export function UsersPage() {
 
   const [resetTarget, setResetTarget] = useState<User | null>(null)
   const [resetPassword, setResetPassword] = useState('')
+  const [deleteTarget, setDeleteTarget] = useState<User | null>(null)
+  const [disableTarget, setDisableTarget] = useState<User | null>(null)
 
   const load = useCallback(() => {
     api.listUsers().then(setUsers).catch((err) => setNotice({ type: 'error', text: err.message }))
@@ -73,9 +76,21 @@ export function UsersPage() {
     setResetPassword('')
   }
 
-  function handleDelete(target: User) {
-    if (!confirm(`Delete account "${target.username}"? This cannot be undone.`)) return
-    run(() => api.deleteUser(target.id), `Deleted ${target.username}.`)
+  async function confirmDelete() {
+    if (!deleteTarget) return
+    const target = deleteTarget
+    setDeleteTarget(null)
+    await run(() => api.deleteUser(target.id), `Deleted ${target.username}.`)
+  }
+
+  async function confirmDisable() {
+    if (!disableTarget) return
+    const target = disableTarget
+    setDisableTarget(null)
+    await run(
+      () => api.updateUser(target.id, { is_active: !target.is_active }),
+      `${target.is_active ? 'Disabled' : 'Enabled'} ${target.username}.`,
+    )
   }
 
   return (
@@ -170,12 +185,10 @@ export function UsersPage() {
                             variant="outline"
                             size="sm"
                             disabled={isSelf}
-                            onClick={() =>
-                              run(
-                                () => api.updateUser(u.id, { is_active: !u.is_active }),
-                                `${u.is_active ? 'Disabled' : 'Enabled'} ${u.username}.`,
-                              )
-                            }
+                            onClick={() => {
+                              if (u.is_active) setDisableTarget(u)
+                              else run(() => api.updateUser(u.id, { is_active: true }), `Enabled ${u.username}.`)
+                            }}
                           >
                             {u.is_active ? 'Disable' : 'Enable'}
                           </Button>
@@ -185,7 +198,7 @@ export function UsersPage() {
                             aria-label={`Delete ${u.username}`}
                             title="Delete"
                             disabled={isSelf}
-                            onClick={() => handleDelete(u)}
+                            onClick={() => setDeleteTarget(u)}
                           >
                             <Trash2 />
                           </Button>
@@ -267,6 +280,29 @@ export function UsersPage() {
           </Table>
         </CardContent>
       </Card>
+
+      <ConfirmDialog
+        open={deleteTarget !== null}
+        onOpenChange={(open) => !open && setDeleteTarget(null)}
+        title={`Delete account "${deleteTarget?.username}"?`}
+        description="The account, its credentials, and its sign-in history are removed permanently. This cannot be undone."
+        confirmLabel="Delete account"
+        onConfirm={confirmDelete}
+      />
+
+      <ConfirmDialog
+        open={disableTarget !== null}
+        onOpenChange={(open) => !open && setDisableTarget(null)}
+        title={`Disable "${disableTarget?.username}"?`}
+        description={
+          disableTarget?.is_active
+            ? 'They will be signed out and blocked from signing in until an administrator enables the account again.'
+            : 'They will be able to sign in again.'
+        }
+        confirmLabel={disableTarget?.is_active ? 'Disable' : 'Enable'}
+        destructive={Boolean(disableTarget?.is_active)}
+        onConfirm={confirmDisable}
+      />
 
       <Dialog open={resetTarget !== null} onOpenChange={(open) => !open && setResetTarget(null)}>
         <DialogContent>

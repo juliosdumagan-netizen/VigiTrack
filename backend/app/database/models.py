@@ -137,6 +137,19 @@ def get_all_incidents(limit=100):
         conn.close()
 
 
+def get_all_incidents_for_export():
+    """Returns every incident, oldest first, for export. Not capped like the hub list."""
+    conn = get_connection()
+    try:
+        rows = conn.execute("SELECT * FROM incidents ORDER BY detected_at ASC, id ASC").fetchall()
+        return [_row_to_incident(row) for row in rows]
+    except Exception as e:
+        print(f"[Database Error] Failed to export incidents: {e}")
+        return []
+    finally:
+        conn.close()
+
+
 def get_incident(incident_id: int):
     """Returns one incident with its state history, or None if it does not exist."""
     conn = get_connection()

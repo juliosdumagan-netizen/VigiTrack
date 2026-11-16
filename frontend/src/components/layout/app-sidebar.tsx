@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Camera, LayoutDashboard, LogOut, Settings, ShieldAlert, User as UserIcon, Users } from 'lucide-react'
 import {
@@ -11,6 +12,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
+import { ConfirmDialog } from '@/components/ui/confirm-dialog'
 import { useAuth } from '@/lib/auth'
 
 const navItems = [
@@ -26,6 +28,7 @@ export function AppSidebar() {
   const location = useLocation()
   const navigate = useNavigate()
   const { user, isAdmin, logout } = useAuth()
+  const [confirmLogout, setConfirmLogout] = useState(false)
 
   const visibleItems = navItems.filter(
     (item) => !user?.must_change_password || item.to === '/account',
@@ -82,13 +85,23 @@ export function AppSidebar() {
         )}
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton tooltip="Log out" onClick={handleLogout}>
+            <SidebarMenuButton tooltip="Log out" onClick={() => setConfirmLogout(true)}>
               <LogOut />
               <span>Log out</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
+
+      <ConfirmDialog
+        open={confirmLogout}
+        onOpenChange={setConfirmLogout}
+        title="Log out of VigiTrack?"
+        description="You will be signed out and returned to the sign-in page. The camera feed stops on this device."
+        confirmLabel="Log out"
+        destructive={false}
+        onConfirm={handleLogout}
+      />
     </Sidebar>
   )
 }

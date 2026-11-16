@@ -1,4 +1,5 @@
 ﻿import cv2
+import numpy as np
 import threading
 import time
 from collections import deque
@@ -6,6 +7,7 @@ from typing import Optional, List, Dict
 
 from app.detection.detector import ObjectDetector
 from app.detection.fsm_tracker import AdvancedBaggageMonitor
+from app.detection.zones import ZoneSet, normalise_zones
 from app.alerts.notifier import Notifier
 from app.database.models import log_incident
 from app.stream.camera_health import classify
@@ -40,6 +42,12 @@ class CameraManager:
             time_threshold=self.time_threshold
         )
         self.notifier = Notifier(audio_enabled=settings.get("audio_alert_enabled", True))
+
+        # Zones are stored normalised; they are converted to pixels once the frame size is known.
+        self.zones_config: List[Dict] = normalise_zones(settings.get("zones", []))
+        self.zones_dirty = True
+        self.zone_set: Optional[ZoneSet] = None
+        self.frame_size: Optional[Dict[str, int]] = None
 
         # Threading state
         self.cap: Optional[cv2.VideoCapture] = None
@@ -143,15 +151,16 @@ class CameraManager:
         while self.running:
             with self.capture_lock:
                 cap = self.cap
-                if not cap or not cap.isOpened():
-                    cap_valid = False
-                else:
+                ret, frame = False, None
+                if cap is not None and cap.isOpened():
                     cap_valid = True
                     try:
                         ret, frame = cap.read()
                     except Exception as e:
                         ret, frame = False, None
                         print(f"[CameraManager] Capture read error: {e}")
+                else:
+                    cap_valid = False
 
             if not cap_valid:
                 time.sleep(0.5)
@@ -185,6 +194,15 @@ class CameraManager:
                         continue
                     frame = self.raw_frame.copy()
 
+                height, width = frame.shape[:2]
+                if self.frame_size != {"width": width, "height": height}:
+                    self.frame_size = {"width": width, "height": height}
+                    self.zones_dirty = True
+                if self.zones_dirty:
+                    self.zone_set = ZoneSet.from_config(self.zones_config, width, height)
+                    self.monitor.set_zones(self.zone_set)
+                    self.zones_dirty = False
+
                 # 1. Run YOLOv8 + ByteTrack
                 detections = self.detector.detect_and_track(frame)
 
@@ -194,6 +212,12 @@ class CameraManager:
                 # 3. Draw Detections & Overlays
                 any_alert = False
                 pending_logs = []
+
+                if self.zone_set is not None:
+                    for kind, polygon in self.zone_set.polygons():
+                        pts = np.array(polygon, dtype=np.int32).reshape((-1, 1, 2))
+                        color = (160, 160, 160) if kind == "ignore" else (0, 191, 255)
+                        cv2.polylines(frame, [pts], True, color, 2, cv2.LINE_AA)
 
                 # Draw Person detections
                 for det in detections:
@@ -360,6 +384,22 @@ class CameraManager:
     def set_monitored_classes(self, class_names) -> None:
         """Changes which object classes are detected, without restarting the camera."""
         self.detector.set_monitored_classes(class_names)
+
+    def get_zones(self) -> Dict:
+        """Zones in normalised coordinates, plus the frame size they are drawn against (None until a frame arrives)."""
+        return {"zones": self.zones_config, "frame": self.frame_size}
+
+    def set_zones(self, zones) -> List[Dict]:
+        """Validates, saves and applies ignore and watch zones. Raises ZoneError if the zones are not valid."""
+        cleaned = normalise_zones(zones)
+        self.zones_config = cleaned
+        self.zones_dirty = True
+
+        settings = load_settings()
+        settings["zones"] = cleaned
+        save_settings(settings)
+        print(f"[CameraManager] Saved {len(cleaned)} zone(s)")
+        return cleaned
 
     def update_thresholds(self, distance_threshold: float, time_threshold: float):
         """Updates distance and time thresholds dynamically without restarting."""

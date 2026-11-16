@@ -17,6 +17,9 @@ SUITES = [
     "test_accounts.py",
     "test_setup.py",
     "test_incidents.py",
+    "test_phase4.py",
+    "test_zones.py",
+    "test_laptop.py",
     "test_desktop.py",
 ]
 

@@ -1,11 +1,11 @@
 import os
 import math
 import time
-from typing import List, Dict, Optional, Tuple
+from typing import Any, List, Dict, Optional, Tuple, cast
 import torch
 import numpy as np
 from ultralytics import YOLO
-from app.detection.classes import SUPPORTED_CLASSES
+from app.detection.classes import BAG_CLASSES, SUPPORTED_CLASSES
 
 
 def box_iou(box1: List[float], box2: List[float]) -> float:
@@ -50,7 +50,7 @@ class SpatialIdentityStabilizer:
         return math.hypot(p1[0] - p2[0], p1[1] - p2[1])
 
     def stabilize(self, raw_detections: List[Dict]) -> List[Dict]:
-        bag_classes = {"backpack", "handbag", "suitcase"}
+        bag_classes = set(BAG_CLASSES)
         unmatched_dets = list(range(len(raw_detections)))
         matched_tracks = set()
         det_to_canonical = {}
@@ -182,7 +182,8 @@ class ObjectDetector:
         "person": 0.60,
         "backpack": 0.22,
         "handbag": 0.18,
-        "suitcase": 0.25
+        "suitcase": 0.25,
+        "laptop": 0.25,
     }
 
     def __init__(self, model_name=None, monitored_classes=None):
@@ -331,11 +332,13 @@ class ObjectDetector:
         if not self.is_openvino:
             track_kwargs["device"] = self.device
 
-        results = self.model.track(**track_kwargs)
+        # The installed ultralytics stubs type track() as an iterator and boxes.xyxy as a
+        # numpy array; at runtime track() returns a list and the box data are torch tensors.
+        results = list(self.model.track(**track_kwargs))
         raw_candidates = []
 
         if results and len(results) > 0:
-            boxes_obj = results[0].boxes
+            boxes_obj = cast(Any, results[0].boxes)
             if boxes_obj is not None and len(boxes_obj) > 0:
                 boxes = boxes_obj.xyxy.cpu().numpy()
                 classes = boxes_obj.cls.cpu().numpy()
