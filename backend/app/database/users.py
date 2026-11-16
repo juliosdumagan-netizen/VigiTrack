@@ -135,6 +135,63 @@ def list_audit(limit: int = 200) -> list:
         conn.close()
 
 
+def _audit_filter(actor=None, action=None, start=None, end=None):
+    """Builds the WHERE clause for audit searches. start and end are ISO dates (YYYY-MM-DD), both inclusive."""
+    clauses, params = [], []
+    if actor:
+        clauses.append("actor LIKE ?")
+        params.append(f"%{actor}%")
+    if action:
+        clauses.append("action = ?")
+        params.append(action)
+    if start:
+        clauses.append("created_at >= ?")
+        params.append(start)
+    if end:
+        clauses.append("created_at < ?")
+        params.append(end + "T99")  # any time on the end date
+    where = (" WHERE " + " AND ".join(clauses)) if clauses else ""
+    return where, params
+
+
+def search_audit(actor=None, action=None, start=None, end=None, limit: int = 50, offset: int = 0):
+    """Returns (entries newest first, total matching). Used by the audit page."""
+    where, params = _audit_filter(actor, action, start, end)
+    conn = get_connection()
+    try:
+        total = conn.execute(f"SELECT COUNT(*) FROM audit_log{where}", params).fetchone()[0]
+        rows = conn.execute(
+            f"SELECT id, created_at, actor, action, detail FROM audit_log{where} ORDER BY id DESC LIMIT ? OFFSET ?",
+            [*params, limit, offset],
+        ).fetchall()
+        return [dict(r) for r in rows], total
+    finally:
+        conn.close()
+
+
+def iter_audit_for_export(actor=None, action=None, start=None, end=None) -> list:
+    """Every matching entry, oldest first, for CSV export."""
+    where, params = _audit_filter(actor, action, start, end)
+    conn = get_connection()
+    try:
+        rows = conn.execute(
+            f"SELECT id, created_at, actor, action, detail, entry_hash FROM audit_log{where} ORDER BY id ASC",
+            params,
+        ).fetchall()
+        return [dict(r) for r in rows]
+    finally:
+        conn.close()
+
+
+def audit_action_names() -> list:
+    conn = get_connection()
+    try:
+        rows = conn.execute("SELECT DISTINCT action FROM audit_log ORDER BY action").fetchall()
+        return [r["action"] for r in rows]
+    finally:
+        conn.close()
+
+
 def setup_required() -> bool:
     """True when no accounts exist yet, so the first-run setup must be completed."""
     conn = get_connection()

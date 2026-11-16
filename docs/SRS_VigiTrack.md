@@ -209,8 +209,8 @@ Camera (USB or RTSP)
 | FR-52 | Users shall be able to change their own password, by entering the current password. | Implemented |
 | FR-53 | Sessions shall last up to 8 hours and use HttpOnly and SameSite=Lax cookies. | Implemented |
 | FR-54 | Sessions shall end after an idle period. | Implemented (30 minutes, set by VIGITRACK_IDLE_MINUTES. Background polling does not count as activity) |
-| FR-55 | The system shall log logins, failed logins, lockouts, account changes, password resets, setting changes, incident deletions, and setup events to an audit log. | Implemented |
-| FR-56 | Admins shall be able to view the audit log, newest first. | Implemented |
+| FR-55 | The system shall log logins, failed logins, lockouts, account changes, password resets, setting changes (with old and new values), camera switches, monitored-class changes, zone changes (naming the zones added, removed or edited), snapshot views, incident deletions, exports, and setup events to an audit log. Camera passwords are never written; sources are masked. | Implemented |
+| FR-56 | Admins shall be able to view the audit log, newest first, filter it by user, action and date range, page through it, check its integrity, and export the matching entries as CSV. | Implemented (`/audit` page, `GET /api/audit/search`, `GET /api/audit/actions`, `GET /api/audit/export.csv`, `GET /api/audit/verify`; `test_audit.py`) |
 
 ### 3.7 Settings
 
@@ -327,6 +327,9 @@ Camera (USB or RTSP)
 | PATCH, DELETE | `/api/users/<id>` | Admin |
 | GET | `/api/audit` | Admin |
 | GET | `/api/audit/verify` | Admin |
+| GET | `/api/audit/search` | Admin (filters: actor, action, start, end, limit, offset) |
+| GET | `/api/audit/actions` | Admin |
+| GET | `/api/audit/export.csv` | Admin (audited) |
 | GET | `/api/notice` | Public |
 | GET | `/video_feed` | Logged in |
 | GET | `/api/alerts` | Logged in |
@@ -376,6 +379,7 @@ Camera (USB or RTSP)
 | Ownership and alert logic (simulated clock) | `test_fsm.py` | 16 / 16 checks passed |
 | Incident review, idle timeout, camera status, live monitored classes | `test_phase1.py` | 31 / 31 checks passed |
 | Credential encryption, retention, purge, rate limit, headers, audit chain | `test_phase2.py` | 42 / 42 checks passed |
+| Audit page API: filters, paging, date validation, CSV export, and the audit gaps (old/new settings values, camera switch, snapshot view, zone detail) | `test_audit.py` | 25 / 25 checks passed |
 | Evaluation harness: baseline vs FSM, synthetic set, scoring math | `test_evaluation.py` | 27 / 27 checks passed |
 | Hub build | `npm run build` | Passes |
 | Desktop start-up | Manual on developer PC | Window opens; setup page appears without code |

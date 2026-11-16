@@ -93,6 +93,31 @@ export type AuditEntry = {
   detail: string | null
 }
 
+export type AuditQuery = {
+  actor?: string
+  action?: string
+  start?: string
+  end?: string
+  limit?: number
+  offset?: number
+}
+
+export type AuditSearchResponse = { entries: AuditEntry[]; total: number }
+
+export type AuditVerification = {
+  ok: boolean
+  first_bad_id: number | null
+  unhashed_entries: number
+}
+
+function auditQueryString(params: AuditQuery) {
+  const search = new URLSearchParams()
+  for (const [key, value] of Object.entries(params)) {
+    if (value !== undefined && value !== null && value !== '') search.set(key, String(value))
+  }
+  return search.toString()
+}
+
 export class UnauthorizedError extends Error {}
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
@@ -206,4 +231,12 @@ export const api = {
   deleteUser: (id: number) => request<{ status: string }>(`/api/users/${id}`, { method: 'DELETE' }),
 
   getAudit: () => request<AuditEntry[]>('/api/audit'),
+
+  searchAudit: (params: AuditQuery) => request<AuditSearchResponse>(`/api/audit/search?${auditQueryString(params)}`),
+
+  auditActions: () => request<string[]>('/api/audit/actions'),
+
+  verifyAudit: () => request<AuditVerification>('/api/audit/verify'),
+
+  exportAuditCsv: (params: AuditQuery) => fetchFile(`/api/audit/export.csv?${auditQueryString(params)}`),
 }

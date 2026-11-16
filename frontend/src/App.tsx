@@ -11,6 +11,7 @@ import { LoginPage } from '@/pages/login'
 import { SettingsPage } from '@/pages/settings'
 import { SetupPage } from '@/pages/setup'
 import { UsersPage } from '@/pages/users'
+import { AuditPage } from '@/pages/audit'
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
               <Route path="/cameras" element={<CamerasPage />} />
               <Route path="/incidents" element={<IncidentsPage />} />
               <Route path="/users" element={<UsersPage />} />
+              <Route path="/audit" element={<AuditPage />} />
               <Route path="/settings" element={<SettingsPage />} />
               <Route path="/account" element={<AccountPage />} />
             </Route>

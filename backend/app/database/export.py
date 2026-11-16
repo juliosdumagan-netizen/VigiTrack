@@ -30,6 +30,26 @@ def _cell(value):
     return value
 
 
+AUDIT_COLUMNS = [
+    ("id", "Entry ID"),
+    ("created_at", "Recorded at"),
+    ("actor", "User"),
+    ("action", "Action"),
+    ("detail", "Detail"),
+    ("entry_hash", "Entry hash"),
+]
+
+
+def audit_to_csv(entries) -> bytes:
+    """The audit trail as CSV, with the same formula protection and encoding as the incident export."""
+    buffer = io.StringIO()
+    writer = csv.writer(buffer, lineterminator="\r\n")
+    writer.writerow([label for _, label in AUDIT_COLUMNS])
+    for entry in entries:
+        writer.writerow([_cell(entry.get(key)) for key, _ in AUDIT_COLUMNS])
+    return b"\xef\xbb\xbf" + buffer.getvalue().encode("utf-8")
+
+
 def incidents_to_csv(incidents) -> bytes:
     """
     Serialises incidents as CSV. UTF-8 with a byte-order mark so Excel reads accents correctly.

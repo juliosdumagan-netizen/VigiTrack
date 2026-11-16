@@ -176,7 +176,8 @@ check("invalid zones are rejected with a message", bad.status_code == 400 and "a
 check("rejected save leaves the saved zones unchanged", len(client.get("/api/zones").get_json()["zones"]) == 2)
 
 zone_audit = [row for row in _acc.list_audit() if row["action"] == "zones_updated"]
-check("zone save is written to the audit log", len(zone_audit) == 1 and zone_audit[0]["detail"] == "1 ignore, 1 watch",
+check("zone save is written to the audit log",
+      len(zone_audit) == 1 and zone_audit[0]["detail"] == "added Reception desk (ignore); added Front door (watch 4.0 s)",
       [r["detail"] for r in zone_audit])
 
 # --- 5. Class evidence stored with each incident ---

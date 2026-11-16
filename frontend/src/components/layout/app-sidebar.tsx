@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Camera, LayoutDashboard, LogOut, Settings, ShieldAlert, User as UserIcon, Users } from 'lucide-react'
+import { Camera, LayoutDashboard, LogOut, ScrollText, Settings, ShieldAlert, User as UserIcon, Users } from 'lucide-react'
 import {
   Sidebar,
   SidebarContent,
@@ -20,6 +20,7 @@ const navItems = [
   { title: 'Cameras', to: '/cameras', icon: Camera, adminOnly: false },
   { title: 'Incidents', to: '/incidents', icon: ShieldAlert, adminOnly: false },
   { title: 'Users', to: '/users', icon: Users, adminOnly: true },
+  { title: 'Audit', to: '/audit', icon: ScrollText, adminOnly: true },
   { title: 'Settings', to: '/settings', icon: Settings, adminOnly: true },
   { title: 'My account', to: '/account', icon: UserIcon, adminOnly: false },
 ]

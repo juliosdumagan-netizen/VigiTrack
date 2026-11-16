@@ -10,7 +10,7 @@ from app.detection.classes import SUPPORTED_CLASSES
 from app.stream.camera_manager import CameraManager
 from app.stream.rate_limit import FailureLimiter
 from app.detection.zones import ZoneError
-from app.database.export import incidents_to_csv
+from app.database.export import audit_to_csv, incidents_to_csv
 from app.database.incident_report import incident_to_pdf
 from app.database.models import (
     INCIDENT_IMAGE_DIR,
@@ -23,6 +23,7 @@ from app.database.models import (
     review_incident,
 )
 from app.database import users as accounts
+from config.secret_store import redact, stored_camera_source
 from config.settings_store import load_settings, save_settings
 
 stream_bp = Blueprint(
@@ -384,6 +385,65 @@ def api_verify_audit():
     return jsonify({"ok": ok, "first_bad_id": first_bad_id, "unhashed_entries": unhashed})
 
 
+def _audit_filters():
+    """Reads and checks the audit search filters from the query string. Raises ValueError on bad input."""
+    def parse_date(name):
+        value = (request.args.get(name) or "").strip()
+        if not value:
+            return None
+        try:
+            return datetime.strptime(value, "%Y-%m-%d").date().isoformat()
+        except ValueError:
+            raise ValueError(f"{name} must be a date in the form YYYY-MM-DD.")
+
+    start = parse_date("start")
+    end = parse_date("end")
+    if start and end and end < start:
+        raise ValueError("The end date is before the start date.")
+    return {
+        "actor": (request.args.get("actor") or "").strip() or None,
+        "action": (request.args.get("action") or "").strip() or None,
+        "start": start,
+        "end": end,
+    }
+
+
+@stream_bp.route("/api/audit/search", methods=["GET"])
+@admin_required
+def api_search_audit():
+    try:
+        filters = _audit_filters()
+        limit = min(max(int(request.args.get("limit", 50)), 1), 200)
+        offset = max(int(request.args.get("offset", 0)), 0)
+    except ValueError as e:
+        return jsonify({"status": "error", "message": str(e)}), 400
+    entries, total = accounts.search_audit(limit=limit, offset=offset, **filters)
+    return jsonify({"entries": entries, "total": total})
+
+
+@stream_bp.route("/api/audit/actions", methods=["GET"])
+@admin_required
+def api_audit_actions():
+    return jsonify(accounts.audit_action_names())
+
+
+@stream_bp.route("/api/audit/export.csv", methods=["GET"])
+@admin_required
+def api_export_audit_csv():
+    try:
+        filters = _audit_filters()
+    except ValueError as e:
+        return jsonify({"status": "error", "message": str(e)}), 400
+    entries = accounts.iter_audit_for_export(**filters)
+    accounts.log_audit(_actor(), "audit_exported", f"{len(entries)} entr{'y' if len(entries) == 1 else 'ies'}")
+    filename = f"vigitrack-audit-{datetime.now().strftime('%Y%m%d-%H%M%S')}.csv"
+    return Response(
+        audit_to_csv(entries),
+        mimetype="text/csv",
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+    )
+
+
 # =========================================================================
 # Protected Surveillance & Management Routes
 # =========================================================================
@@ -473,6 +533,8 @@ def api_get_incident_image(incident_id):
     filename = get_incident_image_filename(incident_id)
     if not filename:
         return jsonify({"status": "error", "message": "No snapshot for this incident"}), 404
+    # Snapshots show identifiable people, so every view is recorded.
+    accounts.log_audit(_actor(), "snapshot_viewed", f"#{incident_id}")
     return send_from_directory(INCIDENT_IMAGE_DIR, filename, mimetype="image/jpeg")
 
 
@@ -555,13 +617,14 @@ def api_save_zones():
     if not request.is_json:
         return jsonify({"status": "error", "message": "Expected a JSON request."}), 415
     data = request.get_json(silent=True) or {}
+    cam = get_camera_manager()
+    old = cam.get_zones()["zones"]
     try:
-        saved = get_camera_manager().set_zones(data.get("zones"))
+        saved = cam.set_zones(data.get("zones"))
     except ZoneError as e:
         return jsonify({"status": "error", "message": str(e)}), 400
 
-    ignore_count = sum(1 for z in saved if z["type"] == "ignore")
-    accounts.log_audit(_actor(), "zones_updated", f"{ignore_count} ignore, {len(saved) - ignore_count} watch")
+    accounts.log_audit(_actor(), "zones_updated", _zone_changes(old, saved))
     return jsonify({"status": "success", "zones": saved})
 
 
@@ -572,6 +635,62 @@ def api_get_settings():
     data = cam.get_thresholds()
     data["retention_days"] = int(load_settings().get("retention_days", DEFAULT_RETENTION_DAYS))
     return jsonify(data)
+
+
+SETTING_LABELS = {
+    "distance_threshold": "distance threshold (px)",
+    "time_threshold": "time threshold (s)",
+    "audio_alert_enabled": "audio alerts",
+    "retention_days": "retention (days)",
+}
+
+
+def _audit_settings_changes(actor, before: dict, after: dict) -> None:
+    """
+    Records what changed with old and new values. Camera sources are masked, so RTSP passwords
+    never reach the audit log. A camera switch and a monitored-class change each get their own entry.
+    """
+    old_source = redact(stored_camera_source(before))
+    new_source = redact(stored_camera_source(after))
+    if old_source != new_source:
+        accounts.log_audit(actor, "camera_switched",
+                           f"{old_source} ({before.get('camera_name', '-')}) → {new_source} ({after.get('camera_name', '-')})")
+
+    old_classes = sorted(before.get("monitored_classes", []))
+    new_classes = sorted(after.get("monitored_classes", []))
+    if old_classes != new_classes:
+        accounts.log_audit(actor, "monitored_classes_changed",
+                           f"{', '.join(old_classes) or '-'} → {', '.join(new_classes) or '-'}")
+
+    def shown(value):
+        if isinstance(value, float) and value.is_integer():
+            return str(int(value))
+        return str(value)
+
+    changes = [
+        f"{label} {shown(before.get(key))} → {shown(after.get(key))}"
+        for key, label in SETTING_LABELS.items()
+        if before.get(key) != after.get(key)
+    ]
+    accounts.log_audit(actor, "settings_changed", "; ".join(changes) if changes else "no value changed")
+
+
+def _zone_summary(zone: dict) -> str:
+    kind = zone["type"] if zone["type"] == "ignore" else f"watch {zone.get('time_threshold')} s"
+    return f"{zone['name']} ({kind})"
+
+
+def _zone_changes(old: list, new: list) -> str:
+    """Describes which zones were added, removed or edited, matched by zone id."""
+    old_by = {z["id"]: z for z in old}
+    new_by = {z["id"]: z for z in new}
+    parts = [f"added {_zone_summary(z)}" for zid, z in new_by.items() if zid not in old_by]
+    parts += [f"removed {_zone_summary(z)}" for zid, z in old_by.items() if zid not in new_by]
+    for zid in new_by.keys() & old_by.keys():
+        before_z, after_z = old_by[zid], new_by[zid]
+        if before_z != after_z:
+            parts.append(f"edited {_zone_summary(before_z)} → {_zone_summary(after_z)}")
+    return "; ".join(parts) or "no change"
 
 
 def _parse_monitored_classes(value):
@@ -594,6 +713,7 @@ def api_update_settings():
     data = request.get_json(silent=True) or {}
     cam = get_camera_manager()
     actor = _actor()
+    before = load_settings()
 
     try:
         # Validate and parse every value before anything is saved
@@ -635,7 +755,7 @@ def api_update_settings():
             s["retention_days"] = retention
 
         save_settings(s)
-        accounts.log_audit(actor, "settings_changed", ", ".join(sorted(data.keys())))
+        _audit_settings_changes(actor, before, s)
 
         return jsonify({"status": "success", "settings": cam.get_thresholds()})
     except RuntimeError as e:

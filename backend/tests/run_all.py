@@ -21,6 +21,7 @@ SUITES = [
     "test_zones.py",
     "test_laptop.py",
     "test_class_vote.py",
+    "test_audit.py",
     "test_desktop.py",
 ]
 
