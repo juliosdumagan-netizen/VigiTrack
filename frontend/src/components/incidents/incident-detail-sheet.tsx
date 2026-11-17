@@ -75,10 +75,10 @@ export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted,
     }
   }, [incidentId])
 
-  async function confirmDelete() {
+  async function confirmDelete(password: string) {
     if (!incident) return
     try {
-      await api.deleteIncident(incident.id)
+      await api.deleteIncident(incident.id, password)
       setDeleteOpen(false)
       onDeleted()
       onClose()
@@ -87,7 +87,6 @@ export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted,
         setDeleteOpen(false)
         onClose()
       } else {
-        toast.error(err instanceof Error ? err.message : 'Failed to delete incident')
         throw err
       }
     }
@@ -306,6 +305,7 @@ export function IncidentDetailSheet({ incidentId, canDelete, onClose, onDeleted,
         title={`Delete incident #${incidentId}?`}
         description="The snapshot and timeline for this incident are removed permanently. This cannot be undone."
         confirmLabel="Delete"
+        requirePassword
         onConfirm={confirmDelete}
       />
     </Sheet>

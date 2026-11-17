@@ -645,9 +645,26 @@ def api_incident_report(incident_id):
     )
 
 
+def _require_admin_password(action_detail: str):
+    """Verifies the signed-in admin's password from the JSON body before destructive incident actions."""
+    user = _current_user()
+    assert user is not None, "admin_required has already checked the session"
+    data = request.get_json(silent=True) or {}
+    password = str(data.get("password") or "")
+    if not password:
+        return jsonify({"status": "error", "message": "Enter your administrator password to confirm."}), 400
+    if not accounts.verify_password(user["id"], password):
+        accounts.log_audit(user["username"], "incident_delete_denied", f"wrong password ({action_detail})")
+        return jsonify({"status": "error", "message": "Incorrect administrator password."}), 403
+    return None
+
+
 @stream_bp.route("/api/incidents/<int:incident_id>", methods=["DELETE"])
 @admin_required
 def api_delete_incident(incident_id):
+    denied = _require_admin_password(f"#{incident_id}")
+    if denied is not None:
+        return denied
     success = delete_incident(incident_id)
     if success:
         accounts.log_audit(_actor(), "incident_deleted", f"#{incident_id}")
@@ -657,6 +674,9 @@ def api_delete_incident(incident_id):
 @stream_bp.route("/api/incidents/clear", methods=["POST"])
 @admin_required
 def api_clear_all_incidents():
+    denied = _require_admin_password("clear all")
+    if denied is not None:
+        return denied
     count = clear_all_incidents()
     accounts.log_audit(_actor(), "incidents_cleared", f"{count} records")
     return jsonify({"success": True})
@@ -676,6 +696,10 @@ def api_purge_incidents():
         return jsonify({"status": "error", "message": "Dates must be in the form YYYY-MM-DD."}), 400
     if end < start:
         return jsonify({"status": "error", "message": "The end date is before the start date."}), 400
+
+    denied = _require_admin_password(f"purge {start.date()} to {end.date()}")
+    if denied is not None:
+        return denied
 
     end_exclusive = end + timedelta(days=1)
     count = purge_between(start.isoformat(timespec="seconds"), end_exclusive.isoformat(timespec="seconds"))

@@ -199,12 +199,17 @@ export const api = {
   reviewIncident: (id: number, action: ReviewAction, note?: string) =>
     request<{ status: string; incident: Incident }>(`/api/incidents/${id}/review`, json({ action, note })),
 
-  deleteIncident: (id: number) => request<{ success: boolean }>(`/api/incidents/${id}`, { method: 'DELETE' }),
+  deleteIncident: (id: number, password: string) =>
+    request<{ success: boolean }>(`/api/incidents/${id}`, {
+      method: 'DELETE',
+      body: JSON.stringify({ password }),
+    }),
 
-  clearIncidents: () => request<{ success: boolean }>('/api/incidents/clear', { method: 'POST' }),
+  clearIncidents: (password: string) =>
+    request<{ success: boolean }>('/api/incidents/clear', json({ password })),
 
-  purgeIncidents: (start: string, end: string) =>
-    request<{ status: string; deleted: number }>('/api/incidents/purge', json({ start, end })),
+  purgeIncidents: (start: string, end: string, password: string) =>
+    request<{ status: string; deleted: number }>('/api/incidents/purge', json({ start, end, password })),
 
   exportIncidentsCsv: () => fetchFile('/api/incidents/export.csv'),
 

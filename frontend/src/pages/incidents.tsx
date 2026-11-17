@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState, type KeyboardEvent, type MouseEvent } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { CalendarX2, Download, Trash2 } from 'lucide-react'
+import { CalendarX2, Download, Eye, EyeOff, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardAction } from '@/components/ui/card'
 import {
@@ -12,6 +12,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 import { DatePicker } from '@/components/ui/date-picker'
+import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
@@ -32,6 +33,8 @@ export function IncidentsPage() {
   const [purgeOpen, setPurgeOpen] = useState(false)
   const [purgeStart, setPurgeStart] = useState('')
   const [purgeEnd, setPurgeEnd] = useState('')
+  const [purgePassword, setPurgePassword] = useState('')
+  const [showPurgePassword, setShowPurgePassword] = useState(false)
   const [purgeError, setPurgeError] = useState<string | null>(null)
   const [purging, setPurging] = useState(false)
   const [deleteTarget, setDeleteTarget] = useState<number | null>(null)
@@ -73,10 +76,10 @@ export function IncidentsPage() {
     setDeleteTarget(id)
   }
 
-  async function confirmDelete() {
+  async function confirmDelete(password: string) {
     if (deleteTarget === null) return
     try {
-      await api.deleteIncident(deleteTarget)
+      await api.deleteIncident(deleteTarget, password)
       setDeleteTarget(null)
       load()
     } catch (err) {
@@ -84,15 +87,14 @@ export function IncidentsPage() {
         setDeleteTarget(null)
         navigate('/login', { replace: true })
       } else {
-        toast.error(err instanceof Error ? err.message : 'Failed to delete incident')
         throw err
       }
     }
   }
 
-  async function confirmClear() {
+  async function confirmClear(password: string) {
     try {
-      await api.clearIncidents()
+      await api.clearIncidents(password)
       setClearOpen(false)
       load()
     } catch (err) {
@@ -100,7 +102,6 @@ export function IncidentsPage() {
         setClearOpen(false)
         navigate('/login', { replace: true })
       } else {
-        toast.error(err instanceof Error ? err.message : 'Failed to clear incidents')
         throw err
       }
     }
@@ -122,6 +123,8 @@ export function IncidentsPage() {
   function openPurge() {
     setPurgeStart('')
     setPurgeEnd('')
+    setPurgePassword('')
+    setShowPurgePassword(false)
     setPurgeError(null)
     setPurgeOpen(true)
   }
@@ -135,10 +138,14 @@ export function IncidentsPage() {
       setPurgeError('The end date is before the start date.')
       return
     }
+    if (!purgePassword) {
+      setPurgeError('Enter your administrator password to confirm.')
+      return
+    }
     setPurgeError(null)
     setPurging(true)
     try {
-      const res = await api.purgeIncidents(purgeStart, purgeEnd)
+      const res = await api.purgeIncidents(purgeStart, purgeEnd, purgePassword)
       setPurgeOpen(false)
       toast.success(`${res.deleted} incident(s) deleted.`)
       load()
@@ -281,13 +288,40 @@ export function IncidentsPage() {
                 onChange={setPurgeEnd}
               />
             </div>
+            <div className="grid gap-2">
+              <Label htmlFor="purge-password">Administrator password</Label>
+              <div className="relative">
+                <Input
+                  id="purge-password"
+                  type={showPurgePassword ? 'text' : 'password'}
+                  autoComplete="current-password"
+                  placeholder="Enter your password to confirm"
+                  value={purgePassword}
+                  onChange={(e) => {
+                    setPurgePassword(e.target.value)
+                    if (purgeError) setPurgeError(null)
+                  }}
+                  className="pr-10"
+                  disabled={purging}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPurgePassword((v) => !v)}
+                  aria-label={showPurgePassword ? 'Hide password' : 'Show password'}
+                  title={showPurgePassword ? 'Hide password' : 'Show password'}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                >
+                  {showPurgePassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                </button>
+              </div>
+            </div>
             {purgeError && <p className="text-sm text-destructive">{purgeError}</p>}
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setPurgeOpen(false)} disabled={purging}>
               Cancel
             </Button>
-            <Button variant="destructive" onClick={handlePurge} disabled={purging}>
+            <Button variant="destructive" onClick={handlePurge} disabled={purging || !purgePassword}>
               {purging ? 'Deleting…' : 'Delete range'}
             </Button>
           </DialogFooter>
@@ -300,6 +334,7 @@ export function IncidentsPage() {
         title={`Delete incident #${deleteTarget}?`}
         description="The snapshot and timeline for this incident are removed permanently. This cannot be undone."
         confirmLabel="Delete"
+        requirePassword
         onConfirm={confirmDelete}
       />
 
@@ -309,6 +344,7 @@ export function IncidentsPage() {
         title="Delete ALL incident records?"
         description="Every incident, snapshot, and timeline in the history is removed permanently. This cannot be undone."
         confirmLabel="Delete all"
+        requirePassword
         onConfirm={confirmClear}
       />
 

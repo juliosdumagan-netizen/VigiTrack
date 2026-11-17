@@ -26,6 +26,13 @@ const STAGE_LABELS: Record<Phase, string> = {
   alert: 'Alert',
 }
 
+const STAGE_CAPTIONS: Record<Phase, string> = {
+  attended: 'Green proximity line — owner is within the distance threshold; no timer runs.',
+  separated: 'Red proximity line — owner stepped beyond the distance threshold.',
+  countdown: 'Separation timer active — cancels automatically if the owner returns in time.',
+  alert: 'Time threshold exceeded — visual/audio alert triggered and snapshot logged.',
+}
+
 const STATUS: Record<Phase, { label: string; chip: string; dot: string }> = {
   attended: {
     label: 'Owner nearby \u00b7 attended',
@@ -188,9 +195,12 @@ export function DetectionDemo() {
           </button>
         </div>
       </div>
-      <p className="mt-2 text-center text-xs text-muted-foreground">
-        Simulated preview of the detection flow &mdash; not live footage.
-      </p>
+      <div className="mt-2.5 text-center text-xs">
+        <p className="font-medium text-foreground/90">{STAGE_CAPTIONS[phase]}</p>
+        <p className="mt-0.5 text-[11px] text-muted-foreground">
+          Interactive 3D simulation &mdash; click any stage above to inspect the state machine.
+        </p>
+      </div>
     </div>
   )
 }
